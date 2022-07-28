@@ -10,13 +10,10 @@ class Contact extends Model
     use HasFactory;
 
     protected $table = 'contacts';
-    protected $fillable = ['contact_type_id' , 'user_id' , 'message' , 'replay' , 'read'];
+    protected $fillable = ['contact_type', 'user_id', 'message', 'name', 'email', 'read'];
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
-    }
-
-    public function contactType() {
-        return $this->belongsTo(ContactType::class);
     }
 }

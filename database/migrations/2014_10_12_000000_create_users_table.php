@@ -1,5 +1,7 @@
 <?php
 
+use App\Entities\Status;
+use App\Entities\UserRoles;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,16 +19,13 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('phone')->unique()->nullable();
-            $table->string('phonecode')->nullable();
             $table->string('password');
-            $table->string('email');
-            $table->integer('city_id')->nullable();
-            $table->string('address')->nullable();
-            $table->double('latitude')->nullable();
-            $table->double('longitude')->nullable();
-            $table->string('device_token')->nullable();
-            $table->string('device_type' , 20)->nullable();
-            $table->string('lang' , 20)->default('array');
+            $table->string('email')->unique();
+            $table->string('edited_email')->nullable();
+            $table->string('image')->nullable();
+            $table->string('lang', 20)->default('ar');
+            $table->enum('role' , UserRoles::getKeys());
+            $table->enum('status' , Status::getKeys());
             $table->rememberToken();
             $table->timestamps();
         });

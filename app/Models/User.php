@@ -24,9 +24,8 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'phone', 'phonecode', 'email', 'password', 'city_id', 'address', 'latitude',
-        'longitude', 'device_token', 'device_type', 'role', 'status', 'lang',
-        'image', 'edit_phone', 'edit_phonecode'
+        'name', 'phone', 'email', 'password', 'role', 'status', 'lang',
+        'image', 'edited_email'
     ];
 
     /**
@@ -46,15 +45,8 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = [
         'status' => 'integer',
-        'city_id' => 'integer',
-        'latitude' => 'double',
-        'longitude' => 'double',
     ];
 
-    public function getFullPhoneAttribute()
-    {
-        return $this->phonecode . $this->phone;
-    }
 
     public function getImageUrlAttribute()
     {
@@ -76,7 +68,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     function isCustomerAuth()
     {
-        if ($this->role === UserRoles::CUSTOMER) {
+        if ($this->role === UserRoles::FAN) {
             return true;
         }
         return false;
@@ -85,7 +77,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     function isActiveCustomerAuth()
     {
-        if ($this->role === UserRoles::CUSTOMER && $this->status === Status::ACTIVE) {
+        if ($this->role === UserRoles::FAN && $this->status === Status::ACTIVE) {
             return true;
         }
         return false;
@@ -113,55 +105,5 @@ class User extends Authenticatable implements MustVerifyEmail
             return true;
         }
         return false;
-    }
-
-    public function city()
-    {
-        return $this->belongsTo(City::class);
-    }
-
-    public function bankAccounts()
-    {
-        return $this->hasMany(BankAccount::class);
-    }
-
-    public function credit()
-    {
-        return $this->hasMany(Credit::class);
-    }
-
-    public function orders()
-    {
-        return $this->hasMany(Order::class, 'user_id', 'id');
-    }
-
-    public function getBalanceAttribute()
-    {
-        $charge = $this->credit()->where(['type' => CreditType::CHARGE])->sum('amount');
-        $sell = $this->credit()->where(['type' => CreditType::SELL])->sum('amount');
-
-        $withdraw = $this->credit()->where(['type' => CreditType::WITHDRAW])->sum('amount');
-        $buy = $this->credit()->where(['type' => CreditType::BUY])->sum('amount');
-
-        return ($charge + $sell) - ($withdraw + $buy);
-    }
-
-    public function getRealBalanceAttribute()
-    {
-        $withdrawRequestAmount = WithdrawRequest::where(['user_id' => $this->id, 'status' => WithdrawRequestStatus::WAIT])
-            ->sum('amount');
-        return $this->balance - $withdrawRequestAmount;
-    }
-
-    public function getTotalCompletedOrdersAttribute()
-    {
-        $buy = $this->credit()->whereHas('order', function ($query) {
-            $query->where(['status' => OrderStatus::COMPLETED]);
-        })->where(['type' => CreditType::BUY])->sum('amount');
-        $sell = $this->credit()->whereHas('order', function ($query) {
-            $query->where(['status' => OrderStatus::COMPLETED]);
-        })->where(['type' => CreditType::SELL])->sum('amount');
-
-        return $sell + $buy;
     }
 }
