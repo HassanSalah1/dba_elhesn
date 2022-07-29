@@ -8,6 +8,7 @@ use App\Entities\Status;
 use App\Entities\UserRoles;
 use App\Http\Resources\UserAuthResource;
 use App\Jobs\SendSMSJob;
+use App\Models\Devices;
 use App\Models\User;
 use App\Models\VerificationCode;
 use App\Repositories\General\UtilsRepository;
@@ -27,30 +28,24 @@ class AuthApiRepository
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'role' => $data['role'],
-            'phonecode' => $data['phonecode'],
-            'phone' => $data['phone'],
+            'role' => UserRoles::FAN,
+            'phone' => isset($data['phone']) ? $data['phone'] : null,
             'status' => Status::UNVERIFIED,
             'lang' => App::getLocale(),
-            'device_type' => isset($data['device_type']) ? $data['device_type'] : null,
-            'device_token' => isset($data['device_token']) ? $data['device_token'] : null,
-            'city_id' => $data['city_id'],
-            'address' => $data['address'],
-            'latitude' => isset($data['latitude']) ? $data['longitude'] : null,
-            'longitude' => isset($data['longitude']) ? $data['longitude'] : null,
         ];
-        if ($data['user']) {
-            $user = $data['user'];
-            $user->update($userData);
-        } else {
-            $user = User::create($userData);
-        }
+
+        $user = User::create($userData);
         if ($user) {
-            // 1- send verification sms
-            self::sendVerificationCode($user);
-            if (isset($data['web'])) {
-                Auth::loginUsingId($user->id);
+            if (isset($data['device_type'])) {
+                Devices::create([
+                    'user_id' => $user->id,
+                    'device_type' => isset($data['device_type']) ? $data['device_type'] : null,
+                    'device_token' => isset($data['device_token']) ? $data['device_token'] : null,
+                ]);
             }
+            // 1- send verification email
+            self::sendVerificationCode($user);
+
             // return success response
             return [
                 'message' => trans('api.create_account_success_message'),
@@ -107,7 +102,7 @@ class AuthApiRepository
                 ], HttpCode::ERROR);
             } else if ($user && $user->isActiveUser()) {
                 $user = UserAuthResource::make($user);
-                if(isset($data['web'])){
+                if (isset($data['web'])) {
                     Auth::loginUsingId($user->id);
                 }
                 return Response()->json([
@@ -117,7 +112,7 @@ class AuthApiRepository
             } else if ($user && $user->isNotPhoneVerified()) {
                 // send verification sms
                 self::sendVerificationCode($user);
-                if(isset($data['web'])){
+                if (isset($data['web'])) {
                     Auth::loginUsingId($user->id);
                 }
                 return Response()->json([
@@ -188,12 +183,16 @@ class AuthApiRepository
 
 
     // logout current user
-    public static function logout()
+    public static function logout($data)
     {
         $user = Auth::user();
         if ($user) {
-            $user->update(['device_token' => null, 'device_type' => null]);
-            if($user->token()) {
+            Devices::where([
+                'user_id' => $user->id,
+                'device_type' => $data['device_type'],
+                'device_token' => $data['device_token']
+            ])->forceDelete();
+            if ($user->token()) {
                 $user->token()->revoke();
                 $user->token()->delete();
             }
@@ -208,9 +207,9 @@ class AuthApiRepository
     // get verification code
     public static function getVerificationCode(array $data)
     {
-        $user = User::where(['phone' => $data['phone'], 'phonecode' => $data['phonecode']])
+        $user = User::where(['email' => $data['email']])
             ->orWhere(function ($query) use ($data) {
-                $query->where(['edit_phone' => $data['phone'], 'edit_phonecode' => $data['phonecode']]);
+                $query->where(['edited_email' => $data['email']]);
             })
             ->first();
         if ($user) {
@@ -235,9 +234,9 @@ class AuthApiRepository
     public static function resendVerificationCode(array $data)
     {
 
-        $user = User::where(['phone' => $data['phone'], 'phonecode' => $data['phonecode']])
+        $user = User::where(['email' => $data['email']])
             ->orWhere(function ($query) use ($data) {
-                $query->where(['edit_phone' => $data['phone'], 'edit_phonecode' => $data['phonecode']]);
+                $query->where(['edited_email' => $data['email']]);
             })
             ->first();
         if ($user) {
@@ -259,9 +258,9 @@ class AuthApiRepository
     // check verification code
     public static function checkVerificationCode(array $data)
     {
-        $user = User::where(['phone' => $data['phone'], 'phonecode' => $data['phonecode']])
+        $user = User::where(['email' => $data['email']])
             ->orWhere(function ($query) use ($data) {
-                $query->where(['edit_phone' => $data['phone'], 'edit_phonecode' => $data['phonecode']]);
+                $query->where(['edited_email' => $data['email']]);
             })
             ->first();
         if ($user) {
@@ -273,12 +272,10 @@ class AuthApiRepository
                 $response = [
                     'code' => HttpCode::SUCCESS
                 ];
-                if ($user->edit_phone !== null && $user->edit_phonecode !== null) {
+                if ($user->edited_email !== null) {
                     $user->update([
-                        'phone' => $user->edit_phone,
-                        'phonecode' => $user->edit_phonecode,
-                        'edit_phone' => null,
-                        'edit_phonecode' => null
+                        'email' => $user->edited_email,
+                        'edited_email' => null,
                     ]);
                     $verify = true;
                 } else if ($user->status === Status::UNVERIFIED) {
@@ -292,10 +289,6 @@ class AuthApiRepository
                     $response['data'] = $user;
                     $response['message'] = trans('api.verify_success_message');
                 } else {
-                    if (isset($data['web'])) {
-                        $response['data'] = Crypt::encrypt($data['phone']);
-                        Session::put('dm_chpss', $response['data']);
-                    }
                     $response['message'] = trans('api.verify_code_success_message');
                 }
                 return $response;
@@ -321,12 +314,11 @@ class AuthApiRepository
             'code' => $code
         ]);
         if ($verificationCode) {
-            // send sms
-            $phone = ($user->edit_phone !== null) ?
-                $user->edit_phonecode . $user->edit_phone : $user->phonecode . $user->phone;
+            // send email
+            $email = ($user->edited_email !== null) ? $user->edited_email : $user->email;
             $locale = App::getLocale();
             $message = str_replace('{code}', $code, trans('sms.your_code'));
-            SendSMSJob::dispatch($phone, $message, $locale);
+//            SendSMSJob::dispatch($phone, $message, $locale);
             return true;
         } else {
             return false;
@@ -340,8 +332,7 @@ class AuthApiRepository
         if (VerificationCode::where(['code' => $code])->first()) {
             $code = self::createUserVerificationCode($user);
         }
-//        return env('APP_ENV') === 'local' ? '0000' : $code;
-        return '0000';
+        return env('APP_ENV') === 'local' ? '0000' : $code;
     }
 
 }

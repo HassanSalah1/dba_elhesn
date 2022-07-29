@@ -6,7 +6,7 @@ return [
     'phone_unique_error_message' => 'رقم الهاتف مرتبط بحساب آخر.',
     'valid_phone_error_message' => 'رقم الهاتف غير صالح.',
     'role_error_message' => 'نوع الحساب المختار غير مدعوم لدينا الآن.',
-    'create_account_success_message' => 'تم إنشاء حسابك بنجاح , الرجاء التفعيل من خلال الكود المرسل إلى رقم هاتفك',
+    'create_account_success_message' => 'تم إنشاء حسابك بنجاح , الرجاء التفعيل من خلال الكود المرسل إلى بريدك الإلكترونى',
     'general_error_message' => 'حدث خطأ ما يرجى المحاولة فيما بعد.',
     'verify_success_message' => 'تم تفعيل حسابك بنجاح',
     'verify_code_success_message' => 'كود التفعيل صحيح.',

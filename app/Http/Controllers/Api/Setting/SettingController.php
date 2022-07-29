@@ -11,6 +11,13 @@ class SettingController extends Controller
 {
 
 
+    public function getAbout(Request $request)
+    {
+        $data = $request->all();
+        return SettingApiService::getAbout($data);
+    }
+
+
     public function getTerms(Request $request)
     {
         $data = $request->all();
@@ -42,10 +49,23 @@ class SettingController extends Controller
     }
 
 
+    public function getCommittees(Request $request)
+    {
+        $data = $request->all();
+        return SettingApiService::getCommittees($data);
+    }
+
     public function getNews(Request $request)
     {
         $data = $request->all();
         return SettingApiService::getNews($data);
+    }
+
+    public function getNewDetails(Request $request , $id)
+    {
+        $data = $request->all();
+        $data['id'] = $id;
+        return SettingApiService::getNewDetails($data);
     }
 
     public function getActions(Request $request)
@@ -53,6 +73,14 @@ class SettingController extends Controller
         $data = $request->all();
         return SettingApiService::getActions($data);
     }
+
+    public function getActionDetails(Request $request , $id)
+    {
+        $data = $request->all();
+        $data['id'] = $id;
+        return SettingApiService::getActionDetails($data);
+    }
+
 }
 
 ?>

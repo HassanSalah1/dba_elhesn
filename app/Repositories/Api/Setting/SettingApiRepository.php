@@ -3,14 +3,21 @@
 namespace App\Repositories\Api\Setting;
 
 use App\Entities\HttpCode;
+use App\Entities\ImageType;
 use App\Entities\Key;
+use App\Http\Resources\ActionDetailsResource;
 use App\Http\Resources\ActionResource;
+use App\Http\Resources\CommitteeResource;
 use App\Http\Resources\GalleryResource;
+use App\Http\Resources\ImageResource;
+use App\Http\Resources\NewDetailsResource;
 use App\Http\Resources\NewResource;
 use App\Http\Resources\TeamResource;
 use App\Models\Action;
+use App\Models\Committee;
 use App\Models\Contact;
 use App\Models\Gallery;
+use App\Models\Image;
 use App\Models\News;
 use App\Models\Setting;
 use App\Models\Team;
@@ -18,6 +25,26 @@ use Illuminate\Support\Facades\App;
 
 class SettingApiRepository
 {
+
+
+    public static function getAbout(array $data)
+    {
+
+        $lang = App::getLocale();
+        $setting = Setting::where(['key' => ($lang === 'en') ?
+            Key::CITY_DESCRIPTION_EN : Key::CITY_DESCRIPTION_AR])->first();
+
+        $images = Image::where(['item_type' => ImageType::CITY_DESCRIPTION])->get();
+        // return success response
+        return [
+            'data' => [
+                'city_description' => $setting ? $setting->value : null,
+                'images' => ImageResource::collection($images)
+            ],
+            'message' => 'success',
+            'code' => HttpCode::SUCCESS
+        ];
+    }
 
     public static function getTerms(array $data)
     {
@@ -122,6 +149,18 @@ class SettingApiRepository
         ];
     }
 
+    public static function getCommittees(array $data)
+    {
+        $committees = Committee::orderBy('id', 'DESC')->paginate(10);
+        $committees->{'committees'} = CommitteeResource::collection($committees);
+        // return success response
+        return [
+            'data' => $committees,
+            'message' => 'success',
+            'code' => HttpCode::SUCCESS
+        ];
+    }
+
     public static function getNews(array $data)
     {
         $news = News::orderBy('id', 'DESC')->paginate(10);
@@ -134,6 +173,21 @@ class SettingApiRepository
         ];
     }
 
+    public static function getNewDetails(array $data)
+    {
+        $new = News::find($data['id']);
+        if (!$new) return [
+            'message' => 'not found',
+            'code' => HttpCode::ERROR
+        ];
+        // return success response
+        return [
+            'data' => NewDetailsResource::make($new),
+            'message' => 'success',
+            'code' => HttpCode::SUCCESS
+        ];
+    }
+
     public static function getActions(array $data)
     {
         $actions = Action::orderBy('id', 'DESC')->paginate(10);
@@ -141,6 +195,21 @@ class SettingApiRepository
         // return success response
         return [
             'data' => $actions,
+            'message' => 'success',
+            'code' => HttpCode::SUCCESS
+        ];
+    }
+
+    public static function getActionDetails(array $data)
+    {
+        $action = Action::find($data['id']);
+        if (!$action) return [
+            'message' => 'not found',
+            'code' => HttpCode::ERROR
+        ];
+        // return success response
+        return [
+            'data' => ActionDetailsResource::make($action),
             'message' => 'success',
             'code' => HttpCode::SUCCESS
         ];

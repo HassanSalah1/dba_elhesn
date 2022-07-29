@@ -11,6 +11,12 @@ class SettingApiService
 {
 
 
+    public static function getAbout(array $data)
+    {
+        $response = SettingApiRepository::getAbout($data);
+        return UtilsRepository::handleResponseApi($response);
+    }
+
     public static function getTerms(array $data)
     {
         $response = SettingApiRepository::getTerms($data);
@@ -53,15 +59,33 @@ class SettingApiService
         return UtilsRepository::handleResponseApi($response);
     }
 
+    public static function getCommittees(array $data)
+    {
+        $response = SettingApiRepository::getCommittees($data);
+        return UtilsRepository::handleResponseApi($response);
+    }
+
     public static function getNews(array $data)
     {
         $response = SettingApiRepository::getNews($data);
         return UtilsRepository::handleResponseApi($response);
     }
 
+    public static function getNewDetails(array $data)
+    {
+        $response = SettingApiRepository::getNewDetails($data);
+        return UtilsRepository::handleResponseApi($response);
+    }
+
     public static function getActions(array $data)
     {
         $response = SettingApiRepository::getActions($data);
+        return UtilsRepository::handleResponseApi($response);
+    }
+
+    public static function getActionDetails(array $data)
+    {
+        $response = SettingApiRepository::getActionDetails($data);
         return UtilsRepository::handleResponseApi($response);
     }
 
