@@ -10,11 +10,6 @@ use App\Repositories\General\ValidationRepository;
 class SettingApiService
 {
 
-    public static function getAbout(array $data)
-    {
-        $response = SettingApiRepository::getAbout($data);
-        return UtilsRepository::handleResponseApi($response);
-    }
 
     public static function getTerms(array $data)
     {
@@ -22,54 +17,20 @@ class SettingApiService
         return UtilsRepository::handleResponseApi($response);
     }
 
-    public static function getPrivacy(array $data)
+    public static function getContactDetails(array $data)
     {
-        $response = SettingApiRepository::getPrivacy($data);
+        $response = SettingApiRepository::getContactDetails($data);
         return UtilsRepository::handleResponseApi($response);
     }
 
-    public static function getFaqs(array $data)
-    {
-        $response = SettingApiRepository::getFaqs($data);
-        return UtilsRepository::handleResponseApi($response);
-    }
-
-    public static function getUserGuides(array $data)
-    {
-        $response = SettingApiRepository::getUserGuides($data);
-        return UtilsRepository::handleResponseApi($response);
-    }
-
-    public static function getContactTypes(array $data)
-    {
-        $response = SettingApiRepository::getContactTypes($data);
-        return UtilsRepository::handleResponseApi($response);
-    }
-
-    public static function getIntros(array $data)
-    {
-        $response = SettingApiRepository::getIntros($data);
-        return UtilsRepository::handleResponseApi($response);
-    }
-
-    public static function getCountries(array $data)
-    {
-        $response = SettingApiRepository::getCountries($data);
-        return UtilsRepository::handleResponseApi($response);
-    }
-
-    public static function getCities(array $data)
-    {
-        $response = SettingApiRepository::getCities($data);
-        return UtilsRepository::handleResponseApi($response);
-    }
-
-    ////////////////////////
     public static function addContact(array $data)
     {
+        $data['user_id'] = auth('api')->id();
         $keys = [
-            'contact_type_id' => 'required',
+            'contact_type' => 'required',
             'message' => 'required',
+            'name' => 'required_without:user_id',
+            'email' => 'required_without:user_id',
         ];
         $validated = ValidationRepository::validateAPIGeneral($data, $keys);
         if ($validated !== true) {
@@ -79,27 +40,28 @@ class SettingApiService
         return UtilsRepository::handleResponseApi($response);
     }
 
-    public static function uploadGeneralImage(array $data)
+    public static function getTeams(array $data)
     {
-        $keys = [
-            'image' => 'required|image|max:3072'
-        ];
-        $messages = [
-            'required' => trans('api.required_error_message'),
-            'image'=> trans('api.image_error_message'),
-            'max' => trans('api.file_max_error_message'),
-        ];
-        $validated = ValidationRepository::validateAPIGeneral($data, $keys, $messages);
-        if ($validated !== true) {
-            return $validated;
-        }
-        $response = SettingApiRepository::uploadGeneralImage($data);
+        $response = SettingApiRepository::getTeams($data);
         return UtilsRepository::handleResponseApi($response);
     }
 
-    public static function removeGeneralImage(array $data)
+
+    public static function getGallery(array $data)
     {
-        $response = SettingApiRepository::removeGeneralImage($data);
+        $response = SettingApiRepository::getGallery($data);
+        return UtilsRepository::handleResponseApi($response);
+    }
+
+    public static function getNews(array $data)
+    {
+        $response = SettingApiRepository::getNews($data);
+        return UtilsRepository::handleResponseApi($response);
+    }
+
+    public static function getActions(array $data)
+    {
+        $response = SettingApiRepository::getActions($data);
         return UtilsRepository::handleResponseApi($response);
     }
 

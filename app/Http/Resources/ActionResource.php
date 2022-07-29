@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class FaqResource extends JsonResource
+class ActionResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,9 +14,13 @@ class FaqResource extends JsonResource
      */
     public function toArray($request)
     {
+        $image = $this->image();
         return [
-            'question' => $this->question,
-            'answer' => $this->answer,
+            'id' => $this->id,
+            'title' => $this->title,
+            'description' => $this->description,
+            'video_url' => $this->video_url,
+            'image' => $image ? url($image->image) : null,
         ];
     }
 }

@@ -10,11 +10,6 @@ use Illuminate\Http\Request;
 class SettingController extends Controller
 {
 
-    public function getAbout(Request $request)
-    {
-        $data = $request->all();
-        return SettingApiService::getAbout($data);
-    }
 
     public function getTerms(Request $request)
     {
@@ -22,68 +17,42 @@ class SettingController extends Controller
         return SettingApiService::getTerms($data);
     }
 
-    public function getPrivacy(Request $request)
+    public function getContactDetails(Request $request)
     {
         $data = $request->all();
-        return SettingApiService::getPrivacy($data);
+        return SettingApiService::getContactDetails($data);
     }
 
-    public function getFaqs(Request $request)
+    public function addContact(Request $request)
     {
-        $data = $request->all();
-        return SettingApiService::getFaqs($data);
-    }
-
-    public function getUserGuides(Request $request)
-    {
-        $data = $request->all();
-        return SettingApiService::getUserGuides($data);
-    }
-
-    public function getIntros(Request $request)
-    {
-        $data = $request->all();
-        return SettingApiService::getIntros($data);
-    }
-
-    public function getContactTypes(Request $request)
-    {
-        $data = $request->all();
-        return SettingApiService::getContactTypes($data);
-    }
-
-    public function getCountries(Request $request){
-        $data = $request->all();
-        return SettingApiService::getCountries($data);
-    }
-
-
-    public function getCities($id , Request $request){
-        $data = $request->all();
-        $data['country_id'] = $id;
-        return SettingApiService::getCities($data);
-    }
-
-    public function addContact(Request $request){
         $data = $request->all();
         return SettingApiService::addContact($data);
     }
 
-
-    public function uploadGeneralImage(Request $request)
+    public function getTeams(Request $request)
     {
         $data = $request->all();
-        $data['request'] = $request;
-        return SettingApiService::uploadGeneralImage($data);
+        return SettingApiService::getTeams($data);
     }
 
-    public function removeGeneralImage(Request $request , $id)
+    public function getGallery(Request $request)
     {
         $data = $request->all();
-        $data['id'] = $id;
-        return SettingApiService::removeGeneralImage($data);
+        return SettingApiService::getGallery($data);
     }
 
+
+    public function getNews(Request $request)
+    {
+        $data = $request->all();
+        return SettingApiService::getNews($data);
+    }
+
+    public function getActions(Request $request)
+    {
+        $data = $request->all();
+        return SettingApiService::getActions($data);
+    }
 }
 
 ?>

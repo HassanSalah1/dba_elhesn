@@ -28,18 +28,16 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'lang'], function () {
     Route::group(['prefix' => 'v1'], function () {
 
-        Route::get('/about', [SettingController::class, 'getAbout']); // get about
         Route::get('/terms', [SettingController::class, 'getTerms']); // get terms
-        Route::get('/privacy', [SettingController::class, 'getPrivacy']); // get privacy
+        Route::get('/contact', [SettingController::class, 'getContactDetails']); // get contact details
 
-        Route::get('/faqs', [SettingController::class, 'getFaqs']); // get faqs
+        Route::post('/contact', [SettingController::class, 'addContact']); // contact us
+        Route::get('/teams', [SettingController::class, 'getTeams']); // get teams
+        Route::get('/gallery', [SettingController::class, 'getGallery']); // get gallery
 
-        Route::get('/contact/types', [SettingController::class, 'getContactTypes']); // get contact types
-        Route::get('/user/guides', [SettingController::class, 'getUserGuides']); // get user guides
-        Route::get('/intros', [SettingController::class, 'getIntros']); // get intros
+        Route::get('/news', [SettingController::class, 'getNews']); // get news
+        Route::get('/actions', [SettingController::class, 'getActions']); // get actions
 
-        Route::get('/get/countries', [SettingController::class, 'getCountries']); // get countries
-        Route::get('/get/country/{id}/cities', [SettingController::class, 'getCities']); // get country cities
 
         Route::post('/signup', [AuthController::class, 'register']); // register new user
         Route::get('/get/verification/code', [AuthController::class, 'getVerificationCode']); // get verification code'Auth\@getVerificationCode'); // get verification code
@@ -51,19 +49,12 @@ Route::group(['middleware' => 'lang'], function () {
 
         Route::get('/get/categories', [CategoryController::class, 'getCategories']); // get main or sub categories
 
-
-        Route::get('/get/negotiation/percent', [ProductController::class, 'getNegotiationPercent']); // get Negotiation Percent
-        Route::get('/get/negotiation/period', [ProductController::class, 'getNegotiationPeriod']); // get Negotiation period
-
         Route::get('/get/home', [HomeController::class, 'getHome']); // get Home data
 
-        Route::get('/product/details/{id}', [ProductController::class, 'getProductDetails']); // get Product Details
 
         Route::group(['middleware' => ['auth:api', 'authApi']], function () {
 
             Route::post('/logout', [AuthController::class, 'logout']); // logout
-
-            Route::post('/contact', [SettingController::class, 'addContact']); // contact us
 
             Route::get('/profile/get', [UserController::class, 'getProfile']); // get profile
             Route::post('/profile/edit', [UserController::class, 'editProfile']); // edit profile
