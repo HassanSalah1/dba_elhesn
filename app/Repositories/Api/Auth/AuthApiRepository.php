@@ -7,16 +7,13 @@ use App\Entities\HttpCode;
 use App\Entities\Status;
 use App\Entities\UserRoles;
 use App\Http\Resources\UserAuthResource;
-use App\Jobs\SendSMSJob;
 use App\Models\Devices;
 use App\Models\User;
 use App\Models\VerificationCode;
 use App\Repositories\General\UtilsRepository;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Session;
 
 class AuthApiRepository
 {
@@ -36,7 +33,7 @@ class AuthApiRepository
 
         $user = User::create($userData);
         if ($user) {
-            if (isset($data['device_type'])) {
+            if (isset($data['device_token'])) {
                 Devices::create([
                     'user_id' => $user->id,
                     'device_type' => isset($data['device_type']) ? $data['device_type'] : null,
@@ -79,14 +76,23 @@ class AuthApiRepository
     {
         $remember = (isset($data['remember']) && $data['remember']);
         $user = null;
-        if (Auth::attempt(['phonecode' => $data['phonecode'], 'phone' => $data['phone'],
-            'password' => $data['password']], $remember)) {
+        if (Auth::attempt(['email' => $data['email'], 'password' => $data['password']], $remember)) {
             $user = auth()->user();
             if (isset($data['device_token'])) {
-                $user->update([
-                    'device_type' => $data['device_type'],
-                    'device_token' => $data['device_token'],
-                ]);
+                $device = Devices::where([
+                    'user_id' => $user->id,
+                    'device_token' => isset($data['device_token']) ? $data['device_token'] : null,
+                ])->first();
+                $deviceData = [
+                    'user_id' => $user->id,
+                    'device_type' => isset($data['device_type']) ? $data['device_type'] : null,
+                    'device_token' => isset($data['device_token']) ? $data['device_token'] : null,
+                ];
+                if ($device) {
+                    $device->update($deviceData);
+                } else {
+                    Devices::create($deviceData);
+                }
             }
         } else {
             return Response()->json([
@@ -95,16 +101,13 @@ class AuthApiRepository
         }
 
 
-        if ($user && $user->role === UserRoles::CUSTOMER) {
+        if ($user && $user->role === UserRoles::FAN) {
             if ($user && $user->isBlocked()) {
                 return Response()->json([
                     'message' => trans('api.block_status_error_message')
                 ], HttpCode::ERROR);
             } else if ($user && $user->isActiveUser()) {
                 $user = UserAuthResource::make($user);
-                if (isset($data['web'])) {
-                    Auth::loginUsingId($user->id);
-                }
                 return Response()->json([
                     'data' => $user,
                     'message' => trans('api.login_success_message'),
@@ -112,9 +115,6 @@ class AuthApiRepository
             } else if ($user && $user->isNotPhoneVerified()) {
                 // send verification sms
                 self::sendVerificationCode($user);
-                if (isset($data['web'])) {
-                    Auth::loginUsingId($user->id);
-                }
                 return Response()->json([
                     'data' => [
                         'verify' => 1
@@ -131,19 +131,14 @@ class AuthApiRepository
     // forget password
     public static function forgetPassword(array $data)
     {
-        $user = User::where(['phonecode' => $data ['phonecode'], 'phone' => $data['phone']])
-            ->first();
+        $user = User::where(['email' => $data ['email']])->first();
         if ($user) {
             $is_sent = self::sendVerificationCode($user);
             if ($is_sent) {
-                $response = [
+                return [
                     'message' => trans('api.forget_password_success_message'),
                     'code' => HttpCode::SUCCESS
                 ];
-                if (isset($data['web'])) {
-                    $response['data'] = Crypt::encrypt($data['phone']);
-                }
-                return $response;
             } else {
                 return [
                     'message' => trans('api.general_error_message'),
@@ -160,13 +155,10 @@ class AuthApiRepository
     // change password for forget password process
     public static function changeForgetPassword(array $data)
     {
-        $user = User::where(['phonecode' => $data ['phonecode'], 'phone' => $data['phone']])
-            ->first();
+        $user = User::where(['email' => $data ['email']])->first();
         if ($user) {
             $user->update([
                 'password' => Hash::make($data['password']),
-                'device_type' => isset($data['device_type']) ? $data['device_type'] : null,
-                'device_token' => isset($data['device_token']) ? $data['device_token'] : null
             ]);
             $user = UserAuthResource::make($user);
             return [

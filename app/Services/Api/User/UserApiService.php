@@ -4,7 +4,6 @@ namespace App\Services\Api\User;
 
 
 use App\Entities\HttpCode;
-use App\Repositories\Api\Product\ProductApiRepository;
 use App\Repositories\Api\User\UserApiRepository;
 use App\Repositories\General\UtilsRepository;
 use App\Repositories\General\ValidationRepository;
@@ -30,7 +29,7 @@ class UserApiService
             $city = $data['user']->city;
             $country = $city->country;
 
-            $keys['phone'] = 'unique:users' . ( ($country) ? '|phone:'.strtoupper($country->code).',mobile' : '');
+            $keys['phone'] = 'unique:users' . (($country) ? '|phone:' . strtoupper($country->code) . ',mobile' : '');
         }
         if (isset($data['password']) || isset($data['old_password'])) {
             $keys = [
@@ -63,39 +62,4 @@ class UserApiService
         return UtilsRepository::handleResponseApi($response);
     }
 
-    public static function getMyProducts(array $data)
-    {
-        $response = UserApiRepository::getMyProducts($data);
-        return UtilsRepository::handleResponseApi($response);
-    }
-
-    public static function toggleFavouriteProduct(array $data)
-    {
-        $response = UserApiRepository::toggleFavouriteProduct($data);
-        return UtilsRepository::handleResponseApi($response);
-    }
-
-    public static function getMyFavouriteProducts(array $data)
-    {
-        $response = UserApiRepository::getMyFavouriteProducts($data);
-        return UtilsRepository::handleResponseApi($response);
-    }
-
-    public static function getMyNotifications(array $data)
-    {
-        $response = UserApiRepository::getMyNotifications($data);
-        return UtilsRepository::handleResponseApi($response);
-    }
-
-    public static function getMyChats(array $data)
-    {
-        $response = UserApiRepository::getMyChats($data);
-        return UtilsRepository::handleResponseApi($response);
-    }
-
-    public static function getChatDetails(array $data)
-    {
-        $response = UserApiRepository::getChatDetails($data);
-        return UtilsRepository::handleResponseApi($response);
-    }
 }

@@ -2,10 +2,6 @@
 
 namespace App\Services\Api\Auth;
 
-use App\Entities\HttpCode;
-use App\Entities\UserRoles;
-use App\Models\City;
-use App\Models\User;
 use App\Repositories\Api\Auth\AuthApiRepository;
 use App\Repositories\General\UtilsRepository;
 use App\Repositories\General\ValidationRepository;
@@ -40,11 +36,10 @@ class AuthApiService
     public static function login(array $data)
     {
         $keys = [
-            'phone' => 'required',
-            'phonecode' => 'required',
+            'email' => 'required',
             'password' => 'required',
-//            'device_type' => 'required',
-//            'device_token' => 'required',
+            'device_type' => 'required',
+            'device_token' => 'required',
         ];
         $messages = [
             'required' => trans('api.required_error_message'),
@@ -75,8 +70,7 @@ class AuthApiService
     public static function resendVerificationCode(array $data)
     {
         $keys = [
-            'phone' => 'required',
-            'phonecode' => 'required',
+            'email' => 'required',
         ];
         $messages = [
             'required' => trans('api.required_error_message'),
@@ -92,8 +86,7 @@ class AuthApiService
     public static function checkVerificationCode(array $data)
     {
         $keys = [
-            'phonecode' => 'required',
-            'phone' => 'required',
+            'email' => 'required',
             'code' => 'required',
         ];
         $messages = [
@@ -110,8 +103,7 @@ class AuthApiService
     public static function forgetPassword(array $data)
     {
         $keys = [
-            'phone' => 'required',
-            'phonecode' => 'required',
+            'email' => 'required',
         ];
         $messages = [
             'required' => trans('api.required_error_message'),
@@ -127,11 +119,10 @@ class AuthApiService
     public static function changeForgetPassword(array $data)
     {
         $keys = [
-            'phone' => 'required',
-            'phonecode' => 'required',
+            'email' => 'required',
             'password' => 'required',
-//            'device_type' => 'required',
-//            'device_token'  => 'required',
+            'device_type' => 'required',
+            'device_token' => 'required',
         ];
         $messages = [
             'required' => trans('api.required_error_message'),
