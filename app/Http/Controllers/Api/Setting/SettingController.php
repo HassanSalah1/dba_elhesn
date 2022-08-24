@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 class SettingController extends Controller
 {
 
+    public function getIntros(Request $request)
+    {
+        $data = $request->all();
+        return SettingApiService::getIntros($data);
+    }
 
     public function getAbout(Request $request)
     {
@@ -22,6 +27,13 @@ class SettingController extends Controller
     {
         $data = $request->all();
         return SettingApiService::getTerms($data);
+    }
+
+
+    public function getHistory(Request $request)
+    {
+        $data = $request->all();
+        return SettingApiService::getHistory($data);
     }
 
     public function getContactDetails(Request $request)

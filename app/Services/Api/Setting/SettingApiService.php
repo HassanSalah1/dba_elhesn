@@ -10,6 +10,11 @@ use App\Repositories\General\ValidationRepository;
 class SettingApiService
 {
 
+    public static function getIntros(array $data)
+    {
+        $response = SettingApiRepository::getIntros($data);
+        return UtilsRepository::handleResponseApi($response);
+    }
 
     public static function getAbout(array $data)
     {
@@ -20,6 +25,12 @@ class SettingApiService
     public static function getTerms(array $data)
     {
         $response = SettingApiRepository::getTerms($data);
+        return UtilsRepository::handleResponseApi($response);
+    }
+
+    public static function getHistory(array $data)
+    {
+        $response = SettingApiRepository::getHistory($data);
         return UtilsRepository::handleResponseApi($response);
     }
 
@@ -36,7 +47,7 @@ class SettingApiService
             'contact_type' => 'required',
             'message' => 'required',
             'name' => 'required_without:user_id',
-            'email' => 'required_without:user_id',
+            'phone' => 'required_without:user_id',
         ];
         $validated = ValidationRepository::validateAPIGeneral($data, $keys);
         if ($validated !== true) {

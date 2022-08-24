@@ -69,13 +69,6 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/contact/types/delete', [ContactTypeController::class, 'deleteContactType']); // delete ContactType
         Route::post('/contact/types/restore', [ContactTypeController::class, 'restoreContactType']); // delete ContactType
         ////////////////////////////////
-        Route::get('/user/guide', [UserGuideController::class, 'showUserGuides'])->name('dashboard-user/guide'); // show Index page that control all UserGuides
-        Route::get('/user/guide/data', [UserGuideController::class, 'getUserGuidesData']); // get all UserGuides data for DataTable
-        Route::post('/user/guide/add', [UserGuideController::class, 'addUserGuide']); // add UserGuide
-        Route::post('/user/guide/data', [UserGuideController::class, 'getUserGuideData']); // get UserGuide data
-        Route::post('/user/guide/edit', [UserGuideController::class, 'editUserGuide']); // edit UserGuide
-        Route::post('/user/guide/delete', [UserGuideController::class, 'deleteUserGuide']); // delete UserGuide
-        ////////////////////////////////
         Route::get('/intros', [IntroController::class, 'showIntros'])->name('dashboard-intros'); // show Index page that control all Intros
         Route::get('/intros/data', [IntroController::class, 'getIntrosData']); // get all Intros data for DataTable
         Route::post('/intro/add', [IntroController::class, 'addIntro']); // add Intro

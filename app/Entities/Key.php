@@ -13,6 +13,7 @@ class Key
     const INSTAGRAM = 'instagram';
     const YOUTUBE = 'youtube';
     const PHONE = 'phone';
+    const EMAIL = 'email';
     const LATITUDE = 'latitude';
     const LONGITUDE = 'longitude';
     const CLUB_HISTORY_AR = 'club_history_ar';

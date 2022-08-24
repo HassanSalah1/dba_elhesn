@@ -28,12 +28,16 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'lang'], function () {
     Route::group(['prefix' => 'v1'], function () {
 
+        Route::get('/intros', [SettingController::class, 'getIntros']); // get intros
+
         Route::get('/terms', [SettingController::class, 'getTerms']); // get terms
         Route::get('/contact', [SettingController::class, 'getContactDetails']); // get contact details
 
         Route::post('/contact', [SettingController::class, 'addContact']); // contact us
         Route::get('/teams', [SettingController::class, 'getTeams']); // get teams
         Route::get('/gallery', [SettingController::class, 'getGallery']); // get gallery
+
+        Route::get('/history', [SettingController::class, 'getHistory']); // history
 
         Route::get('/news', [SettingController::class, 'getNews']); // get news
         Route::get('/new/details/{id}', [SettingController::class, 'getNewDetails']); // get new details

@@ -10,7 +10,7 @@ class Contact extends Model
     use HasFactory;
 
     protected $table = 'contacts';
-    protected $fillable = ['contact_type', 'user_id', 'message', 'name', 'email', 'read'];
+    protected $fillable = ['contact_type', 'user_id', 'message', 'name', 'phone', 'read'];
 
     public function user()
     {

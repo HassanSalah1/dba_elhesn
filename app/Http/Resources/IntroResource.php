@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class NewResource extends JsonResource
+class IntroResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,14 +14,9 @@ class NewResource extends JsonResource
      */
     public function toArray($request)
     {
-        $image = $this->image();
         return [
-            'id' => $this->id,
             'title' => $this->title,
             'description' => $this->description,
-            'video_url' => $this->video_url,
-            'image' => $image ? url($image->image) : null,
-            'datetime' => date('Y-m-d H:i' , strtotime($this->created_at))
         ];
     }
 }

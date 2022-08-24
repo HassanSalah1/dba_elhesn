@@ -21,6 +21,7 @@ class ActionResource extends JsonResource
             'description' => $this->description,
             'video_url' => $this->video_url,
             'image' => $image ? url($image->image) : null,
+            'datetime' => date('Y-m-d H:i' , strtotime($this->created_at))
         ];
     }
 }
