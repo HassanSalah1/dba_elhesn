@@ -24,8 +24,8 @@ class CreateUsersTable extends Migration
             $table->string('edited_email')->nullable();
             $table->string('image')->nullable();
             $table->string('lang', 20)->default('ar');
-            $table->enum('role' , UserRoles::getKeys());
-            $table->enum('status' , Status::getKeys());
+            $table->enum('role', UserRoles::getKeys());
+            $table->integer('status');
             $table->rememberToken();
             $table->timestamps();
         });

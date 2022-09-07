@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c8a92d6-8389-422f-83cd-75ca4ed11af5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/Dashboard/Auth/AuthRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/Dashboard/Auth/AuthRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,7 +195,7 @@
       <workItem from="1659133093011" duration="9326000" />
       <workItem from="1661006931056" duration="2384000" />
       <workItem from="1661365850458" duration="3644000" />
-      <workItem from="1662580379357" duration="3225000" />
+      <workItem from="1662580379357" duration="3493000" />
     </task>
     <servers />
   </component>
