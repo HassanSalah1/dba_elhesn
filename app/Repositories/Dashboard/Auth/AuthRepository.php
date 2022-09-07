@@ -23,7 +23,7 @@ class AuthRepository
         if (Auth::attempt(['email' => $arr['email'], 'password' => $arr['password']])) {
             $user = auth()->user();
             if ($user->status === Status::ACTIVE) {
-                if ($user->role === UserRoles::ADMIN || $user->role === UserRoles::EMPLOYEE)
+                if ($user->role === UserRoles::ADMIN)
                     return true;
             } else {
                 return trans('admin.blocked_user_error_message');
