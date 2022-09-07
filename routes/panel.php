@@ -34,6 +34,15 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/logout', [AuthenticationController::class, 'logout'])->name('logout'); // logout current user
 
         Route::get('/home', [HomeController::class, 'showHome'])->name('dashboard-home'); // show home page
+        ////////////////////////////////////////////////////////////
+        Route::get('/intros', [IntroController::class, 'showIntros'])->name('dashboard-intros'); // show Index page that control all Intros
+        Route::get('/intros/data', [IntroController::class, 'getIntrosData']); // get all Intros data for DataTable
+        Route::post('/intro/add', [IntroController::class, 'addIntro']); // add Intro
+        Route::post('/intro/data', [IntroController::class, 'getIntroData']); // get Intro data
+        Route::post('/intro/edit', [IntroController::class, 'editIntro']); // edit Intro
+        Route::post('/intro/delete', [IntroController::class, 'deleteIntro']); // delete Intro
+        ////////////////////////////////
+
 
 
         /////////////////////////////
@@ -70,13 +79,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/contact/types/delete', [ContactTypeController::class, 'deleteContactType']); // delete ContactType
         Route::post('/contact/types/restore', [ContactTypeController::class, 'restoreContactType']); // delete ContactType
         ////////////////////////////////
-        Route::get('/intros', [IntroController::class, 'showIntros'])->name('dashboard-intros'); // show Index page that control all Intros
-        Route::get('/intros/data', [IntroController::class, 'getIntrosData']); // get all Intros data for DataTable
-        Route::post('/intro/add', [IntroController::class, 'addIntro']); // add Intro
-        Route::post('/intro/data', [IntroController::class, 'getIntroData']); // get Intro data
-        Route::post('/intro/edit', [IntroController::class, 'editIntro']); // edit Intro
-        Route::post('/intro/delete', [IntroController::class, 'deleteIntro']); // delete Intro
-        ////////////////////////////////
+
         Route::get('/countries', [CountryController::class, 'showCountries'])->name('dashboard-countries'); // show Index page that control all Countries
         Route::get('/countries/data', [CountryController::class, 'getCountriesData']); // get all Countries data for DataTable
         Route::post('/country/change', [CountryController::class, 'changeCountry']); // change Country

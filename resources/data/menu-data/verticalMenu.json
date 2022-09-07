@@ -12,6 +12,12 @@
             "slug": "",
             "submenu": [
                 {
+                    "name": "intros_title",
+                    "url": "/admin/intros",
+                    "icon": "circle",
+                    "slug": "dashboard-intros"
+                },
+                {
                     "name": "about_title",
                     "url": "admin/about",
                     "icon": "circle",
@@ -40,12 +46,6 @@
                     "url": "/admin/user/guide",
                     "icon": "circle",
                     "slug": "dashboard-userGuide"
-                },
-                {
-                    "name": "intros_title",
-                    "url": "/admin/intros",
-                    "icon": "circle",
-                    "slug": "dashboard-intros"
                 },
                 {
                     "name": "countries_title",
