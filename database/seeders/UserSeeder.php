@@ -21,16 +21,12 @@ class UserSeeder extends Seeder
     {
         //
         User::firstOrCreate([
-            'name' => 'damain admin',
-            'email' => 'admin@damain.com',
+            'name' => 'admin',
+            'email' => 'admin@elhesn.com',
             'password' => Hash::make('12#adm$in@456'),
             'role' => UserRoles::ADMIN,
             'status' => Status::ACTIVE
         ]);
 
-        Setting::firstOrCreate([
-            'key' => Key::MAX_TIME_TO_PAY,
-            'value' => 48
-        ]);
     }
 }
