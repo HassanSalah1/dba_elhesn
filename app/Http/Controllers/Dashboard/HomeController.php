@@ -28,55 +28,13 @@ class HomeController extends Controller
             'direction' => 'rtl'
         ];
         $title = trans('admin.home_title');
-        $usersCount = User::where(['role' => UserRoles::CUSTOMER])->count();
-        $registerUsersCount = User::where(['role' => UserRoles::REGISTER])->count();
-        $newOrders = Order::whereIn('type', [OrderType::DAMAIN, OrderType::DIRECT])
-            ->whereIn('status', [
-                OrderStatus::WAIT,
-                OrderStatus::ACCEPTED,
-                OrderStatus::REFUSED,
-                OrderStatus::EDITED,
-                OrderStatus::PAYMENT_APPROVED,
-                OrderStatus::PROGRESS
-            ])->count();
+        $usersCount = User::where(['role' => UserRoles::FAN])->count();
 
-        $progressOrders = Order::whereIn('type', [OrderType::DAMAIN, OrderType::DIRECT])
-            ->whereIn('status', [
-                OrderStatus::RECEIVE_REFUSED,
-                OrderStatus::SHIPPED
-            ])->count();
-
-        $completedOrders = Order::whereIn('type', [OrderType::DAMAIN, OrderType::DIRECT])
-            ->whereIn('status', [
-                OrderStatus::COMPLETED,
-            ])->count();
-
-        $cancelledOrders = Order::whereIn('type', [OrderType::DAMAIN, OrderType::DIRECT])
-            ->whereIn('status', [
-                OrderStatus::CANCELLED,
-                OrderStatus::RECEIVE_REFUSED_APPROVED
-            ])->count();
-
-        $refusedOrders = Order::whereIn('type', [OrderType::DAMAIN, OrderType::DIRECT])
-            ->whereIn('status', [
-                OrderStatus::RECEIVE_REFUSED,
-            ])->count();
-
-        $bankTransfersCount = BankTransfer::with(['bank'])
-            ->where(['status' => BankTransferStatus::WAIT])
-            ->count();
 
         return view('admin.home', [
             'pageConfigs' => $pageConfigs,
             'title' => $title,
             'usersCount' => $usersCount,
-            'registerUsersCount' => $registerUsersCount,
-            'newOrders' => $newOrders,
-            'progressOrders' => $progressOrders,
-            'completedOrders' => $completedOrders,
-            'cancelledOrders' => $cancelledOrders,
-            'refusedOrders' => $refusedOrders,
-            'bankTransfersCount' => $bankTransfersCount
         ]);
     }
 
