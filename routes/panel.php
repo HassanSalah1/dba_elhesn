@@ -35,6 +35,7 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::get('/home', [HomeController::class, 'showHome'])->name('dashboard-home'); // show home page
 
+
         /////////////////////////////
         Route::post('/upload/image', [HomeController::class, 'uploadEditorImages']); // upload editor images inside text
 
