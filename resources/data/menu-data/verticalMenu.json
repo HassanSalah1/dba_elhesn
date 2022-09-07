@@ -18,17 +18,18 @@
                     "slug": "dashboard-intros"
                 },
                 {
-                    "name": "about_title",
-                    "url": "admin/about",
-                    "icon": "circle",
-                    "slug": "dashboard-about"
-                },
-                {
                     "name": "terms_title",
                     "url": "admin/terms",
                     "icon": "circle",
                     "slug": "dashboard-terms"
                 },
+                {
+                    "name": "about_title",
+                    "url": "admin/about",
+                    "icon": "circle",
+                    "slug": "dashboard-about"
+                },
+
                 {
                     "name": "privacy_title",
                     "url": "admin/privacy",

@@ -42,7 +42,9 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/intro/edit', [IntroController::class, 'editIntro']); // edit Intro
         Route::post('/intro/delete', [IntroController::class, 'deleteIntro']); // delete Intro
         ////////////////////////////////
-
+        Route::get('/terms', [HomeController::class, 'showTerms'])->name('dashboard-terms'); // about page
+        Route::post('/terms/save', [HomeController::class, 'saveTerms']);
+        ////////////////////////////////
 
 
         /////////////////////////////
@@ -58,9 +60,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/about', [HomeController::class, 'showAbout'])->name('dashboard-about'); // about page
         Route::post('/about/save', [HomeController::class, 'saveAbout']);
         ////////////////////////////////
-        Route::get('/terms', [HomeController::class, 'showTerms'])->name('dashboard-terms'); // about page
-        Route::post('/terms/save', [HomeController::class, 'saveTerms']);
-        ////////////////////////////////
+
         Route::get('/privacy', [HomeController::class, 'showPrivacy'])->name('dashboard-privacy'); // about page
         Route::post('/privacy/save', [HomeController::class, 'savePrivacy']);
         ////////////////////////////////
