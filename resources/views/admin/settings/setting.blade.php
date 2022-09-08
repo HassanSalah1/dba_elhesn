@@ -37,13 +37,13 @@
                                 <div class="col-xl-6 col-md-6 col-12">
                                     <div class="mb-1">
                                         <label class="form-label"
-                                               for="{{\App\Entities\Key::APP_PERCENTAGE}}">{{trans('admin.'.\App\Entities\Key::APP_PERCENTAGE)}}</label>
-                                        <input type="number" class="form-control" min="0" max="99"
-                                               id="{{\App\Entities\Key::APP_PERCENTAGE}}"
-                                               name="{{\App\Entities\Key::APP_PERCENTAGE}}"
-                                               @if(isset($app_percentage) && $app_percentage) value="{{$app_percentage->value}}"
+                                               for="{{\App\Entities\Key::PHONE}}">{{trans('admin.'.\App\Entities\Key::PHONE)}}</label>
+                                        <input type="tel" class="form-control"
+                                               id="{{\App\Entities\Key::PHONE}}"
+                                               name="{{\App\Entities\Key::PHONE}}"
+                                               @if(isset($phone) && $phone) value="{{$phone->value}}"
                                                @endif
-                                               placeholder="{{trans('admin.'.\App\Entities\Key::APP_PERCENTAGE)}}"/>
+                                               placeholder="{{trans('admin.'.\App\Entities\Key::PHONE)}}"/>
                                     </div>
                                 </div>
 
@@ -83,67 +83,21 @@
                                 <div class="col-xl-6 col-md-6 col-12">
                                     <div class="mb-1">
                                         <label class="form-label"
-                                               for="{{\App\Entities\Key::SNAPCHAT}}">{{trans('admin.'.\App\Entities\Key::SNAPCHAT)}}</label>
-                                        <input type="url" class="form-control" id="{{\App\Entities\Key::SNAPCHAT}}"
-                                               name="{{\App\Entities\Key::SNAPCHAT}}"
-                                               @if(isset($snapchat) && $snapchat) value="{{$snapchat->value}}" @endif
-                                               placeholder="{{trans('admin.'.\App\Entities\Key::SNAPCHAT)}}"/>
+                                               for="{{\App\Entities\Key::YOUTUBE}}">{{trans('admin.'.\App\Entities\Key::YOUTUBE)}}</label>
+                                        <input type="url" class="form-control" id="{{\App\Entities\Key::YOUTUBE}}"
+                                               name="{{\App\Entities\Key::YOUTUBE}}"
+                                               @if(isset($youtube) && $youtube) value="{{$youtube->value}}" @endif
+                                               placeholder="{{trans('admin.'.\App\Entities\Key::YOUTUBE)}}"/>
                                     </div>
                                 </div>
 
-                                <div class="col-xl-6 col-md-6 col-12">
+                                <input type="hidden" name="latitude"
+                                       @if(isset($latitude) && $latitude) value="{{$latitude->value}}" @endif>
+                                <input type="hidden" name="latitude"
+                                       @if(isset($longitude) && $longitude) value="{{$longitude->value}}" @endif>
+                                <div class="col-xl-12 col-md-12 col-12">
                                     <div class="mb-1">
-                                        <label class="form-label"
-                                               for="{{\App\Entities\Key::TELEGRAM}}">{{trans('admin.'.\App\Entities\Key::TELEGRAM)}}</label>
-                                        <input type="url" class="form-control" id="{{\App\Entities\Key::TELEGRAM}}"
-                                               name="{{\App\Entities\Key::TELEGRAM}}"
-                                               @if(isset($telegram) && $telegram) value="{{$telegram->value}}" @endif
-                                               placeholder="{{trans('admin.'.\App\Entities\Key::TELEGRAM)}}"/>
-                                    </div>
-                                </div>
-
-                                <div class="col-xl-6 col-md-6 col-12">
-                                    <div class="mb-1">
-                                        <label class="form-label"
-                                               for="{{\App\Entities\Key::WHATSAPP}}">{{trans('admin.'.\App\Entities\Key::WHATSAPP)}}</label>
-                                        <input type="number" class="form-control" id="{{\App\Entities\Key::WHATSAPP}}"
-                                               name="{{\App\Entities\Key::WHATSAPP}}"
-                                               @if(isset($whatsapp) && $whatsapp) value="{{$whatsapp->value}}" @endif
-                                               placeholder="{{trans('admin.'.\App\Entities\Key::WHATSAPP)}}"/>
-                                    </div>
-                                </div>
-
-
-                                <div class="col-xl-6 col-md-6 col-12">
-                                    <div class="mb-1">
-                                        <label class="form-label"
-                                               for="{{\App\Entities\Key::MAX_TIME_TO_PAY}}">{{trans('admin.'.\App\Entities\Key::MAX_TIME_TO_PAY)}}</label>
-                                        <input type="number" class="form-control" id="{{\App\Entities\Key::MAX_TIME_TO_PAY}}"
-                                               name="{{\App\Entities\Key::MAX_TIME_TO_PAY}}"
-                                               @if(isset($max_time_to_pay) && $max_time_to_pay) value="{{$max_time_to_pay->value}}" @endif
-                                               placeholder="{{trans('admin.'.\App\Entities\Key::MAX_TIME_TO_PAY)}}"/>
-                                    </div>
-                                </div>
-
-                                <div class="col-xl-6 col-md-6 col-12">
-                                    <div class="mb-1">
-                                        <label class="form-label"
-                                               for="{{\App\Entities\Key::MAX_TIME_TO_APPROVAL_REJECTION}}">{{trans('admin.'.\App\Entities\Key::MAX_TIME_TO_APPROVAL_REJECTION)}}</label>
-                                        <input type="number" class="form-control" id="{{\App\Entities\Key::MAX_TIME_TO_APPROVAL_REJECTION}}"
-                                               name="{{\App\Entities\Key::MAX_TIME_TO_APPROVAL_REJECTION}}"
-                                               @if(isset($max_time_to_approval_rejection) && $max_time_to_approval_rejection) value="{{$max_time_to_approval_rejection->value}}" @endif
-                                               placeholder="{{trans('admin.'.\App\Entities\Key::MAX_TIME_TO_APPROVAL_REJECTION)}}"/>
-                                    </div>
-                                </div>
-
-                                <div class="col-xl-6 col-md-6 col-12">
-                                    <div class="mb-1">
-                                        <label class="form-label"
-                                               for="{{\App\Entities\Key::MAX_TIME_TO_CHOOSE_SHIPMENT}}">{{trans('admin.'.\App\Entities\Key::MAX_TIME_TO_CHOOSE_SHIPMENT)}}</label>
-                                        <input type="number" class="form-control" id="{{\App\Entities\Key::MAX_TIME_TO_CHOOSE_SHIPMENT}}"
-                                               name="{{\App\Entities\Key::MAX_TIME_TO_CHOOSE_SHIPMENT}}"
-                                               @if(isset($max_time_to_choose_shipment) && $max_time_to_choose_shipment) value="{{$max_time_to_choose_shipment->value}}" @endif
-                                               placeholder="{{trans('admin.'.\App\Entities\Key::MAX_TIME_TO_CHOOSE_SHIPMENT)}}"/>
+                                        <div id="map" style="height: 250px"></div>
                                     </div>
                                 </div>
 
@@ -171,8 +125,20 @@
         const csrf_token = '{{csrf_token()}}';
     </script>
     <script src="{{url('/js/scripts/custom/utils.js')}}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=" async defer>
+    </script>
     <script>
+        let uLatitude = 24.6962019;
+        @if(isset($latitude) && $latitude)
+            uLatitude = parseFloat('{{$latitude->value}}');
+            @endif
+        let uLongitude = 46.7662033;
+        @if(isset($longitude) && $longitude)
+            uLongitude = parseFloat('{{$longitude->value}}');
+            @endif
+        let address = null;
         $(function () {
+            initMap(uLatitude, uLongitude);
 
             $('#general-form').submit(function (e) {
                 e.preventDefault();
@@ -183,5 +149,52 @@
                 });
             });
         });
+
+        function initMap(latitude, longitude) {
+            let latlng = new google.maps.LatLng(latitude, longitude);
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: latlng,
+                zoom: 12,
+                scrollwheel: false//set to true to enable mouse scrolling while inside the map area
+            });
+            var marker = new google.maps.Marker({
+                position: latlng,
+                title: 'marker',
+                draggable: false,
+                map: map
+            });
+
+            google.maps.event.addListener(map, "click", function (e) {
+                //lat and lng is available in e object
+                var newLatLng = e.latLng;
+                marker.setMap(null);
+                marker = new google.maps.Marker({
+                    position: newLatLng,
+                    title: 'marker',
+                    draggable: false,
+                    map: map
+                });
+                geocoder = new google.maps.Geocoder();
+                geocoder.geocode({
+                    'latLng': newLatLng
+                }, function (results, status) {
+                    console.log(results[0].formatted_address);
+                    // if (infowindow != null) {
+                    //if doesn't exist then create a empty InfoWindow object
+                    infowindow = new google.maps.InfoWindow();
+                    // }
+                    //Set the content of InfoWindow
+                    infowindow.setContent(results[0].formatted_address);
+                    //Tie the InfoWindow to the market
+                    infowindow.open(map, marker);
+                    address = results[0].formatted_address;
+                });
+
+                uLatitude = newLatLng.lat();
+                uLongitude = newLatLng.lng();
+                $('input[name=latitude]').val(uLatitude);
+                $('input[name=longitude]').val(uLongitude);
+            });
+        }
     </script>
 @endsection

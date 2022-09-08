@@ -45,17 +45,19 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/terms', [HomeController::class, 'showTerms'])->name('dashboard-terms'); // about page
         Route::post('/terms/save', [HomeController::class, 'saveTerms']);
         ////////////////////////////////
-
-
-        /////////////////////////////
         Route::post('/upload/image', [HomeController::class, 'uploadEditorImages']); // upload editor images inside text
+        //////////////////////////////////
+        Route::get('/setting', [HomeController::class, 'showSetting'])->name('dashboard-setting'); // about page
+        Route::post('/setting/save', [HomeController::class, 'saveSetting']);
+
+
+
+
+
 
         //////////////////////////////////
         Route::get('/home-setting', [HomeController::class, 'showHomeSetting'])->name('dashboard-home-setting'); // about page
         Route::post('/setting/site/save', [HomeController::class, 'saveSiteSetting']);
-        //////////////////////////////////
-        Route::get('/setting', [HomeController::class, 'showSetting'])->name('dashboard-setting'); // about page
-        Route::post('/setting/save', [HomeController::class, 'saveSetting']);
         //////////////////////////////////
         Route::get('/about', [HomeController::class, 'showAbout'])->name('dashboard-about'); // about page
         Route::post('/about/save', [HomeController::class, 'saveAbout']);

@@ -149,29 +149,16 @@ class HomeRepository
             ]);
         }
 
-        // telegram
-        $telegram = Setting::where(['key' => Key::TELEGRAM])->first();
-        if ($telegram) {
-            $telegram->update([
-                'value' => (isset($data[Key::TELEGRAM])) ? $data[Key::TELEGRAM] : null
+        // youtube
+        $youtube = Setting::where(['key' => Key::YOUTUBE])->first();
+        if ($youtube) {
+            $youtube->update([
+                'value' => (isset($data[Key::YOUTUBE])) ? $data[Key::YOUTUBE] : null
             ]);
         } else {
             Setting::create([
-                'key' => Key::TELEGRAM,
-                'value' => (isset($data[Key::TELEGRAM])) ? $data[Key::TELEGRAM] : null
-            ]);
-        }
-
-        // whatsapp
-        $whatsapp = Setting::where(['key' => Key::WHATSAPP])->first();
-        if ($whatsapp) {
-            $whatsapp->update([
-                'value' => (isset($data[Key::WHATSAPP])) ? $data[Key::WHATSAPP] : null
-            ]);
-        } else {
-            Setting::create([
-                'key' => Key::WHATSAPP,
-                'value' => (isset($data[Key::WHATSAPP])) ? $data[Key::WHATSAPP] : null
+                'key' => Key::YOUTUBE,
+                'value' => (isset($data[Key::YOUTUBE])) ? $data[Key::YOUTUBE] : null
             ]);
         }
 
@@ -188,19 +175,6 @@ class HomeRepository
             ]);
         }
 
-        // snapchat
-        $snapchat = Setting::where(['key' => Key::SNAPCHAT])->first();
-        if ($snapchat) {
-            $snapchat->update([
-                'value' => (isset($data[Key::SNAPCHAT])) ? $data[Key::SNAPCHAT] : null
-            ]);
-        } else {
-            Setting::create([
-                'key' => Key::SNAPCHAT,
-                'value' => (isset($data[Key::SNAPCHAT])) ? $data[Key::SNAPCHAT] : null
-            ]);
-        }
-
         // email
         $email = Setting::where(['key' => Key::EMAIL])->first();
         if ($email) {
@@ -214,255 +188,48 @@ class HomeRepository
             ]);
         }
 
-        // app percentage
-        $app_percentage = Setting::where(['key' => Key::APP_PERCENTAGE])->first();
-        if ($app_percentage) {
-            $app_percentage->update([
-                'value' => (isset($data[Key::APP_PERCENTAGE])) ? $data[Key::APP_PERCENTAGE] : null
+        // phone
+        $phone = Setting::where(['key' => Key::PHONE])->first();
+        if ($phone) {
+            $phone->update([
+                'value' => (isset($data[Key::PHONE])) ? $data[Key::PHONE] : null
             ]);
         } else {
             Setting::create([
-                'key' => Key::APP_PERCENTAGE,
-                'value' => (isset($data[Key::APP_PERCENTAGE])) ? $data[Key::APP_PERCENTAGE] : null
+                'key' => Key::PHONE,
+                'value' => (isset($data[Key::PHONE])) ? $data[Key::PHONE] : null
             ]);
         }
 
-        // MAX_TIME_TO_PAY
-        $max_time_to_pay = Setting::where(['key' => Key::MAX_TIME_TO_PAY])->first();
-        if ($max_time_to_pay) {
-            $max_time_to_pay->update([
-                'value' => (isset($data[Key::MAX_TIME_TO_PAY])) ? $data[Key::MAX_TIME_TO_PAY] : null
+        // latitude
+        $latitude = Setting::where(['key' => Key::LATITUDE])->first();
+        if ($latitude) {
+            $latitude->update([
+                'value' => (isset($data[Key::LATITUDE])) ? $data[Key::LATITUDE] : null
             ]);
         } else {
             Setting::create([
-                'key' => Key::MAX_TIME_TO_PAY,
-                'value' => (isset($data[Key::MAX_TIME_TO_PAY])) ? $data[Key::MAX_TIME_TO_PAY] : null
+                'key' => Key::LATITUDE,
+                'value' => (isset($data[Key::LATITUDE])) ? $data[Key::LATITUDE] : null
             ]);
         }
 
-        // MAX_TIME_TO_APPROVAL_REJECTION
-        $max_time_to_approval_rejection = Setting::where(['key' => Key::MAX_TIME_TO_APPROVAL_REJECTION])->first();
-        if ($max_time_to_approval_rejection) {
-            $max_time_to_approval_rejection->update([
-                'value' => (isset($data[Key::MAX_TIME_TO_APPROVAL_REJECTION])) ? $data[Key::MAX_TIME_TO_APPROVAL_REJECTION] : null
+        // longitude
+        $longitude = Setting::where(['key' => Key::LONGITUDE])->first();
+        if ($longitude) {
+            $longitude->update([
+                'value' => (isset($data[Key::LONGITUDE])) ? $data[Key::LONGITUDE] : null
             ]);
         } else {
             Setting::create([
-                'key' => Key::MAX_TIME_TO_APPROVAL_REJECTION,
-                'value' => (isset($data[Key::MAX_TIME_TO_APPROVAL_REJECTION])) ? $data[Key::MAX_TIME_TO_APPROVAL_REJECTION] : null
-            ]);
-        }
-
-        // max_time_to_choose_shipment
-        $max_time_to_choose_shipment = Setting::where(['key' => Key::MAX_TIME_TO_CHOOSE_SHIPMENT])->first();
-        if ($max_time_to_choose_shipment) {
-            $max_time_to_choose_shipment->update([
-                'value' => (isset($data[Key::MAX_TIME_TO_CHOOSE_SHIPMENT])) ? $data[Key::MAX_TIME_TO_CHOOSE_SHIPMENT] : null
-            ]);
-        } else {
-            Setting::create([
-                'key' => Key::MAX_TIME_TO_CHOOSE_SHIPMENT,
-                'value' => (isset($data[Key::MAX_TIME_TO_CHOOSE_SHIPMENT])) ? $data[Key::MAX_TIME_TO_CHOOSE_SHIPMENT] : null
-            ]);
-        }
-
-
-        return UtilsRepository::response(true, trans('admin.process_success_message')
-            , '');
-    }
-
-    public static function saveSiteSetting(array $data)
-    {
-        // small_about_ar
-        $small_about_ar = Setting::where(['key' => Key::SMALL_ABOUT_AR])->first();
-        if ($small_about_ar) {
-            $small_about_ar->update([
-                'value' => (isset($data[Key::SMALL_ABOUT_AR])) ? $data[Key::SMALL_ABOUT_AR] : null
-            ]);
-        } else {
-            Setting::create([
-                'key' => Key::SMALL_ABOUT_AR,
-                'value' => (isset($data[Key::SMALL_ABOUT_AR])) ? $data[Key::SMALL_ABOUT_AR] : null
-            ]);
-        }
-
-        // small_about_en
-        $small_about_en = Setting::where(['key' => Key::SMALL_ABOUT_EN])->first();
-        if ($small_about_en) {
-            $small_about_en->update([
-                'value' => (isset($data[Key::SMALL_ABOUT_EN])) ? $data[Key::SMALL_ABOUT_EN] : null
-            ]);
-        } else {
-            Setting::create([
-                'key' => Key::SMALL_ABOUT_EN,
-                'value' => (isset($data[Key::SMALL_ABOUT_EN])) ? $data[Key::SMALL_ABOUT_EN] : null
-            ]);
-        }
-
-        // direct_ar
-        $direct_ar = Setting::where(['key' => Key::DIRECT_AR])->first();
-        if ($direct_ar) {
-            $direct_ar->update([
-                'value' => (isset($data[Key::DIRECT_AR])) ? $data[Key::DIRECT_AR] : null
-            ]);
-        } else {
-            Setting::create([
-                'key' => Key::DIRECT_AR,
-                'value' => (isset($data[Key::DIRECT_AR])) ? $data[Key::DIRECT_AR] : null
-            ]);
-        }
-
-        // direct_en
-        $direct_en = Setting::where(['key' => Key::DIRECT_EN])->first();
-        if ($direct_en) {
-            $direct_en->update([
-                'value' => (isset($data[Key::DIRECT_EN])) ? $data[Key::DIRECT_EN] : null
-            ]);
-        } else {
-            Setting::create([
-                'key' => Key::DIRECT_EN,
-                'value' => (isset($data[Key::DIRECT_EN])) ? $data[Key::DIRECT_EN] : null
-            ]);
-        }
-
-
-        // bid_ar
-        $bid_ar = Setting::where(['key' => Key::BID_AR])->first();
-        if ($bid_ar) {
-            $bid_ar->update([
-                'value' => (isset($data[Key::BID_AR])) ? $data[Key::BID_AR] : null
-            ]);
-        } else {
-            Setting::create([
-                'key' => Key::BID_AR,
-                'value' => (isset($data[Key::BID_AR])) ? $data[Key::BID_AR] : null
-            ]);
-        }
-
-        // bid_en
-        $bid_en = Setting::where(['key' => Key::BID_EN])->first();
-        if ($bid_en) {
-            $bid_en->update([
-                'value' => (isset($data[Key::BID_EN])) ? $data[Key::BID_EN] : null
-            ]);
-        } else {
-            Setting::create([
-                'key' => Key::DIRECT_EN,
-                'value' => (isset($data[Key::BID_EN])) ? $data[Key::BID_EN] : null
-            ]);
-        }
-
-
-        // download_ar
-        $download_ar = Setting::where(['key' => Key::DOWNLOAD_AR])->first();
-        if ($download_ar) {
-            $download_ar->update([
-                'value' => (isset($data[Key::DOWNLOAD_AR])) ? $data[Key::DOWNLOAD_AR] : null
-            ]);
-        } else {
-            Setting::create([
-                'key' => Key::DOWNLOAD_AR,
-                'value' => (isset($data[Key::DOWNLOAD_AR])) ? $data[Key::DOWNLOAD_AR] : null
-            ]);
-        }
-
-        // download_en
-        $download_en = Setting::where(['key' => Key::DOWNLOAD_EN])->first();
-        if ($download_en) {
-            $download_en->update([
-                'value' => (isset($data[Key::DOWNLOAD_EN])) ? $data[Key::DOWNLOAD_EN] : null
-            ]);
-        } else {
-            Setting::create([
-                'key' => Key::DOWNLOAD_EN,
-                'value' => (isset($data[Key::DOWNLOAD_EN])) ? $data[Key::DOWNLOAD_EN] : null
-            ]);
-        }
-
-
-        // negotiation_ar
-        $negotiation_ar = Setting::where(['key' => Key::NEGOTIATION_AR])->first();
-        if ($negotiation_ar) {
-            $negotiation_ar->update([
-                'value' => (isset($data[Key::NEGOTIATION_AR])) ? $data[Key::NEGOTIATION_AR] : null
-            ]);
-        } else {
-            Setting::create([
-                'key' => Key::NEGOTIATION_AR,
-                'value' => (isset($data[Key::NEGOTIATION_AR])) ? $data[Key::NEGOTIATION_AR] : null
-            ]);
-        }
-
-        // negotiation_en
-        $negotiation_en = Setting::where(['key' => Key::NEGOTIATION_EN])->first();
-        if ($negotiation_en) {
-            $direct_en->update([
-                'value' => (isset($data[Key::NEGOTIATION_EN])) ? $data[Key::NEGOTIATION_EN] : null
-            ]);
-        } else {
-            Setting::create([
-                'key' => Key::NEGOTIATION_EN,
-                'value' => (isset($data[Key::NEGOTIATION_EN])) ? $data[Key::NEGOTIATION_EN] : null
-            ]);
-        }
-
-
-        // damain_ar
-        $damain_ar = Setting::where(['key' => Key::DAMAIN_AR])->first();
-        if ($damain_ar) {
-            $damain_ar->update([
-                'value' => (isset($data[Key::DAMAIN_AR])) ? $data[Key::DAMAIN_AR] : null
-            ]);
-        } else {
-            Setting::create([
-                'key' => Key::DAMAIN_AR,
-                'value' => (isset($data[Key::DAMAIN_AR])) ? $data[Key::DAMAIN_AR] : null
-            ]);
-        }
-
-        // damain_en
-        $damain_en = Setting::where(['key' => Key::DAMAIN_EN])->first();
-        if ($damain_en) {
-            $damain_en->update([
-                'value' => (isset($data[Key::DAMAIN_EN])) ? $data[Key::DAMAIN_EN] : null
-            ]);
-        } else {
-            Setting::create([
-                'key' => Key::DAMAIN_EN,
-                'value' => (isset($data[Key::DAMAIN_EN])) ? $data[Key::DAMAIN_EN] : null
-            ]);
-        }
-
-        // google_play
-        $google_play = Setting::where(['key' => Key::GOOGLE_PLAY])->first();
-        if ($google_play) {
-            $google_play->update([
-                'value' => (isset($data[Key::GOOGLE_PLAY])) ? $data[Key::GOOGLE_PLAY] : null
-            ]);
-        } else {
-            Setting::create([
-                'key' => Key::GOOGLE_PLAY,
-                'value' => (isset($data[Key::GOOGLE_PLAY])) ? $data[Key::GOOGLE_PLAY] : null
-            ]);
-        }
-
-        // apple_store
-        $apple_store = Setting::where(['key' => Key::APPLE_STORE])->first();
-        if ($apple_store) {
-            $apple_store->update([
-                'value' => (isset($data[Key::APPLE_STORE])) ? $data[Key::APPLE_STORE] : null
-            ]);
-        } else {
-            Setting::create([
-                'key' => Key::APPLE_STORE,
-                'value' => (isset($data[Key::APPLE_STORE])) ? $data[Key::APPLE_STORE] : null
+                'key' => Key::LONGITUDE,
+                'value' => (isset($data[Key::LONGITUDE])) ? $data[Key::LONGITUDE] : null
             ]);
         }
 
         return UtilsRepository::response(true, trans('admin.process_success_message')
             , '');
     }
-
 
 }
 

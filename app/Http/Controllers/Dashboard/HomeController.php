@@ -52,26 +52,7 @@ class HomeController extends Controller
         }
     }
 
-    // show about page
-    public function showAbout()
-    {
-        $data['pageConfigs'] = [
-            'pageHeader' => false,
-            'defaultLanguage' => 'ar',
-            'direction' => 'rtl'
-        ];
-        $data['about_ar'] = Setting::where(['key' => Key::ABOUT_AR])->first();
-        $data['about_en'] = Setting::where(['key' => Key::ABOUT_EN])->first();
-        $data['title'] = trans('admin.about_title');
-        return view('admin.settings.about')->with($data);
-    }
 
-    // save about POST request
-    public function saveAbout(Request $request)
-    {
-        $data = $request->all();
-        return HomeRepository::saveAbout($data);
-    }
 
     // show terms page
     public function showTerms()
@@ -94,6 +75,55 @@ class HomeController extends Controller
         return HomeRepository::saveTerms($data);
     }
 
+    // show setting page
+    public function showSetting()
+    {
+        $data['pageConfigs'] = [
+            'pageHeader' => false,
+            'defaultLanguage' => 'ar',
+            'direction' => 'rtl'
+        ];
+        $data['email'] = Setting::where(['key' => Key::EMAIL])->first();
+        $data['facebook'] = Setting::where(['key' => Key::FACEBOOK])->first();
+        $data['twitter'] = Setting::where(['key' => Key::TWITTER])->first();
+        $data['instagram'] = Setting::where(['key' => Key::INSTAGRAM])->first();
+        $data['youtube'] = Setting::where(['key' => Key::YOUTUBE])->first();
+        $data['phone'] = Setting::where(['key' => Key::PHONE])->first();
+        $data['latitude'] = Setting::where(['key' => Key::LATITUDE])->first();
+        $data['longitude'] = Setting::where(['key' => Key::LONGITUDE])->first();
+        $data['title'] = trans('admin.settings_title');
+        return view('admin.settings.setting')->with($data);
+    }
+
+
+    // save setting POST request
+    public function saveSetting(Request $request)
+    {
+        $data = $request->all();
+        return HomeRepository::saveSetting($data);
+    }
+
+
+    // show about page
+    public function showAbout()
+    {
+        $data['pageConfigs'] = [
+            'pageHeader' => false,
+            'defaultLanguage' => 'ar',
+            'direction' => 'rtl'
+        ];
+        $data['about_ar'] = Setting::where(['key' => Key::ABOUT_AR])->first();
+        $data['about_en'] = Setting::where(['key' => Key::ABOUT_EN])->first();
+        $data['title'] = trans('admin.about_title');
+        return view('admin.settings.about')->with($data);
+    }
+
+    // save about POST request
+    public function saveAbout(Request $request)
+    {
+        $data = $request->all();
+        return HomeRepository::saveAbout($data);
+    }
     // show privacy page
     public function showPrivacy()
     {
@@ -115,36 +145,7 @@ class HomeController extends Controller
         return HomeRepository::savePrivacy($data);
     }
 
-    // show setting page
-    public function showSetting()
-    {
-        $data['pageConfigs'] = [
-            'pageHeader' => false,
-            'defaultLanguage' => 'ar',
-            'direction' => 'rtl'
-        ];
-        $data['email'] = Setting::where(['key' => Key::EMAIL])->first();
-        $data['facebook'] = Setting::where(['key' => Key::FACEBOOK])->first();
-        $data['twitter'] = Setting::where(['key' => Key::TWITTER])->first();
-        $data['instagram'] = Setting::where(['key' => Key::INSTAGRAM])->first();
-        $data['snapchat'] = Setting::where(['key' => Key::SNAPCHAT])->first();
-        $data['app_percentage'] = Setting::where(['key' => Key::APP_PERCENTAGE])->first();
-        $data['whatsapp'] = Setting::where(['key' => Key::WHATSAPP])->first();
-        $data['telegram'] = Setting::where(['key' => Key::TELEGRAM])->first();
-        $data['max_time_to_pay'] = Setting::where(['key' => Key::MAX_TIME_TO_PAY])->first();
-        $data['max_time_to_approval_rejection'] = Setting::where(['key' => Key::MAX_TIME_TO_APPROVAL_REJECTION])->first();
-        $data['max_time_to_choose_shipment'] = Setting::where(['key' => Key::MAX_TIME_TO_CHOOSE_SHIPMENT])->first();
-        $data['title'] = trans('admin.settings_title');
-        return view('admin.settings.setting')->with($data);
-    }
 
-
-    // save setting POST request
-    public function saveSetting(Request $request)
-    {
-        $data = $request->all();
-        return HomeRepository::saveSetting($data);
-    }
 
     // show site home setting page
     public function showHomeSetting()
