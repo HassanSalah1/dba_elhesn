@@ -125,7 +125,7 @@
         const csrf_token = '{{csrf_token()}}';
     </script>
     <script src="{{url('/js/scripts/custom/utils.js')}}"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=" async defer>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhoc3Xe0kB2rp77fI1lLLm6MH3I4UDdQw" async defer>
     </script>
     <script>
         let uLatitude = 24.6962019;
