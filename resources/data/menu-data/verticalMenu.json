@@ -24,60 +24,20 @@
                     "slug": "dashboard-terms"
                 },
                 {
-                    "name": "about_title",
-                    "url": "admin/about",
+                    "name": "settings_title",
+                    "url": "admin/setting",
                     "icon": "circle",
-                    "slug": "dashboard-about"
+                    "slug": "dashboard-setting"
                 },
 
-                {
-                    "name": "privacy_title",
-                    "url": "admin/privacy",
-                    "icon": "circle",
-                    "slug": "dashboard-privacy"
-                },
-                {
-                    "name": "faqs_title",
-                    "url": "admin/faqs",
-                    "icon": "circle",
-                    "slug": "dashboard-faqs"
-                },
-                {
-                    "name": "user_guide_title",
-                    "url": "/admin/user/guide",
-                    "icon": "circle",
-                    "slug": "dashboard-userGuide"
-                },
-                {
-                    "name": "countries_title",
-                    "url": "/admin/countries",
-                    "icon": "circle",
-                    "slug": "dashboard-countries"
-                },
-                {
-                    "name": "cities_title",
-                    "url": "/admin/cities",
-                    "icon": "circle",
-                    "slug": "dashboard-cities"
-                },
+
+
                 {
                     "name": "contactTypes_title",
                     "url": "/admin/contact/types",
                     "icon": "circle",
                     "slug": "dashboard-contactTypes"
                 },
-                {
-                    "name": "settings_title",
-                    "url": "admin/setting",
-                    "icon": "circle",
-                    "slug": "dashboard-setting"
-                },
-                {
-                    "name": "site_home_title",
-                    "url": "admin/home-setting",
-                    "icon": "circle",
-                    "slug": "dashboard-home_setting"
-                }
             ]
         },
         {
@@ -86,149 +46,7 @@
             "url": "admin/users",
             "slug": "dashboard-users"
         },
-        {
-            "name": "products_management_title",
-            "icon": "layout",
-            "slug": "",
-            "submenu": [
-                {
-                    "name": "negotiation_periods_title",
-                    "url": "admin/negotiation/periods",
-                    "icon": "circle",
-                    "slug": "dashboard-negotiation_periods"
-                },
-                {
-                    "name": "negotiation_percents_title",
-                    "url": "admin/negotiation/percents",
-                    "icon": "circle",
-                    "slug": "dashboard-negotiation_percents"
-                },
-                {
-                    "name": "categories_title",
-                    "url": "admin/categories",
-                    "icon": "circle",
-                    "slug": "dashboard-categories"
-                },
-                {
-                    "name": "products_title",
-                    "url": "admin/products",
-                    "icon": "circle",
-                    "slug": "dashboard-products"
-                }
-            ]
-        },
-        {
-            "name": "orders_settings_title",
-            "icon": "settings",
-            "slug": "",
-            "submenu": [
-                {
-                    "name": "shipments_title",
-                    "url": "admin/shipments",
-                    "icon": "circle",
-                    "slug": "dashboard-shipments"
-                },
-                {
-                    "name": "payment_methods_title",
-                    "url": "admin/payment_methods",
-                    "icon": "circle",
-                    "slug": "dashboard-payment_methods"
-                },
-                {
-                    "name": "bank_accounts_title",
-                    "url": "admin/bank_accounts",
-                    "icon": "circle",
-                    "slug": "dashboard-bank_accounts"
-                }
-            ]
-        },
-        {
-            "name": "orders_title",
-            "icon": "feather",
-            "slug": "",
-            "submenu": [
-                {
-                    "name": "new_orders_title",
-                    "url": "admin/orders/new",
-                    "icon": "circle",
-                    "slug": "dashboard-new_orders"
-                },
-                {
-                    "name": "progress_orders_title",
-                    "url": "admin/orders/progress",
-                    "icon": "circle",
-                    "slug": "dashboard-progress_orders"
-                },
-                {
-                    "name": "completed_orders_title",
-                    "url": "admin/orders/completed",
-                    "icon": "circle",
-                    "slug": "dashboard-completed_orders"
-                },
-                {
-                    "name": "canceled_orders_title",
-                    "url": "admin/orders/canceled",
-                    "icon": "circle",
-                    "slug": "dashboard-canceled_orders"
-                },
-                {
-                    "name": "refused_orders_title",
-                    "url": "admin/orders/refused",
-                    "icon": "circle",
-                    "slug": "dashboard-refused_orders"
-                }
-            ]
-        },
-        {
-            "name": "bank_transfers_title",
-            "icon": "monitor",
-            "slug": "",
-            "submenu": [
-                {
-                    "name": "new",
-                    "url": "admin/new_bank_transfers",
-                    "icon": "circle",
-                    "slug": "dashboard-new_bank_transfers"
-                },
-                {
-                    "name": "approved",
-                    "url": "admin/approved_bank_transfers",
-                    "icon": "circle",
-                    "slug": "dashboard-approved_bank_transfers"
-                },
-                {
-                    "name": "refused",
-                    "url": "admin/refused_bank_transfers",
-                    "icon": "circle",
-                    "slug": "dashboard-refused_bank_transfers"
-                }
-            ]
-        },
-        {
-            "name": "withdraw_requests_title",
-            "icon": "monitor",
-            "slug": "",
-            "submenu": [
-                {
-                    "name": "new",
-                    "url": "admin/new_withdraw_requests",
-                    "icon": "circle",
-                    "slug": "dashboard-new_withdraw_requests"
-                },
-                {
-                    "name": "approved",
-                    "url": "admin/approved_withdraw_requests",
-                    "icon": "circle",
-                    "slug": "dashboard-approved_withdraw_requests"
-                },
-                {
-                    "name": "refused",
-                    "url": "admin/refused_withdraw_requests",
-                    "icon": "circle",
-                    "slug": "dashboard-refused_withdraw_requests"
-                }
-            ]
-        },
+        
         {
             "name": "contacts_title",
             "icon": "inbox",
