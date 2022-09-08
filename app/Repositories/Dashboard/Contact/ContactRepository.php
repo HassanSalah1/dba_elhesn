@@ -14,11 +14,21 @@ class ContactRepository
         $contacts = Contact::orderBy('id', 'DESC');
         return DataTables::of($contacts)
             ->addColumn('user', function ($contact) {
-                return $contact->user->name . ' <br /> ('
-                    . $contact->user->phonecode . $contact->user->phone . ')';
+                $html = '<ul>';
+                if ($contact->user) {
+                    $html .= '<li>' . $contact->user->name . '</li>';
+                    $html .= '<li>' . $contact->user->phone . '</li>';
+                    $html .= '<li>' . $contact->user->email . '</li>';
+                } else {
+                    $html .= '<li>' . $contact->name . '</li>';
+                    $html .= '<li>' . $contact->phone . '</li>';
+                    $html .= '<li>' . $contact->email . '</li>';
+                }
+                $html .= '</ul>';
+                return $html;
             })
             ->addColumn('contact_type', function ($contact) {
-                return $contact->contactType->name;
+                return $contact->contact_type == 1 ? trans('admin.suggest') : trans('admin.complain');
             })
             ->addColumn('actions', function ($contact) {
                 $ul = '';
@@ -30,11 +40,10 @@ class ContactRepository
     }
 
 
-
     public static function replayContact(array $data)
     {
         $contact = Contact::find($data['id']);
-        if($contact){
+        if ($contact) {
             $contact->update([
                 'replay' => $data['message']
             ]);

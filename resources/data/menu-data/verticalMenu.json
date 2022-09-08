@@ -28,12 +28,6 @@
                     "url": "admin/setting",
                     "icon": "circle",
                     "slug": "dashboard-setting"
-                },
-                {
-                    "name": "contactTypes_title",
-                    "url": "/admin/contact/types",
-                    "icon": "circle",
-                    "slug": "dashboard-contactTypes"
                 }
             ]
         },

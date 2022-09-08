@@ -239,5 +239,7 @@ return [
 
 
     'youtube' => 'يوتيوب',
+    'suggest' => 'مقترح',
+    'complain' => 'شكوى',
 ];
 ?>
