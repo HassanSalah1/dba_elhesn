@@ -49,7 +49,10 @@ Route::group(['prefix' => 'admin'], function () {
         //////////////////////////////////
         Route::get('/setting', [HomeController::class, 'showSetting'])->name('dashboard-setting'); // about page
         Route::post('/setting/save', [HomeController::class, 'saveSetting']);
-
+        ////////////////////////////////
+        Route::get('/contacts', [ContactController::class, 'showContacts'])->name('dashboard-contacts'); // show Index page that control all Contacts
+        Route::get('/contacts/data', [ContactController::class, 'getContactsData']); // get all Contacts data for DataTable
+        Route::post('/contact/replay', [ContactController::class, 'replayContact']); // replay Contact
 
 
 
@@ -91,10 +94,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/city/delete', [CityController::class, 'deleteCity']); // add City
         Route::post('/city/restore', [CityController::class, 'restoreCity']); // restore City
 
-        ////////////////////////////////
-        Route::get('/contacts', [ContactController::class, 'showContacts'])->name('dashboard-contacts'); // show Index page that control all Contacts
-        Route::get('/contacts/data', [ContactController::class, 'getContactsData']); // get all Contacts data for DataTable
-        Route::post('/contact/replay', [ContactController::class, 'replayContact']); // replay Contact
+
         ////////////////////////////////
         Route::get('/users', [UserController::class, 'showUsers'])->name('dashboard-users'); // show Index page that control all users
         Route::get('/users/data', [UserController::class, 'getUsersData']); // get all users data for DataTable

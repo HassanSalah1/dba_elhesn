@@ -29,15 +29,12 @@
                     "icon": "circle",
                     "slug": "dashboard-setting"
                 },
-
-
-
                 {
                     "name": "contactTypes_title",
                     "url": "/admin/contact/types",
                     "icon": "circle",
                     "slug": "dashboard-contactTypes"
-                },
+                }
             ]
         },
         {
@@ -46,18 +43,11 @@
             "url": "admin/users",
             "slug": "dashboard-users"
         },
-        
         {
             "name": "contacts_title",
             "icon": "inbox",
             "url": "admin/contacts",
             "slug": "dashboard-contacts"
-        },
-        {
-            "name": "send_notification_title",
-            "icon": "users",
-            "url": "admin/notification",
-            "slug": "dashboard-show_send_notification"
         }
     ]
 }
