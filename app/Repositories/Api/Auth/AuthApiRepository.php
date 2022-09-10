@@ -34,11 +34,12 @@ class AuthApiRepository
         $user = User::create($userData);
         if ($user) {
             if (isset($data['device_token'])) {
-                Devices::create([
+                $deviceData = [
                     'user_id' => $user->id,
                     'device_type' => isset($data['device_type']) ? $data['device_type'] : null,
                     'device_token' => isset($data['device_token']) ? $data['device_token'] : null,
-                ]);
+                ];
+                Devices::create($deviceData);
             }
             // 1- send verification email
             self::sendVerificationCode($user);
