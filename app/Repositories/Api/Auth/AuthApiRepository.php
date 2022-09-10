@@ -321,11 +321,11 @@ class AuthApiRepository
     // create unique verification code
     public static function createUserVerificationCode($user)
     {
-        $code = UtilsRepository::createVerificationCode($user->id, 4);
-        if (VerificationCode::where(['code' => $code])->first()) {
-            $code = self::createUserVerificationCode($user);
-        }
-        return env('APP_ENV') === 'local' ? '0000' : $code;
+//        $code = UtilsRepository::createVerificationCode($user->id, 4);
+//        if (VerificationCode::where(['code' => $code])->first()) {
+//            $code = self::createUserVerificationCode($user);
+//        }
+        return '0000';  // env('APP_ENV') === 'local' ?  : $code;
     }
 
 }

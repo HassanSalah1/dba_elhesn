@@ -10,6 +10,6 @@ class Devices extends Model
     use HasFactory;
 
     protected $table = 'devices';
-    
+
     protected $fillable = ['user_id', 'device_type', 'device_token'];
 }
