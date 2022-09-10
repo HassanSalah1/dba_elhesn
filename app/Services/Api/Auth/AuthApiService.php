@@ -14,11 +14,13 @@ class AuthApiService
         $keys = [
             'name' => 'required',
             'email' => 'required|unique:users',
-            'phone' => 'phone:AE,mobile',
             'password' => 'required',
             'device_type' => 'required',
             'device_token' => 'required',
         ];
+        if (isset($data['phone'])) {
+            $keys['phone'] = 'phone:AE,mobile|unique:users';
+        }
         $messages = [
             'required' => trans('api.required_error_message'),
             'email.unique' => trans('api.email_unique_error_message'),
