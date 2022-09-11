@@ -14,6 +14,18 @@ class GalleryRepository
     {
         $gallerys = Gallery::orderBy('id', 'DESC');
         return DataTables::of($gallerys)
+            ->addColumn('type', function ($gallery) {
+                return $gallery->image !== null ? 'image' : 'video';
+            })
+            ->addColumn('file', function ($gallery) {
+                if ($gallery->image && file_exists($gallery->image)) {
+                    return '<a href="' . url($gallery->image) . '" data-popup="lightbox">
+                                <img src="' . url($gallery->image) . '" class="img-rounded img-preview"
+                                style="max-height:50px;max-width:50px;"></a>';
+                }else{
+                    return '<a href="'.$gallery->video_url.'" target="_blank">'.$gallery->video_url.'</a>';
+                }
+            })
             ->addColumn('actions', function ($gallery) {
                 $ul = '';
                 $ul .= '<a data-toggle="tooltip" title="' . trans('admin.edit') . '" id="' . $gallery->id . '" onclick="editGallery(this);return false;" href="#" class="on-default edit-row btn btn-info"><i data-feather="edit"></i></a>
