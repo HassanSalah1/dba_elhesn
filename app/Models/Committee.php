@@ -13,6 +13,7 @@ class Committee extends Model
 
     protected $table = 'committees';
     protected $fillable = ['name_ar', 'name_en', 'description_ar', 'description_en', 'image'];
+    protected $appends = ['name', 'description'];
 
     public function getImageUrlAttribute()
     {
@@ -32,10 +33,4 @@ class Committee extends Model
         return $lang === 'en' ? $this->description_en : $this->description_ar;
     }
 
-    public function image()
-    {
-        return $this->hasOne(Image::class, 'item_id', 'id')
-            ->where(['item_type' => ImageType::COMMITTEE])
-            ->where(['primary' => 0])->first();
-    }
 }

@@ -14,12 +14,11 @@ class CommitteeResource extends JsonResource
      */
     public function toArray($request)
     {
-        $image = $this->image();
         return [
             'id' => $this->id,
             'name' => $this->name,
             'description' => $this->description,
-            'image' => $image ? url($image->image) : null,
+            'image' => $this->image_url,
         ];
     }
 }
