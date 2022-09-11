@@ -106,12 +106,12 @@
                     $('input[name=video_url]').val('');
                     $('input[name=image]').val('');
                     $('#video_url').show();
-                    $('#image').hide();
+                    $('#dropify_image').hide();
                 } else if (value === 'image') {
                     $('input[name=video_url]').val('');
                     $('input[name=image]').val('');
                     $('#video_url').hide();
-                    $('#image').show();
+                    $('#dropify_image').show();
                 }
             });
 
