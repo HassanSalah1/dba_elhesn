@@ -251,5 +251,6 @@ return [
     'gallery_type' => 'النوع',
     'Video' => 'فيديو',
     'Image' => 'صورة',
+    'video_url' => 'رابط الفيديو',
 ];
 ?>
