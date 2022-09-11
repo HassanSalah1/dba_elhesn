@@ -210,8 +210,8 @@ function addModal(lang_obj) {
             $('#' + lang_obj.select_selector[0]).select2('val', []);
         } else if (lang_obj.select_selector && lang_obj.select_selector.length > 0) {
             lang_obj.select_selector.forEach((item, index) => {
-                $('#' + item).select2('val',
-                    $('#' + item + ' > option:first-child').val());
+                $('#' + item).val($('#' + item + ' > option:first-child').val()).trigger('change');
+                $('#' + item).select2();
             });
         }
         if (lang_obj.multi_selector && lang_obj.multi_selector.length > 0) {
