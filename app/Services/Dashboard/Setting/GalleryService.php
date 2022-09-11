@@ -53,7 +53,6 @@ class GalleryService
     public static function editGallery(array $data)
     {
         $rules = [
-            'video_url' => 'required_without:image',
         ];
         $validated = ValidationRepository::validateWebGeneral($data, $rules);
         if ($validated !== true) {
