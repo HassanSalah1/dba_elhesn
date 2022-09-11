@@ -38,6 +38,12 @@
             "slug": "dashboard-users"
         },
         {
+            "name": "teams_title",
+            "icon": "teams",
+            "url": "admin/teams",
+            "slug": "dashboard-teams"
+        },
+        {
             "name": "contacts_title",
             "icon": "inbox",
             "url": "admin/contacts",
