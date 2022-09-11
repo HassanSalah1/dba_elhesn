@@ -22,6 +22,7 @@ class AuthRepository
     {
         if (Auth::attempt(['email' => $arr['email'], 'password' => $arr['password']], true)) {
             $user = auth()->user();
+            die($user);
             if ($user->status === Status::ACTIVE) {
                 if ($user->role === UserRoles::ADMIN)
                     return true;
