@@ -14,7 +14,7 @@ class Team extends Model
 
     public function getImageUrlAttribute()
     {
-        $image = $this->image ? $this->image : 'default.png';
+        $image = $this->image ? $this->image : 'images/default.png';
         return url($image);
     }
 }

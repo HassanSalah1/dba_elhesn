@@ -63,12 +63,17 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/user/change', [UserController::class, 'changeStatus']); // change user Status
 
 
+        ////////////////////////////////
+        Route::get('/teams', [TeamController::class, 'showTeams'])->name('dashboard-testimonials'); // show Index page that control all Teams
+        Route::get('/teams/data', [TeamController::class, 'getTeamsData']); // get all Teams data for DataTable
+        Route::post('/team/add', [TeamController::class, 'addTeam']); // add Team
+        Route::post('/team/data', [TeamController::class, 'getTeamData']); // get Team data
+        Route::post('/team/edit', [TeamController::class, 'editTeam']); // edit Team
+        Route::post('/team/delete', [TeamController::class, 'deleteTeam']); // delete Team
 
 
 
-        //////////////////////////////////
-        Route::get('/home-setting', [HomeController::class, 'showHomeSetting'])->name('dashboard-home-setting'); // about page
-        Route::post('/setting/site/save', [HomeController::class, 'saveSiteSetting']);
+
         //////////////////////////////////
         Route::get('/about', [HomeController::class, 'showAbout'])->name('dashboard-about'); // about page
         Route::post('/about/save', [HomeController::class, 'saveAbout']);
@@ -101,7 +106,6 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/cities/data', [CityController::class, 'getCitiesData']); // get all Cities data for DataTable
         Route::post('/city/delete', [CityController::class, 'deleteCity']); // add City
         Route::post('/city/restore', [CityController::class, 'restoreCity']); // restore City
-
 
 
         ////////////////////////////////
