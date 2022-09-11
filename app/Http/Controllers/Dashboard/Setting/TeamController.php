@@ -26,7 +26,6 @@ class TeamController extends Controller
     public function getTeamsData(Request $request)
     {
         $data = $request->all();
-        $data['locale'] = App::getLocale();
         return TeamService::getTeamsData($data);
     }
 

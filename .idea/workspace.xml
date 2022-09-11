@@ -2,60 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c8a92d6-8389-422f-83cd-75ca4ed11af5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Setting/CityController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Setting/ContactTypeController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Setting/CountryController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Setting/FaqController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Setting/NegotiationPercentController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Setting/NegotiationPeriodController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Setting/UserGuideController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Team.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Team.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/Dashboard/Auth/AuthRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/Dashboard/Auth/AuthRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/Dashboard/Order/BankTransferRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/Dashboard/Order/OrderRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/Dashboard/Order/Setting/BankAccountRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/Dashboard/Order/Setting/PaymentMethodRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/Dashboard/Order/Setting/ShipmentRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/Dashboard/Setting/CityRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/Dashboard/Setting/ContactTypeRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/Dashboard/Setting/CountryRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/Dashboard/Setting/FaqRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/Dashboard/Setting/NegotiationPercentRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/Dashboard/Setting/NegotiationPeriodRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/Dashboard/Setting/UserGuideRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/Dashboard/Withdraw/WithdrawRequestRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/Dashboard/Order/BankTransferService.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/Dashboard/Order/OrderService.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/Dashboard/Order/Setting/BankAccountService.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/Dashboard/Order/Setting/PaymentMethodService.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/Dashboard/Order/Setting/ShipmentService.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/Dashboard/Setting/CityService.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/Dashboard/Setting/ContactTypeService.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/Dashboard/Setting/CountryService.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/Dashboard/Setting/FaqService.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/Dashboard/Setting/NegotiationPercentService.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/Dashboard/Setting/NegotiationPeriodService.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/Dashboard/Setting/UserGuideService.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/Dashboard/Withdraw/WithdrawRequestService.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/order/bank_transfer.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/order/order.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/order/order_bid_details.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/order/order_damain_details.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/order/order_direct_details.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/order/order_negotiation_details.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/order/settings/bank_accounts.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/order/settings/payment_method.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/order/settings/shipment.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/settings/city.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/settings/contact_type.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/settings/country.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/settings/faq.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/settings/negotiation_percent.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/settings/negotiation_period.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/withdraw/withdraw_request.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/panel.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/panel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Setting/TeamController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Setting/TeamController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -254,7 +201,7 @@
       <workItem from="1662580379357" duration="10460000" />
       <workItem from="1662812756639" duration="3807000" />
       <workItem from="1662903480796" duration="622000" />
-      <workItem from="1662912154818" duration="3246000" />
+      <workItem from="1662912154818" duration="3295000" />
     </task>
     <servers />
   </component>
