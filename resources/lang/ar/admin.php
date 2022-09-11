@@ -245,5 +245,10 @@ return [
     'add_team' => 'إضافة فريق',
     'edit_team' => 'تعديل فريق',
     'position' => 'الوظيفة',
+    'gallery_title' => 'المعرض',
+    'add_gallery' => 'إضافة',
+    'edit_gallery' => 'تعديل',
+    'gallery_type' => 'النوع',
+    'video' => 'فيديو',
 ];
 ?>
