@@ -88,18 +88,18 @@ class GalleryRepository
         $gallery = Gallery::where(['id' => $data['id']])->first();
         if ($gallery) {
             $galleryData = [
-                'title' => $data['title'],
-                'name' => $data['name'],
-                'position' => $data['position'],
+                'video_url' => $data['type'] == 'video' ? $data['video_url'] : null,
             ];
-            $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
-            $image_name = 'image';
-            $image_path = 'uploads/galleries/';
-            $image = UtilsRepository::createImage($data['request'], $image_name, $image_path, $file_id);
-            if ($image !== false) {
-                $galleryData['image'] = $image;
-                if ($gallery->image && file_exists($gallery->image)) {
-                    unlink($gallery->image);
+            if ($data['type'] == 'image') {
+                $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
+                $image_name = 'image';
+                $image_path = 'uploads/galleries/';
+                $image = UtilsRepository::createImage($data['request'], $image_name, $image_path, $file_id);
+                if ($image !== false) {
+                    $galleryData['image'] = $image;
+                    if ($gallery->image && file_exists($gallery->image)) {
+                        unlink($gallery->image);
+                    }
                 }
             }
             $updated = $gallery->update($galleryData);
