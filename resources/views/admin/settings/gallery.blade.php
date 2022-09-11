@@ -113,7 +113,8 @@
 
             addModal({
                 title: '{{trans('admin.add_gallery')}}',
-                dropify: true
+                dropify: true,
+                select_selector: ['type']
             });
 
             onClose();
