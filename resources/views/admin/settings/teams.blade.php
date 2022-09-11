@@ -113,7 +113,7 @@
             onClose();
 
             loadDataTables('{{ url("/admin/teams/data") }}',
-                ['name', 'position', 'title', 'actions'], '',
+                ['title', 'name', 'position', 'actions'], '',
                 {
                     'show': '{{trans('admin.show')}}',
                     'first': '{{trans('admin.first')}}',
