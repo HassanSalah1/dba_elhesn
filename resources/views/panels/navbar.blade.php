@@ -221,7 +221,7 @@
               @endif
           </span>
                                     <span class="user-status">
-            {{ Auth::user()->role }}
+{{--            {{ Auth::user()->role }}--}}
           </span>
                                 </div>
                                 <span class="avatar">
