@@ -241,5 +241,8 @@ return [
     'youtube' => 'يوتيوب',
     'suggest' => 'مقترح',
     'complain' => 'شكوى',
+    'teams_title' => 'فريق العمل',
+    'add_team' => 'إضافة فريق',
+    'edit_team' => 'تعديل فريق',
 ];
 ?>
