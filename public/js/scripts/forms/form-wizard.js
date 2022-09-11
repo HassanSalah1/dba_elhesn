@@ -1,1 +1,220 @@
-$((function(){"use strict";var e=document.querySelectorAll(".bs-stepper"),n=$(".select2"),i=document.querySelector(".horizontal-wizard-example"),r=document.querySelector(".vertical-wizard-example"),t=document.querySelector(".modern-wizard-example"),o=document.querySelector(".modern-vertical-wizard-example");if(void 0!==typeof e&&null!==e)for(var l=0;l<e.length;++l)e[l].addEventListener("show.bs-stepper",(function(e){for(var n=e.detail.indexStep,i=$(e.target).find(".step").length-1,r=$(e.target).find(".step"),t=0;t<n;t++){r[t].classList.add("crossed");for(var o=n;o<i;o++)r[o].classList.remove("crossed")}if(0==e.detail.to){for(var l=n;l<i;l++)r[l].classList.remove("crossed");r[0].classList.remove("crossed")}}));if(n.each((function(){var e=$(this);e.wrap('<div class="position-relative"></div>'),e.select2({placeholder:"Select value",dropdownParent:e.parent()})})),void 0!==typeof i&&null!==i){var d=new Stepper(i);$(i).find("form").each((function(){$(this).validate({rules:{username:{required:!0},email:{required:!0},password:{required:!0},"confirm-password":{required:!0,equalTo:"#password"},"first-name":{required:!0},"last-name":{required:!0},address:{required:!0},landmark:{required:!0},country:{required:!0},language:{required:!0},twitter:{required:!0,url:!0},facebook:{required:!0,url:!0},google:{required:!0,url:!0},linkedin:{required:!0,url:!0}}})})),$(i).find(".btn-next").each((function(){$(this).on("click",(function(e){$(this).parent().siblings("form").valid()?d.next():e.preventDefault()}))})),$(i).find(".btn-prev").on("click",(function(){d.previous()})),$(i).find(".btn-submit").on("click",(function(){$(this).parent().siblings("form").valid()&&alert("Submitted..!!")}))}if(void 0!==typeof r&&null!==r){var c=new Stepper(r,{linear:!1});$(r).find(".btn-next").on("click",(function(){c.next()})),$(r).find(".btn-prev").on("click",(function(){c.previous()})),$(r).find(".btn-submit").on("click",(function(){alert("Submitted..!!")}))}if(void 0!==typeof t&&null!==t){var a=new Stepper(t,{linear:!1});$(t).find(".btn-next").on("click",(function(){a.next()})),$(t).find(".btn-prev").on("click",(function(){a.previous()})),$(t).find(".btn-submit").on("click",(function(){alert("Submitted..!!")}))}if(void 0!==typeof o&&null!==o){var u=new Stepper(o,{linear:!1});$(o).find(".btn-next").on("click",(function(){u.next()})),$(o).find(".btn-prev").on("click",(function(){u.previous()})),$(o).find(".btn-submit").on("click",(function(){alert("Submitted..!!")}))}}));
+/*=========================================================================================
+    File Name: form-wizard.js
+    Description: wizard steps page specific js
+    ----------------------------------------------------------------------------------------
+    Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
+    Author: PIXINVENT
+    Author URL: http://www.themeforest.net/user/pixinvent
+==========================================================================================*/
+
+$(function () {
+  'use strict';
+
+  var bsStepper = document.querySelectorAll('.bs-stepper'),
+    select = $('.select2'),
+    horizontalWizard = document.querySelector('.horizontal-wizard-example'),
+    verticalWizard = document.querySelector('.vertical-wizard-example'),
+    modernWizard = document.querySelector('.modern-wizard-example'),
+    modernVerticalWizard = document.querySelector('.modern-vertical-wizard-example');
+
+  // Adds crossed class
+  if (typeof bsStepper !== undefined && bsStepper !== null) {
+    for (var el = 0; el < bsStepper.length; ++el) {
+      bsStepper[el].addEventListener('show.bs-stepper', function (event) {
+        var index = event.detail.indexStep;
+        var numberOfSteps = $(event.target).find('.step').length - 1;
+        var line = $(event.target).find('.step');
+
+        // The first for loop is for increasing the steps,
+        // the second is for turning them off when going back
+        // and the third with the if statement because the last line
+        // can't seem to turn off when I press the first item. ¯\_(ツ)_/¯
+
+        for (var i = 0; i < index; i++) {
+          line[i].classList.add('crossed');
+
+          for (var j = index; j < numberOfSteps; j++) {
+            line[j].classList.remove('crossed');
+          }
+        }
+        if (event.detail.to == 0) {
+          for (var k = index; k < numberOfSteps; k++) {
+            line[k].classList.remove('crossed');
+          }
+          line[0].classList.remove('crossed');
+        }
+      });
+    }
+  }
+
+  // select2
+  select.each(function () {
+    var $this = $(this);
+    $this.wrap('<div class="position-relative"></div>');
+    $this.select2({
+      placeholder: 'Select value',
+      dropdownParent: $this.parent()
+    });
+  });
+
+  // Horizontal Wizard
+  // --------------------------------------------------------------------
+  if (typeof horizontalWizard !== undefined && horizontalWizard !== null) {
+    var numberedStepper = new Stepper(horizontalWizard),
+      $form = $(horizontalWizard).find('form');
+    $form.each(function () {
+      var $this = $(this);
+      $this.validate({
+        rules: {
+          username: {
+            required: true
+          },
+          email: {
+            required: true
+          },
+          password: {
+            required: true
+          },
+          'confirm-password': {
+            required: true,
+            equalTo: '#password'
+          },
+          'first-name': {
+            required: true
+          },
+          'last-name': {
+            required: true
+          },
+          address: {
+            required: true
+          },
+          landmark: {
+            required: true
+          },
+          country: {
+            required: true
+          },
+          language: {
+            required: true
+          },
+          twitter: {
+            required: true,
+            url: true
+          },
+          facebook: {
+            required: true,
+            url: true
+          },
+          google: {
+            required: true,
+            url: true
+          },
+          linkedin: {
+            required: true,
+            url: true
+          }
+        }
+      });
+    });
+
+    $(horizontalWizard)
+      .find('.btn-next')
+      .each(function () {
+        $(this).on('click', function (e) {
+          var isValid = $(this).parent().siblings('form').valid();
+          if (isValid) {
+            numberedStepper.next();
+          } else {
+            e.preventDefault();
+          }
+        });
+      });
+
+    $(horizontalWizard)
+      .find('.btn-prev')
+      .on('click', function () {
+        numberedStepper.previous();
+      });
+
+    $(horizontalWizard)
+      .find('.btn-submit')
+      .on('click', function () {
+        var isValid = $(this).parent().siblings('form').valid();
+        if (isValid) {
+          alert('Submitted..!!');
+        }
+      });
+  }
+
+  // Vertical Wizard
+  // --------------------------------------------------------------------
+  if (typeof verticalWizard !== undefined && verticalWizard !== null) {
+    var verticalStepper = new Stepper(verticalWizard, {
+      linear: false
+    });
+    $(verticalWizard)
+      .find('.btn-next')
+      .on('click', function () {
+        verticalStepper.next();
+      });
+    $(verticalWizard)
+      .find('.btn-prev')
+      .on('click', function () {
+        verticalStepper.previous();
+      });
+
+    $(verticalWizard)
+      .find('.btn-submit')
+      .on('click', function () {
+        alert('Submitted..!!');
+      });
+  }
+
+  // Modern Wizard
+  // --------------------------------------------------------------------
+  if (typeof modernWizard !== undefined && modernWizard !== null) {
+    var modernStepper = new Stepper(modernWizard, {
+      linear: false
+    });
+    $(modernWizard)
+      .find('.btn-next')
+      .on('click', function () {
+        modernStepper.next();
+      });
+    $(modernWizard)
+      .find('.btn-prev')
+      .on('click', function () {
+        modernStepper.previous();
+      });
+
+    $(modernWizard)
+      .find('.btn-submit')
+      .on('click', function () {
+        alert('Submitted..!!');
+      });
+  }
+
+  // Modern Vertical Wizard
+  // --------------------------------------------------------------------
+  if (typeof modernVerticalWizard !== undefined && modernVerticalWizard !== null) {
+    var modernVerticalStepper = new Stepper(modernVerticalWizard, {
+      linear: false
+    });
+    $(modernVerticalWizard)
+      .find('.btn-next')
+      .on('click', function () {
+        modernVerticalStepper.next();
+      });
+    $(modernVerticalWizard)
+      .find('.btn-prev')
+      .on('click', function () {
+        modernVerticalStepper.previous();
+      });
+
+    $(modernVerticalWizard)
+      .find('.btn-submit')
+      .on('click', function () {
+        alert('Submitted..!!');
+      });
+  }
+});

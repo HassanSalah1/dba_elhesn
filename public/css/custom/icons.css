@@ -56,8 +56,8 @@ File: Icons
 }
 
 .fa-ul {
-  padding-right: 0;
-  margin-right: 2.14285714em;
+  padding-left: 0;
+  margin-left: 2.14285714em;
   list-style-type: none;
 }
 
@@ -67,14 +67,14 @@ File: Icons
 
 .fa-li {
   position: absolute;
-  right: -2.14285714em;
+  left: -2.14285714em;
   width: 2.14285714em;
   top: 0.14285714em;
   text-align: center;
 }
 
 .fa-li.fa-lg {
-  right: -1.85714286em;
+  left: -1.85714286em;
 }
 
 .fa-border {
@@ -84,36 +84,36 @@ File: Icons
 }
 
 .fa-pull-left {
-  float: right;
-}
-
-.fa-pull-right {
   float: left;
 }
 
+.fa-pull-right {
+  float: right;
+}
+
 .fa.fa-pull-left {
-  margin-left: .3em;
+  margin-right: .3em;
 }
 
 .fa.fa-pull-right {
-  margin-right: .3em;
+  margin-left: .3em;
 }
 
 /* Deprecated as of 4.4.0 */
 .pull-right {
-  float: left;
-}
-
-.pull-left {
   float: right;
 }
 
+.pull-left {
+  float: left;
+}
+
 .fa.pull-left {
-  margin-left: .3em;
+  margin-right: .3em;
 }
 
 .fa.pull-right {
-  margin-right: .3em;
+  margin-left: .3em;
 }
 
 .fa-spin {
@@ -132,8 +132,8 @@ File: Icons
     transform: rotate(0deg);
   }
   100% {
-    -webkit-transform: rotate(-359deg);
-    transform: rotate(-359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
   }
 }
 
@@ -143,27 +143,27 @@ File: Icons
     transform: rotate(0deg);
   }
   100% {
-    -webkit-transform: rotate(-359deg);
-    transform: rotate(-359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
   }
 }
 
 .fa-rotate-90 {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
-  -webkit-transform: rotate(-90deg);
-  transform: rotate(-90deg);
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 
 .fa-rotate-180 {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
-  -webkit-transform: rotate(-180deg);
-  transform: rotate(-180deg);
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .fa-rotate-270 {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
-  -webkit-transform: rotate(-270deg);
-  transform: rotate(-270deg);
+  -webkit-transform: rotate(270deg);
+  transform: rotate(270deg);
 }
 
 .fa-flip-horizontal {
@@ -199,7 +199,7 @@ File: Icons
 .fa-stack-1x,
 .fa-stack-2x {
   position: absolute;
-  right: 0;
+  left: 0;
   width: 100%;
   text-align: center;
 }
@@ -17712,8 +17712,8 @@ File: Icons
 }
 
 .mdi-rotate-45:before {
-  -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 .mdi-rotate-90 {
@@ -17736,8 +17736,8 @@ File: Icons
 }
 
 .mdi-rotate-90:before {
-  -webkit-transform: rotate(-90deg);
-  transform: rotate(-90deg);
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 
 .mdi-rotate-135 {
@@ -17760,8 +17760,8 @@ File: Icons
 }
 
 .mdi-rotate-135:before {
-  -webkit-transform: rotate(-135deg);
-  transform: rotate(-135deg);
+  -webkit-transform: rotate(135deg);
+  transform: rotate(135deg);
 }
 
 .mdi-rotate-180 {
@@ -17784,8 +17784,8 @@ File: Icons
 }
 
 .mdi-rotate-180:before {
-  -webkit-transform: rotate(-180deg);
-  transform: rotate(-180deg);
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .mdi-rotate-225 {
@@ -17808,8 +17808,8 @@ File: Icons
 }
 
 .mdi-rotate-225:before {
-  -webkit-transform: rotate(-225deg);
-  transform: rotate(-225deg);
+  -webkit-transform: rotate(225deg);
+  transform: rotate(225deg);
 }
 
 .mdi-rotate-270 {
@@ -17832,8 +17832,8 @@ File: Icons
 }
 
 .mdi-rotate-270:before {
-  -webkit-transform: rotate(-270deg);
-  transform: rotate(-270deg);
+  -webkit-transform: rotate(270deg);
+  transform: rotate(270deg);
 }
 
 .mdi-rotate-315 {
@@ -17856,8 +17856,8 @@ File: Icons
 }
 
 .mdi-rotate-315:before {
-  -webkit-transform: rotate(-315deg);
-  transform: rotate(-315deg);
+  -webkit-transform: rotate(315deg);
+  transform: rotate(315deg);
 }
 
 .mdi-flip-h:before {
@@ -17887,8 +17887,8 @@ File: Icons
     transform: rotate(0deg);
   }
   100% {
-    -webkit-transform: rotate(-359deg);
-    transform: rotate(-359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
   }
 }
 
@@ -17898,8 +17898,8 @@ File: Icons
     transform: rotate(0deg);
   }
   100% {
-    -webkit-transform: rotate(-359deg);
-    transform: rotate(-359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
   }
 }
 @font-face {
@@ -18733,3 +18733,4 @@ File: Icons
 .dripicons-zoom-out:before {
   content: "\e069";
 }
+/*# sourceMappingURL=icons.css.map */

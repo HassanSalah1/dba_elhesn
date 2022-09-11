@@ -1,1 +1,143 @@
-"use strict";$((function(){var t="ltr",e=!1;"rtl"==$("html").data("textdirection")&&(t="rtl"),"rtl"===t&&(e=!0);var o=$(".sidebar-shop"),s=$(".btn-cart"),a=$(".body-content-overlay"),i=$(".shop-sidebar-toggler"),n=$(".grid-view-btn"),r=$(".list-view-btn"),l=document.getElementById("price-slider"),d=$("#ecommerce-products"),c=$(".dropdown-sort .dropdown-item"),v=$(".dropdown-toggle .active-sorting"),m=$(".btn-wishlist"),h="app-ecommerce-checkout.html";if("laravel"===$("body").attr("data-framework")){var g=$("body").attr("data-asset-path");h=g+"app/ecommerce/checkout"}c.length&&c.on("click",(function(){var t=$(this).text();v.text(t)})),i.length&&i.on("click",(function(){o.toggleClass("show"),a.toggleClass("show"),$("body").addClass("modal-open")})),a.length&&a.on("click",(function(t){o.removeClass("show"),a.removeClass("show"),$("body").removeClass("modal-open")})),void 0!==typeof l&&null!==l&&noUiSlider.create(l,{start:[1500,3500],direction:t,connect:!0,tooltips:[!0,!0],format:wNumb({decimals:0}),range:{min:51,max:5e3}}),n.length&&n.on("click",(function(){d.removeClass("list-view").addClass("grid-view"),r.removeClass("active"),n.addClass("active")})),r.length&&r.on("click",(function(){d.removeClass("grid-view").addClass("list-view"),n.removeClass("active"),r.addClass("active")})),s.length&&s.on("click",(function(t){var o=$(this),s=o.find(".add-to-cart");s.length>0&&t.preventDefault(),s.text("View In Cart").removeClass("add-to-cart").addClass("view-in-cart"),o.attr("href",h),toastr.success("","Added Item In Your Cart 🛒",{closeButton:!0,tapToDismiss:!1,rtl:e})})),m.length&&m.on("click",(function(){var t=$(this);t.find("svg").toggleClass("text-danger"),t.find("svg").hasClass("text-danger")&&toastr.success("","Added to wishlist ❤️",{closeButton:!0,tapToDismiss:!1,rtl:e})}))})),$(window).on("resize",(function(){$(window).outerWidth()>=991&&($(".sidebar-shop").removeClass("show"),$(".body-content-overlay").removeClass("show"))}));
+/*=========================================================================================
+    File Name: app-ecommerce.js
+    Description: Ecommerce pages js
+    ----------------------------------------------------------------------------------------
+    Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
+    Author: PIXINVENT
+    Author URL: http://www.themeforest.net/user/pixinvent
+==========================================================================================*/
+
+'use strict';
+
+$(function () {
+  // RTL Support
+  var direction = 'ltr',
+    isRTL = false;
+  if ($('html').data('textdirection') == 'rtl') {
+    direction = 'rtl';
+  }
+
+  if (direction === 'rtl') {
+    isRTL = true;
+  }
+  var sidebarShop = $('.sidebar-shop'),
+    btnCart = $('.btn-cart'),
+    overlay = $('.body-content-overlay'),
+    sidebarToggler = $('.shop-sidebar-toggler'),
+    gridViewBtn = $('.grid-view-btn'),
+    listViewBtn = $('.list-view-btn'),
+    priceSlider = document.getElementById('price-slider'),
+    ecommerceProducts = $('#ecommerce-products'),
+    sortingDropdown = $('.dropdown-sort .dropdown-item'),
+    sortingText = $('.dropdown-toggle .active-sorting'),
+    wishlist = $('.btn-wishlist'),
+    checkout = 'app-ecommerce-checkout.html';
+
+  if ($('body').attr('data-framework') === 'laravel') {
+    var url = $('body').attr('data-asset-path');
+    checkout = url + 'app/ecommerce/checkout';
+  }
+
+  // On sorting dropdown change
+  if (sortingDropdown.length) {
+    sortingDropdown.on('click', function () {
+      var $this = $(this);
+      var selectedLang = $this.text();
+      sortingText.text(selectedLang);
+    });
+  }
+
+  // Show sidebar
+  if (sidebarToggler.length) {
+    sidebarToggler.on('click', function () {
+      sidebarShop.toggleClass('show');
+      overlay.toggleClass('show');
+      $('body').addClass('modal-open');
+    });
+  }
+
+  // Overlay Click
+  if (overlay.length) {
+    overlay.on('click', function (e) {
+      sidebarShop.removeClass('show');
+      overlay.removeClass('show');
+      $('body').removeClass('modal-open');
+    });
+  }
+
+  // Init Price slider
+  if (typeof priceSlider !== undefined && priceSlider !== null) {
+    noUiSlider.create(priceSlider, {
+      start: [1500, 3500],
+      direction: direction,
+      connect: true,
+      tooltips: [true, true],
+      format: wNumb({
+        decimals: 0
+      }),
+      range: {
+        min: 51,
+        max: 5000
+      }
+    });
+  }
+
+  // Grid View
+  if (gridViewBtn.length) {
+    gridViewBtn.on('click', function () {
+      ecommerceProducts.removeClass('list-view').addClass('grid-view');
+      listViewBtn.removeClass('active');
+      gridViewBtn.addClass('active');
+    });
+  }
+
+  // List View
+  if (listViewBtn.length) {
+    listViewBtn.on('click', function () {
+      ecommerceProducts.removeClass('grid-view').addClass('list-view');
+      gridViewBtn.removeClass('active');
+      listViewBtn.addClass('active');
+    });
+  }
+
+  // On cart & view cart btn click to cart
+  if (btnCart.length) {
+    btnCart.on('click', function (e) {
+      var $this = $(this),
+        addToCart = $this.find('.add-to-cart');
+      if (addToCart.length > 0) {
+        e.preventDefault();
+      }
+      addToCart.text('View In Cart').removeClass('add-to-cart').addClass('view-in-cart');
+      $this.attr('href', checkout);
+      toastr['success']('', 'Added Item In Your Cart 🛒', {
+        closeButton: true,
+        tapToDismiss: false,
+        rtl: isRTL
+      });
+    });
+  }
+
+  // For Wishlist Icon
+  if (wishlist.length) {
+    wishlist.on('click', function () {
+      var $this = $(this);
+      $this.find('svg').toggleClass('text-danger');
+      if ($this.find('svg').hasClass('text-danger')) {
+        toastr['success']('', 'Added to wishlist ❤️', {
+          closeButton: true,
+          tapToDismiss: false,
+          rtl: isRTL
+        });
+      }
+    });
+  }
+});
+
+// on window resize hide sidebar
+$(window).on('resize', function () {
+  if ($(window).outerWidth() >= 991) {
+    $('.sidebar-shop').removeClass('show');
+    $('.body-content-overlay').removeClass('show');
+  }
+});

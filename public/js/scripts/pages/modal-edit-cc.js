@@ -1,1 +1,66 @@
-$((function(){var e="../../../app-assets/",a=$(".credit-card-mask"),t=$("#editCardValidation"),n=$(".expiry-date-mask"),i=$(".cvv-code-mask");"laravel"===$("body").attr("data-framework")&&(e=$("body").attr("data-asset-path")),a.length&&a.each((function(){new Cleave($(this),{creditCard:!0,onCreditCardTypeChanged:function(a){document.querySelector(".edit-card-type").innerHTML=""!=a&&"unknown"!=a?'<img src="'+e+"images/icons/payments/"+a+'-cc.png" height="24"/>':""}})})),n.length&&n.each((function(){new Cleave($(this),{date:!0,delimiter:"/",datePattern:["m","y"]})})),i.length&&i.each((function(){new Cleave($(this),{numeral:!0,numeralPositiveOnly:!0})})),t.length&&t.validate({rules:{modalEditCard:{required:!0}}})}));
+$(function () {
+  ('use strict');
+
+  var assetsPath = '../../../app-assets/',
+    creditCard = $('.credit-card-mask'),
+    editCardValidation = $('#editCardValidation'),
+    expiryDateMask = $('.expiry-date-mask'),
+    cvvMask = $('.cvv-code-mask');
+
+  if ($('body').attr('data-framework') === 'laravel') {
+    assetsPath = $('body').attr('data-asset-path');
+  }
+
+  // --- add new credit card ----- //
+
+  // Credit Card
+  if (creditCard.length) {
+    creditCard.each(function () {
+      new Cleave($(this), {
+        creditCard: true,
+        onCreditCardTypeChanged: function (type) {
+          if (type != '' && type != 'unknown') {
+            document.querySelector('.edit-card-type').innerHTML =
+              '<img src="' + assetsPath + 'images/icons/payments/' + type + '-cc.png" height="24"/>';
+          } else {
+            document.querySelector('.edit-card-type').innerHTML = '';
+          }
+        }
+      });
+    });
+  }
+
+  // Expiry Date Mask
+  if (expiryDateMask.length) {
+    expiryDateMask.each(function () {
+      new Cleave($(this), {
+        date: true,
+        delimiter: '/',
+        datePattern: ['m', 'y']
+      });
+    });
+  }
+
+  // CVV
+  if (cvvMask.length) {
+    cvvMask.each(function () {
+      new Cleave($(this), {
+        numeral: true,
+        numeralPositiveOnly: true
+      });
+    });
+  }
+
+  // card number validation
+  if (editCardValidation.length) {
+    editCardValidation.validate({
+      rules: {
+        modalEditCard: {
+          required: true
+        }
+      }
+    });
+  }
+
+  // --- / add new credit card ----- //
+});

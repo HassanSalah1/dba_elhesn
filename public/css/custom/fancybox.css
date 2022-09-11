@@ -30,7 +30,7 @@
 .fancybox-wrap {
     position: absolute;
     top: 0;
-    right: 0;
+    left: 0;
     z-index: 8020;
 }
 
@@ -78,7 +78,7 @@
 #fancybox-loading {
     position: fixed;
     top: 50%;
-    right: 50%;
+    left: 50%;
     cursor: pointer;
     z-index: 8060;
     color: #fff;
@@ -91,7 +91,7 @@
     font-family: 'icomoon';
     font-size: 16px;
     margin-top: -8px;
-    margin-right: -8px;
+    margin-left: -8px;
     display: block;
     line-height: 1;
     width: 16px;
@@ -105,7 +105,7 @@
 
 .fancybox-close {
     position: fixed;
-    left: 0;
+    right: 0;
     top: 0;
     padding: 15px;
     z-index: 8061;
@@ -155,7 +155,7 @@
 .fancybox-title-float-wrap {
     position: absolute;
     bottom: 0;
-    left: 50%;
+    right: 50%;
     margin-bottom: -45px;
     z-index: 8050;
     text-align: center;
@@ -163,7 +163,7 @@
 
 .fancybox-title-float-wrap .child {
     display: inline-block;
-    margin-left: -100%;
+    margin-right: -100%;
     padding: 8px 16px;
     background: rgba(0, 0, 0, 0.5);
     color: #fff;
@@ -183,7 +183,7 @@
 .fancybox-title-over-wrap {
     position: absolute;
     bottom: 0;
-    right: 0;
+    left: 0;
     color: #fff;
     padding: 10px;
     background-color: transparent;
@@ -235,11 +235,11 @@
 }
 
 .fancybox-prev {
-    right: 0;
+    left: 0;
 }
 
 .fancybox-prev span {
-    right: 10px;
+    left: 10px;
 }
 
 .fancybox-prev span:after {
@@ -247,11 +247,11 @@
 }
 
 .fancybox-next {
-    left: 0;
+    right: 0;
 }
 
 .fancybox-next span {
-    left: 10px;
+    right: 10px;
 }
 
 .fancybox-next span:after {
@@ -279,7 +279,7 @@
 .fancybox-overlay {
     position: absolute;
     top: 0;
-    right: 0;
+    left: 0;
     overflow: hidden;
     display: none;
     z-index: 8010;
@@ -289,5 +289,5 @@
 .fancybox-overlay-fixed {
     position: fixed;
     bottom: 0;
-    left: 0;
+    right: 0;
 }

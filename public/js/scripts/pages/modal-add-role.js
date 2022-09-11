@@ -1,1 +1,30 @@
-!function(){var e=$("#addRoleForm");e.length&&e.validate({rules:{modalRoleName:{required:!0}}}),$(".modal").on("hidden.bs.modal",(function(){$(this).find("form")[0].reset()}));const o=document.querySelector("#selectAll"),t=document.querySelectorAll('[type="checkbox"]');o.addEventListener("change",(e=>{t.forEach((o=>{o.checked=e.target.checked}))}))}();
+// Add new role Modal JS
+//------------------------------------------------------------------
+(function () {
+  var addRoleForm = $('#addRoleForm');
+
+  // add role form validation
+  if (addRoleForm.length) {
+    addRoleForm.validate({
+      rules: {
+        modalRoleName: {
+          required: true
+        }
+      }
+    });
+  }
+
+  // reset form on modal hidden
+  $('.modal').on('hidden.bs.modal', function () {
+    $(this).find('form')[0].reset();
+  });
+
+  // Select All checkbox click
+  const selectAll = document.querySelector('#selectAll'),
+    checkboxList = document.querySelectorAll('[type="checkbox"]');
+  selectAll.addEventListener('change', t => {
+    checkboxList.forEach(e => {
+      e.checked = t.target.checked;
+    });
+  });
+})();

@@ -190,15 +190,9 @@ function addModal(lang_obj) {
         $('.modal-title').text(lang_obj.title);
         resetForm($('#general-form'));
 
-        if(lang_obj.fields){
-            $('#fields').html('');
-        }
-
         if(lang_obj.dropify){
             initDropify();
         }
-
-
 
         if (lang_obj.hiddenName && lang_obj.hiddenValue) {
             $('#general-form input[name=' + lang_obj.hiddenName + ']').val(lang_obj.hiddenValue);
@@ -227,7 +221,7 @@ function addModal(lang_obj) {
         }
         if (lang_obj.hide && lang_obj.dependsOn) {
             const dependsOnValue = $('#' + lang_obj.dependsOn).find('option:selected').val();
-            if (dependsOnValue === lang_obj.value) {
+            if (!dependsOnValue || dependsOnValue === lang_obj.value) {
                 $('#' + lang_obj.hide).hide();
             } else {
                 $('#' + lang_obj.hide).show();

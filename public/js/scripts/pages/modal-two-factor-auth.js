@@ -1,1 +1,34 @@
-$((function(){var e=$(".phone-number-mask"),t=new bootstrap.Modal(document.getElementById("twoFactorAuthModal")),o=new bootstrap.Modal(document.getElementById("twoFactorAuthAppsModal")),n=new bootstrap.Modal(document.getElementById("twoFactorAuthSmsModal"));document.getElementById("nextStepAuth").onclick=function(){"apps-auth"===document.querySelector("input[name=twoFactorAuthRadio]:checked").value?(t.hide(),o.show()):(t.hide(),n.show())},e.length&&e.each((function(){new Cleave($(this),{phone:!0,phoneRegionCode:"US"})}))}));
+$(function () {
+  ('use strict');
+
+  // --- two factor auth ----- //
+  var phoneNumberMask = $('.phone-number-mask'),
+    twoFactorAuthModal = new bootstrap.Modal(document.getElementById('twoFactorAuthModal')),
+    authAppsModal = new bootstrap.Modal(document.getElementById('twoFactorAuthAppsModal')),
+    authSmsModal = new bootstrap.Modal(document.getElementById('twoFactorAuthSmsModal'));
+
+  // toggle modals
+  document.getElementById('nextStepAuth').onclick = function () {
+    var currentSelectMethod = document.querySelector('input[name=twoFactorAuthRadio]:checked').value;
+
+    if (currentSelectMethod === 'apps-auth') {
+      twoFactorAuthModal.hide();
+      authAppsModal.show();
+    } else {
+      twoFactorAuthModal.hide();
+      authSmsModal.show();
+    }
+  };
+
+  // phone number mask
+  if (phoneNumberMask.length) {
+    phoneNumberMask.each(function () {
+      new Cleave($(this), {
+        phone: true,
+        phoneRegionCode: 'US'
+      });
+    });
+  }
+
+  // --- / two factor auth ----- //
+});

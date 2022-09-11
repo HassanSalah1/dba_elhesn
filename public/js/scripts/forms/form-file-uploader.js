@@ -1,1 +1,81 @@
-Dropzone.autoDiscover=!1,$((function(){"use strict";var e=$("#dpz-single-file"),i=$("#dpz-multiple-files"),l=$("#dpz-btn-select-files"),a=$("#dpz-file-limits"),m=$("#dpz-accept-files"),o=$("#dpz-remove-thumb"),p=$("#dpz-remove-all-thumb");e.dropzone({paramName:"file",maxFiles:1}),i.dropzone({paramName:"file",maxFilesize:.5,clickable:!0}),l.dropzone({clickable:"#select-files"}),a.dropzone({paramName:"file",maxFilesize:.5,maxFiles:5,maxThumbnailFilesize:1}),m.dropzone({paramName:"file",maxFilesize:1,acceptedFiles:"image/*"}),o.dropzone({paramName:"file",maxFilesize:1,addRemoveLinks:!0,dictRemoveFile:" Trash"}),p.dropzone({paramName:"file",maxFilesize:1,init:function(){var e=this;$("#clear-dropzone").on("click",(function(){e.removeAllFiles()}))}})}));
+/*=========================================================================================
+    File Name: form-file-uploader.js
+    Description: dropzone
+    --------------------------------------------------------------------------------------
+    Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
+    Author: PIXINVENT
+    Author URL: http://www.themeforest.net/user/pixinvent
+==========================================================================================*/
+
+Dropzone.autoDiscover = false;
+
+$(function () {
+  'use strict';
+
+  var singleFile = $('#dpz-single-file');
+  var multipleFiles = $('#dpz-multiple-files');
+  var buttonSelect = $('#dpz-btn-select-files');
+  var limitFiles = $('#dpz-file-limits');
+  var acceptFiles = $('#dpz-accept-files');
+  var removeThumb = $('#dpz-remove-thumb');
+  var removeAllThumbs = $('#dpz-remove-all-thumb');
+
+  // Basic example
+  singleFile.dropzone({
+    paramName: 'file', // The name that will be used to transfer the file
+    maxFiles: 1
+  });
+
+  // Multiple Files
+  multipleFiles.dropzone({
+    paramName: 'file', // The name that will be used to transfer the file
+    maxFilesize: 0.5, // MB
+    clickable: true
+  });
+
+  // Use Button To Select Files
+  buttonSelect.dropzone({
+    clickable: '#select-files' // Define the element that should be used as click trigger to select files.
+  });
+
+  // Limit File Size and No. Of Files
+  limitFiles.dropzone({
+    paramName: 'file', // The name that will be used to transfer the file
+    maxFilesize: 0.5, // MB
+    maxFiles: 5,
+    maxThumbnailFilesize: 1 // MB
+  });
+
+  // Accepted Only Files
+  acceptFiles.dropzone({
+    paramName: 'file', // The name that will be used to transfer the file
+    maxFilesize: 1, // MB
+    acceptedFiles: 'image/*'
+  });
+
+  //Remove Thumbnail
+  removeThumb.dropzone({
+    paramName: 'file', // The name that will be used to transfer the file
+    maxFilesize: 1, // MB
+    addRemoveLinks: true,
+    dictRemoveFile: ' Trash'
+  });
+
+  // Remove All Thumbnails
+  removeAllThumbs.dropzone({
+    paramName: 'file', // The name that will be used to transfer the file
+    maxFilesize: 1, // MB
+    init: function () {
+      // Using a closure.
+      var _this = this;
+
+      // Setup the observer for the button.
+      $('#clear-dropzone').on('click', function () {
+        // Using "_this" here, because "this" doesn't point to the dropzone anymore
+        _this.removeAllFiles();
+        // If you want to cancel uploads as well, you
+        // could also call _this.removeAllFiles(true);
+      });
+    }
+  });
+});

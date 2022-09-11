@@ -1,1 +1,208 @@
-$((function(){var e="../../../app-assets/",r=document.querySelector(".register-multi-steps-wizard"),t=$(".auth-register-form"),n=$(".select2"),a=$(".credit-card-mask"),i=$(".expiry-date-mask"),s=$(".cvv-code-mask"),d=$(".mobile-number-mask"),o=$(".pin-code-mask");if("laravel"===$("body").attr("data-framework")&&(e=$("body").attr("data-asset-path")),t.length&&t.validate({rules:{"register-username":{required:!0},"register-email":{required:!0,email:!0},"register-password":{required:!0}}}),void 0!==typeof r&&null!==r){var l=new Stepper(r);$(r).find("form").each((function(){$(this).validate({rules:{username:{required:!0},email:{required:!0},password:{required:!0,minlength:8},"confirm-password":{required:!0,minlength:8,equalTo:"#password"},"first-name":{required:!0},"home-address":{required:!0},addCard:{required:!0}},messages:{password:{required:"Enter new password",minlength:"Enter at least 8 characters"},"confirm-password":{required:"Please confirm new password",minlength:"Enter at least 8 characters",equalTo:"The password and its confirm are not the same"}}})})),$(r).find(".btn-next").each((function(){$(this).on("click",(function(e){$(this).parent().siblings("form").valid()?l.next():e.preventDefault()}))})),$(r).find(".btn-prev").on("click",(function(){l.previous()})),$(r).find(".btn-submit").on("click",(function(){$(this).parent().siblings("form").valid()&&alert("Submitted..!!")}))}n.each((function(){var e=$(this);e.wrap('<div class="position-relative"></div>'),e.select2({dropdownAutoWidth:!0,width:"100%",dropdownParent:e.parent()})})),a.length&&a.each((function(){new Cleave($(this),{creditCard:!0,onCreditCardTypeChanged:function(r){const t=document.querySelectorAll(".card-type");if(""!=r&&"unknown"!=r)for(let n=0;n<t.length;n++)t[n].innerHTML='<img src="'+e+"images/icons/payments/"+r+'-cc.png" height="24"/>';else for(let e=0;e<t.length;e++)t[e].innerHTML=""}})})),i.length&&new Cleave(i,{date:!0,delimiter:"/",datePattern:["m","y"]}),s.length&&new Cleave(s,{numeral:!0,numeralPositiveOnly:!0}),d.length&&new Cleave(d,{phone:!0,phoneRegionCode:"US"}),o.length&&new Cleave(o,{delimiter:"",numeral:!0})}));
+/*=========================================================================================
+  File Name: auth-register.js
+  Description: Auth register js file.
+  ----------------------------------------------------------------------------------------
+  Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
+  Author: PIXINVENT
+  Author URL: http://www.themeforest.net/user/pixinvent
+==========================================================================================*/
+
+$(function () {
+  ('use strict');
+
+  var assetsPath = '../../../app-assets/',
+    registerMultiStepsWizard = document.querySelector('.register-multi-steps-wizard'),
+    pageResetForm = $('.auth-register-form'),
+    select = $('.select2'),
+    creditCard = $('.credit-card-mask'),
+    expiryDateMask = $('.expiry-date-mask'),
+    cvvMask = $('.cvv-code-mask'),
+    mobileNumberMask = $('.mobile-number-mask'),
+    pinCodeMask = $('.pin-code-mask');
+
+  if ($('body').attr('data-framework') === 'laravel') {
+    assetsPath = $('body').attr('data-asset-path');
+  }
+
+  // jQuery Validation
+  // --------------------------------------------------------------------
+  if (pageResetForm.length) {
+    pageResetForm.validate({
+      /*
+      * ? To enable validation onkeyup
+      onkeyup: function (element) {
+        $(element).valid();
+      },*/
+      /*
+      * ? To enable validation on focusout
+      onfocusout: function (element) {
+        $(element).valid();
+      }, */
+      rules: {
+        'register-username': {
+          required: true
+        },
+        'register-email': {
+          required: true,
+          email: true
+        },
+        'register-password': {
+          required: true
+        }
+      }
+    });
+  }
+
+  // multi-steps registration
+  // --------------------------------------------------------------------
+
+  // Horizontal Wizard
+  if (typeof registerMultiStepsWizard !== undefined && registerMultiStepsWizard !== null) {
+    var numberedStepper = new Stepper(registerMultiStepsWizard),
+      $form = $(registerMultiStepsWizard).find('form');
+    $form.each(function () {
+      var $this = $(this);
+      $this.validate({
+        rules: {
+          username: {
+            required: true
+          },
+          email: {
+            required: true
+          },
+          password: {
+            required: true,
+            minlength: 8
+          },
+          'confirm-password': {
+            required: true,
+            minlength: 8,
+            equalTo: '#password'
+          },
+          'first-name': {
+            required: true
+          },
+          'home-address': {
+            required: true
+          },
+          addCard: {
+            required: true
+          }
+        },
+        messages: {
+          password: {
+            required: 'Enter new password',
+            minlength: 'Enter at least 8 characters'
+          },
+          'confirm-password': {
+            required: 'Please confirm new password',
+            minlength: 'Enter at least 8 characters',
+            equalTo: 'The password and its confirm are not the same'
+          }
+        }
+      });
+    });
+
+    $(registerMultiStepsWizard)
+      .find('.btn-next')
+      .each(function () {
+        $(this).on('click', function (e) {
+          var isValid = $(this).parent().siblings('form').valid();
+          if (isValid) {
+            numberedStepper.next();
+          } else {
+            e.preventDefault();
+          }
+        });
+      });
+
+    $(registerMultiStepsWizard)
+      .find('.btn-prev')
+      .on('click', function () {
+        numberedStepper.previous();
+      });
+
+    $(registerMultiStepsWizard)
+      .find('.btn-submit')
+      .on('click', function () {
+        var isValid = $(this).parent().siblings('form').valid();
+        if (isValid) {
+          alert('Submitted..!!');
+        }
+      });
+  }
+
+  // select2
+  select.each(function () {
+    var $this = $(this);
+    $this.wrap('<div class="position-relative"></div>');
+    $this.select2({
+      // the following code is used to disable x-scrollbar when click in select input and
+      // take 100% width in responsive also
+      dropdownAutoWidth: true,
+      width: '100%',
+      dropdownParent: $this.parent()
+    });
+  });
+
+  // credit card
+
+  // Credit Card
+  if (creditCard.length) {
+    creditCard.each(function () {
+      new Cleave($(this), {
+        creditCard: true,
+        onCreditCardTypeChanged: function (type) {
+          const elementNodeList = document.querySelectorAll('.card-type');
+          if (type != '' && type != 'unknown') {
+            //! we accept this approach for multiple credit card masking
+            for (let i = 0; i < elementNodeList.length; i++) {
+              elementNodeList[i].innerHTML =
+                '<img src="' + assetsPath + 'images/icons/payments/' + type + '-cc.png" height="24"/>';
+            }
+          } else {
+            for (let i = 0; i < elementNodeList.length; i++) {
+              elementNodeList[i].innerHTML = '';
+            }
+          }
+        }
+      });
+    });
+  }
+
+  // Expiry Date Mask
+  if (expiryDateMask.length) {
+    new Cleave(expiryDateMask, {
+      date: true,
+      delimiter: '/',
+      datePattern: ['m', 'y']
+    });
+  }
+
+  // CVV
+  if (cvvMask.length) {
+    new Cleave(cvvMask, {
+      numeral: true,
+      numeralPositiveOnly: true
+    });
+  }
+
+  // phone number mask
+  if (mobileNumberMask.length) {
+    new Cleave(mobileNumberMask, {
+      phone: true,
+      phoneRegionCode: 'US'
+    });
+  }
+
+  // Pincode
+  if (pinCodeMask.length) {
+    new Cleave(pinCodeMask, {
+      delimiter: '',
+      numeral: true
+    });
+  }
+
+  // multi-steps registration
+  // --------------------------------------------------------------------
+});

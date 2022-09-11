@@ -1,1 +1,99 @@
-$((function(){"use strict";var e=$(".credit-card-mask"),a=$(".phone-number-mask"),n=$(".date-mask"),t=$(".time-mask"),l=$(".numeral-mask"),s=$(".block-mask"),m=$(".delimiter-mask"),r=$(".custom-delimiter-mask"),i=$(".prefix-mask");e.length&&e.each((function(){new Cleave($(this),{creditCard:!0})})),a.length&&new Cleave(a,{phone:!0,phoneRegionCode:"US"}),n.length&&new Cleave(n,{date:!0,delimiter:"-",datePattern:["Y","m","d"]}),t.length&&new Cleave(t,{time:!0,timePattern:["h","m","s"]}),l.length&&new Cleave(l,{numeral:!0,numeralThousandsGroupStyle:"thousand"}),s.length&&new Cleave(s,{blocks:[4,3,3],uppercase:!0}),m.length&&new Cleave(m,{delimiter:"·",blocks:[3,3,3],uppercase:!0}),r.length&&new Cleave(r,{delimiters:[".",".","-"],blocks:[3,3,3,2],uppercase:!0}),i.length&&new Cleave(i,{prefix:"+63",blocks:[3,3,3,4],uppercase:!0})}));
+/*=========================================================================================
+        File Name: form-input-mask.js
+        Description: Input Masks
+        ----------------------------------------------------------------------------------------
+        Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
+        Author: Pixinvent
+        Author URL: hhttp://www.themeforest.net/user/pixinvent
+==========================================================================================*/
+
+$(function () {
+  'use strict';
+
+  var creditCard = $('.credit-card-mask'),
+    phoneMask = $('.phone-number-mask'),
+    dateMask = $('.date-mask'),
+    timeMask = $('.time-mask'),
+    numeralMask = $('.numeral-mask'),
+    blockMask = $('.block-mask'),
+    delimiterMask = $('.delimiter-mask'),
+    customDelimiter = $('.custom-delimiter-mask'),
+    prefixMask = $('.prefix-mask');
+
+  // Credit Card
+  if (creditCard.length) {
+    creditCard.each(function () {
+      new Cleave($(this), {
+        creditCard: true
+      });
+    });
+  }
+
+  // Phone Number
+  if (phoneMask.length) {
+    new Cleave(phoneMask, {
+      phone: true,
+      phoneRegionCode: 'US'
+    });
+  }
+
+  // Date
+  if (dateMask.length) {
+    new Cleave(dateMask, {
+      date: true,
+      delimiter: '-',
+      datePattern: ['Y', 'm', 'd']
+    });
+  }
+
+  // Time
+  if (timeMask.length) {
+    new Cleave(timeMask, {
+      time: true,
+      timePattern: ['h', 'm', 's']
+    });
+  }
+
+  //Numeral
+  if (numeralMask.length) {
+    new Cleave(numeralMask, {
+      numeral: true,
+      numeralThousandsGroupStyle: 'thousand'
+    });
+  }
+
+  //Block
+  if (blockMask.length) {
+    new Cleave(blockMask, {
+      blocks: [4, 3, 3],
+      uppercase: true
+    });
+  }
+
+  // Delimiter
+  if (delimiterMask.length) {
+    new Cleave(delimiterMask, {
+      delimiter: '·',
+      blocks: [3, 3, 3],
+      uppercase: true
+    });
+  }
+
+  // Custom Delimiter
+  if (customDelimiter.length) {
+    new Cleave(customDelimiter, {
+      delimiters: ['.', '.', '-'],
+      blocks: [3, 3, 3, 2],
+      uppercase: true
+    });
+  }
+
+  // Prefix
+  if (prefixMask.length) {
+    new Cleave(prefixMask, {
+      prefix: '+63',
+      blocks: [3, 3, 3, 4],
+      uppercase: true
+    });
+  }
+});

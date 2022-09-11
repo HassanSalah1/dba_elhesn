@@ -1,1 +1,30 @@
-$((function(){var e=$("#addNewAddressForm"),d=$("#modalAddressCountry");d.length&&d.wrap('<div class="position-relative"></div>').select2({dropdownParent:d.parent()}),e.length&&e.validate({rules:{modalAddressFirstName:{required:!0},modalAddressLastName:{required:!0}}})}));
+$(function () {
+  ('use strict');
+
+  var addNewAddressForm = $('#addNewAddressForm'),
+    modalAddressCountry = $('#modalAddressCountry');
+
+  // --- add new address ----- //
+
+  // Select2 initialization
+  if (modalAddressCountry.length) {
+    modalAddressCountry.wrap('<div class="position-relative"></div>').select2({
+      dropdownParent: modalAddressCountry.parent()
+    });
+  }
+
+  // add new address validation
+  if (addNewAddressForm.length) {
+    addNewAddressForm.validate({
+      rules: {
+        modalAddressFirstName: {
+          required: true
+        },
+        modalAddressLastName: {
+          required: true
+        }
+      }
+    });
+  }
+  // --- / add new address ----- //
+});
