@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{ asset(mix('vendors/css/tables/datatable/dataTables.bootstrap5.min.css')) }}">
     <link rel="stylesheet" href="{{ asset(mix('vendors/css/tables/datatable/responsive.bootstrap5.min.css')) }}">
     <link rel="stylesheet" type="text/css" href="{{ asset(mix('vendors/css/extensions/sweetalert2.min.css')) }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset(mix('vendors/css/forms/select/select2.min.css'))}}">
     <link rel="stylesheet" type="text/css"
           href="{{ asset(mix('css/base/plugins/extensions/ext-component-sweet-alerts.css')) }}">
 
@@ -78,7 +79,7 @@
     <script src="{{ asset(mix('vendors/js/tables/datatable/dataTables.bootstrap5.min.js')) }}"></script>
     <script src="{{ asset(mix('vendors/js/tables/datatable/dataTables.responsive.min.js')) }}"></script>
     <script src="{{ asset(mix('vendors/js/tables/datatable/responsive.bootstrap5.min.js')) }}"></script>
-
+    <script src="{{ asset(mix('vendors/js/forms/select/select2.full.min.js'))}}"></script>
     <script src="{{ asset(mix('vendors/js/extensions/sweetalert2.all.min.js')) }}"></script>
 
 @endsection
@@ -86,6 +87,7 @@
     <script src="{{url('/js/scripts/custom/jquery.loader.js')}}"></script>
     <script src="{{url('/js/scripts/custom/dropify.min.js')}}"></script>
     <script src="{{url('/js/scripts/custom/fancybox.min.js')}}"></script>
+
     <script>
         let add = false;
         let edit = false;
@@ -95,6 +97,8 @@
     <script src="{{url('/js/scripts/custom/utils.js')}}"></script>
     <script>
         $(function () {
+
+            $('#type').select2();
 
             $('#type').on('change', function (e) {
                 let value = $(this).find('option:selected').val();
