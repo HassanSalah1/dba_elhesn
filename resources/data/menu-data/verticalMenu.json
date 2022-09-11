@@ -50,6 +50,12 @@
             "slug": "dashboard-galleries"
         },
         {
+            "name": "committees_title",
+            "icon": "users",
+            "url": "admin/committees",
+            "slug": "dashboard-committees"
+        },
+        {
             "name": "contacts_title",
             "icon": "inbox",
             "url": "admin/contacts",

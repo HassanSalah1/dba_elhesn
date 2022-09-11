@@ -225,5 +225,8 @@ return [
     'video_url' => 'رابط الفيديو',
     'file' => 'الملف',
     'type' => 'النوع',
+    'committees_title' => 'لجان خاصة',
+    'add_committee' => 'إضافة لجان',
+    'edit_committee' => 'تعديل لجان',
 ];
 ?>
