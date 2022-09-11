@@ -17,10 +17,9 @@ class TeamService
     public static function addTeam(array $data)
     {
         $rules = [
-            'opinion' => 'required',
+            'title' => 'required',
             'name' => 'required',
             'position' => 'required',
-            'image' => 'required',
         ];
         $validated = ValidationRepository::validateWebGeneral($data, $rules);
         if ($validated !== true) {
@@ -54,7 +53,7 @@ class TeamService
     public static function editTeam(array $data)
     {
         $rules = [
-            'opinion' => 'required',
+            'title' => 'required',
             'name' => 'required',
             'position' => 'required',
         ];

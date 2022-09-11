@@ -36,10 +36,10 @@ class TeamRepository
         $image = UtilsRepository::createImage($data['request'], $image_name, $image_path, $file_id);
         if ($image !== false) {
             $teamData['image'] = $image;
-            $created = Team::create($teamData);
-            if ($created) {
-                return true;
-            }
+        }
+        $created = Team::create($teamData);
+        if ($created) {
+            return true;
         }
         return false;
     }
