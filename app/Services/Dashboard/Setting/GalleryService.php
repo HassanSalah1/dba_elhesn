@@ -53,9 +53,8 @@ class GalleryService
     public static function editGallery(array $data)
     {
         $rules = [
-            'title' => 'required',
-            'name' => 'required',
-            'position' => 'required',
+            'type' => 'required',
+            'video_url' => 'required_without:image',
         ];
         $validated = ValidationRepository::validateWebGeneral($data, $rules);
         if ($validated !== true) {
