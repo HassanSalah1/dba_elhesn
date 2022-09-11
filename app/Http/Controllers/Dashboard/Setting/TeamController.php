@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Dashboard\Setting;
 use App\Http\Controllers\Controller;
 use App\Services\Dashboard\Setting\TeamService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 
 class TeamController extends Controller
 {

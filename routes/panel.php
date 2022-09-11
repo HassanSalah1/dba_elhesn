@@ -18,6 +18,7 @@ use App\Http\Controllers\Dashboard\Setting\FaqController;
 use App\Http\Controllers\Dashboard\Setting\IntroController;
 use App\Http\Controllers\Dashboard\Setting\NegotiationPercentController;
 use App\Http\Controllers\Dashboard\Setting\NegotiationPeriodController;
+use App\Http\Controllers\Dashboard\Setting\TeamController;
 use App\Http\Controllers\Dashboard\Setting\UserGuideController;
 use App\Http\Controllers\Dashboard\User\UserController;
 use App\Http\Controllers\Dashboard\Withdraw\WithdrawRequestController;
