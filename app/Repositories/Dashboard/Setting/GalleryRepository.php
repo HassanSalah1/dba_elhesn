@@ -102,6 +102,12 @@ class GalleryRepository
     {
         $gallery = Gallery::where(['id' => $data['id']])->first();
         if ($gallery) {
+            if ($gallery->image !== null) {
+                $data['type'] = 'image';
+            } else {
+                $data['type'] = 'video';
+            }
+
             $galleryData = [
                 'video_url' => $data['type'] == 'video' ? $data['video_url'] : null,
             ];
