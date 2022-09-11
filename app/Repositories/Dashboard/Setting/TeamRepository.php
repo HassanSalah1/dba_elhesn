@@ -68,7 +68,7 @@ class TeamRepository
     {
         $team = Team::where(['id' => $data['id']])->first();
         if ($team) {
-            $team->image = $team->image_url;
+            $team->image = $team->image ? url($team->image) : null;
             return $team;
         }
         return false;
