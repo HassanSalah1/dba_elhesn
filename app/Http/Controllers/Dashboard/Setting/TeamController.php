@@ -20,7 +20,7 @@ class TeamController extends Controller
         $data['title'] = trans('admin.teams_title');
         $data['debatable_names'] = array(trans('admin.title'), trans('admin.name'),
             trans('admin.position'), trans('admin.actions'));
-        return view('admin.teams')->with($data);
+        return view('admin.settings.teams')->with($data);
     }
 
     public function getTeamsData(Request $request)
