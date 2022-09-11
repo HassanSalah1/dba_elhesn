@@ -12,6 +12,7 @@ use App\Http\Controllers\Dashboard\Order\Setting\ShipmentController;
 use App\Http\Controllers\Dashboard\Product\CategoryController;
 use App\Http\Controllers\Dashboard\Product\ProductController;
 use App\Http\Controllers\Dashboard\Setting\CityController;
+use App\Http\Controllers\Dashboard\Setting\CommitteeController;
 use App\Http\Controllers\Dashboard\Setting\ContactTypeController;
 use App\Http\Controllers\Dashboard\Setting\CountryController;
 use App\Http\Controllers\Dashboard\Setting\FaqController;

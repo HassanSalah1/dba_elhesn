@@ -17,8 +17,8 @@ class CommitteeController extends Controller
             'direction' => 'rtl'
         ];
         $data['title'] = trans('admin.committees_title');
-        $data['debatable_names'] = array(trans('admin.title'), trans('admin.name'),
-            trans('admin.position'), trans('admin.actions'));
+        $data['debatable_names'] = array(trans('admin.name'), trans('admin.description'),
+            trans('admin.actions'));
         return view('admin.settings.committees')->with($data);
     }
 
