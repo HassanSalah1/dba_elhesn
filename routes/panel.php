@@ -54,6 +54,14 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/contacts/data', [ContactController::class, 'getContactsData']); // get all Contacts data for DataTable
         Route::post('/contact/replay', [ContactController::class, 'replayContact']); // replay Contact
 
+        ////////////////////////////////
+        Route::get('/users', [UserController::class, 'showUsers'])->name('dashboard-users'); // show Index page that control all users
+        Route::get('/users/data', [UserController::class, 'getUsersData']); // get all users data for DataTable
+
+        Route::get('/user/details/{id}', [UserController::class, 'showUserDetails']); // show user details
+        Route::post('/user/verify', [UserController::class, 'verifyUser']); // verify user
+        Route::post('/user/change', [UserController::class, 'changeStatus']); // change user Status
+
 
 
 
@@ -95,13 +103,6 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/city/restore', [CityController::class, 'restoreCity']); // restore City
 
 
-        ////////////////////////////////
-        Route::get('/users', [UserController::class, 'showUsers'])->name('dashboard-users'); // show Index page that control all users
-        Route::get('/users/data', [UserController::class, 'getUsersData']); // get all users data for DataTable
-
-        Route::get('/user/details/{id}', [UserController::class, 'showUserDetails']); // show user details
-        Route::post('/user/verify', [UserController::class, 'verifyUser']); // verify user
-        Route::post('/user/change', [UserController::class, 'changeStatus']); // change user Status
 
         ////////////////////////////////
         Route::get('/categories', [CategoryController::class, 'showCategories'])->name('dashboard-categories'); // show Index page that control all Categories
