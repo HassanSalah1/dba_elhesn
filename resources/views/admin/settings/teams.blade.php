@@ -25,6 +25,13 @@
 
 @section('form_input')
 
+    <div class="mb-1">
+        <label class="form-label" for="title">{{trans('admin.title')}}</label>
+        <input type="text" name="title"
+               class="form-control dt-full-name"
+               id="title"
+               placeholder="{{trans('admin.title')}}"/>
+    </div>
 
 
     <div class="mb-1">
@@ -41,14 +48,6 @@
                class="form-control dt-full-name"
                id="position"
                placeholder="{{trans('admin.position')}}"/>
-    </div>
-
-    <div class="mb-1">
-        <label class="form-label" for="title">{{trans('admin.title')}}</label>
-        <textarea name="title"
-                  class="form-control dt-full-name"
-                  id="title"
-                  placeholder="{{trans('admin.title')}}"></textarea>
     </div>
 
     <div class="mb-1" id="dropify_image">
