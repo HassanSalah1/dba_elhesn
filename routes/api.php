@@ -36,6 +36,7 @@ Route::group(['middleware' => 'lang'], function () {
         Route::post('/contact', [SettingController::class, 'addContact']); // contact us
 
         Route::get('/teams', [SettingController::class, 'getTeams']); // get teams
+
         Route::get('/gallery', [SettingController::class, 'getGallery']); // get gallery
 
         Route::get('/history', [SettingController::class, 'getHistory']); // history

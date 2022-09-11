@@ -44,6 +44,12 @@
             "slug": "dashboard-teams"
         },
         {
+            "name": "gallery_title",
+            "icon": "users",
+            "url": "admin/galleries",
+            "slug": "dashboard-galleries"
+        },
+        {
             "name": "contacts_title",
             "icon": "inbox",
             "url": "admin/contacts",

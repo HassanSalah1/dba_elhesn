@@ -1,0 +1,115 @@
+<?php
+namespace App\Repositories\Dashboard\Setting;
+
+
+use App\Models\Gallery;
+use App\Repositories\General\UtilsRepository;
+use Yajra\DataTables\Facades\DataTables;
+
+class GalleryRepository
+{
+
+    // get Galleries and create datatable data.
+    public static function getGalleriesData(array $data)
+    {
+        $gallerys = Gallery::orderBy('id', 'DESC');
+        return DataTables::of($gallerys)
+            ->addColumn('actions', function ($gallery) {
+                $ul = '';
+                $ul .= '<a data-toggle="tooltip" title="' . trans('admin.edit') . '" id="' . $gallery->id . '" onclick="editGallery(this);return false;" href="#" class="on-default edit-row btn btn-info"><i data-feather="edit"></i></a>
+                   ';
+                $ul .= '<a data-toggle="tooltip" title="' . trans('admin.delete_action') . '" id="' . $gallery->id . '" onclick="deleteGallery(this);return false;" href="#" class="on-default remove-row btn btn-danger"><i data-feather="delete"></i></a>';
+                return $ul;
+            })->make(true);
+    }
+
+    public static function addGallery(array $data)
+    {
+        $galleryData = [
+            'video_url' => $data['type'] == 'video' ? $data['video_url'] : null,
+        ];
+        if ($data['type'] == 'image') {
+            $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
+            $image_name = 'image';
+            $image_path = 'uploads/galleries/';
+            $image = UtilsRepository::createImage($data['request'], $image_name, $image_path, $file_id);
+            if ($image !== false) {
+                $galleryData['image'] = $image;
+            }
+        }
+        if (count($galleryData) > 0) {
+            $created = Gallery::create($galleryData);
+            if ($created) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static function deleteGallery(array $data)
+    {
+        $gallery = Gallery::where(['id' => $data['id']])->first();
+        if ($gallery) {
+            $gallery->delete();
+            return true;
+        }
+        return false;
+    }
+
+    public static function restoreGallery(array $data)
+    {
+        $bank = Gallery::where(['id' => $data['id']])->first();
+        if ($bank) {
+            $bank->restore();
+            return true;
+        }
+        return false;
+    }
+
+    public static function getGalleryData(array $data)
+    {
+        $gallery = Gallery::where(['id' => $data['id']])->first();
+        if ($gallery) {
+            $gallery->image = $gallery->image ? url($gallery->image) : null;
+
+            if ($gallery->image !== null) {
+                $gallery->type = 'image';
+            } else {
+                $gallery->type = 'video';
+            }
+
+            return $gallery;
+        }
+        return false;
+    }
+
+    public static function editGallery(array $data)
+    {
+        $gallery = Gallery::where(['id' => $data['id']])->first();
+        if ($gallery) {
+            $galleryData = [
+                'title' => $data['title'],
+                'name' => $data['name'],
+                'position' => $data['position'],
+            ];
+            $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
+            $image_name = 'image';
+            $image_path = 'uploads/galleries/';
+            $image = UtilsRepository::createImage($data['request'], $image_name, $image_path, $file_id);
+            if ($image !== false) {
+                $galleryData['image'] = $image;
+                if ($gallery->image && file_exists($gallery->image)) {
+                    unlink($gallery->image);
+                }
+            }
+            $updated = $gallery->update($galleryData);
+            if ($updated) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+}
+
+?>

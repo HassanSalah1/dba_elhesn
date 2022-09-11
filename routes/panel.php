@@ -15,6 +15,7 @@ use App\Http\Controllers\Dashboard\Setting\CityController;
 use App\Http\Controllers\Dashboard\Setting\ContactTypeController;
 use App\Http\Controllers\Dashboard\Setting\CountryController;
 use App\Http\Controllers\Dashboard\Setting\FaqController;
+use App\Http\Controllers\Dashboard\Setting\GalleryController;
 use App\Http\Controllers\Dashboard\Setting\IntroController;
 use App\Http\Controllers\Dashboard\Setting\NegotiationPercentController;
 use App\Http\Controllers\Dashboard\Setting\NegotiationPeriodController;
@@ -72,7 +73,13 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/team/edit', [TeamController::class, 'editTeam']); // edit Team
         Route::post('/team/delete', [TeamController::class, 'deleteTeam']); // delete Team
 
-
+        ////////////////////////////////
+        Route::get('/galleries', [GalleryController::class, 'showGalleries'])->name('dashboard-galleries'); // show Index page that control all Galleries
+        Route::get('/galleries/data', [GalleryController::class, 'getGalleriesData']); // get all Galleries data for DataTable
+        Route::post('/gallery/add', [GalleryController::class, 'addGallery']); // add Gallery
+        Route::post('/gallery/data', [GalleryController::class, 'getGalleryData']); // get Gallery data
+        Route::post('/gallery/edit', [GalleryController::class, 'editGallery']); // edit Gallery
+        Route::post('/gallery/delete', [GalleryController::class, 'deleteGallery']); // delete Gallery
 
 
         //////////////////////////////////
