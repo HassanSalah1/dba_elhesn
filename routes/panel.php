@@ -81,6 +81,14 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/gallery/edit', [GalleryController::class, 'editGallery']); // edit Gallery
         Route::post('/gallery/delete', [GalleryController::class, 'deleteGallery']); // delete Gallery
 
+        ////////////////////////////////
+        Route::get('/committees', [CommitteeController::class, 'showCommittees'])->name('dashboard-committee'); // show Index page that control all Committees
+        Route::get('/committees/data', [CommitteeController::class, 'getCommitteesData']); // get all Committees data for DataTable
+        Route::post('/committee/add', [CommitteeController::class, 'addCommittee']); // add Committee
+        Route::post('/committee/data', [CommitteeController::class, 'getCommitteeData']); // get Committee data
+        Route::post('/committee/edit', [CommitteeController::class, 'editCommittee']); // edit Committee
+        Route::post('/committee/delete', [CommitteeController::class, 'deleteCommittee']); // delete Committee
+
 
         //////////////////////////////////
         Route::get('/about', [HomeController::class, 'showAbout'])->name('dashboard-about'); // about page

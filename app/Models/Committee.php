@@ -12,7 +12,13 @@ class Committee extends Model
     use HasFactory;
 
     protected $table = 'committees';
-    protected $fillable = ['name_ar', 'name_en', 'description_ar', 'description_en'];
+    protected $fillable = ['name_ar', 'name_en', 'description_ar', 'description_en', 'image'];
+
+    public function getImageUrlAttribute()
+    {
+        $image = $this->image;
+        return url($image);
+    }
 
     public function getNameAttribute()
     {
