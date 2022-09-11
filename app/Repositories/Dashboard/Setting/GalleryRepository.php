@@ -15,7 +15,7 @@ class GalleryRepository
         $gallerys = Gallery::orderBy('id', 'DESC');
         return DataTables::of($gallerys)
             ->addColumn('type', function ($gallery) {
-                return $gallery->image !== null ? 'image' : 'video';
+                return $gallery->image !== null ? trans('admin.Image') : trans('admin.Video');
             })
             ->addColumn('file', function ($gallery) {
                 if ($gallery->image && file_exists($gallery->image)) {
