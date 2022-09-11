@@ -249,6 +249,7 @@ return [
     'add_gallery' => 'إضافة',
     'edit_gallery' => 'تعديل',
     'gallery_type' => 'النوع',
-    'video' => 'فيديو',
+    'Video' => 'فيديو',
+    'Image' => 'صورة',
 ];
 ?>
