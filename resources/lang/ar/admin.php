@@ -244,5 +244,6 @@ return [
     'teams_title' => 'فريق العمل',
     'add_team' => 'إضافة فريق',
     'edit_team' => 'تعديل فريق',
+    'position' => 'الوظيفة',
 ];
 ?>
