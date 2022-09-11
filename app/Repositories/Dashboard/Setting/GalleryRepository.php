@@ -62,6 +62,9 @@ class GalleryRepository
     {
         $gallery = Gallery::where(['id' => $data['id']])->first();
         if ($gallery) {
+            if ($gallery->image && file_exists($gallery->image)) {
+                unlink($gallery->image);
+            }
             $gallery->delete();
             return true;
         }
