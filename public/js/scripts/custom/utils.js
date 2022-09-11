@@ -212,7 +212,7 @@ function addModal(lang_obj) {
             lang_obj.select_selector.forEach((item, index) => {
                 $('#' + item).val($('#' + item + ' > option:first-child').val()).trigger('change');
                 $('#' + item).select2();
-                $('#general-form select[name=type]').attr('disabled', false);
+                $('#' + item).attr('disabled', false);
             });
         }
         if (lang_obj.multi_selector && lang_obj.multi_selector.length > 0) {
