@@ -39,7 +39,7 @@
         },
         {
             "name": "teams_title",
-            "icon": "teams",
+            "icon": "users",
             "url": "admin/teams",
             "slug": "dashboard-teams"
         },
