@@ -15,8 +15,8 @@ class AuthenticateApi
     {
         $user = auth()->user();
 
-        if (!$user || $user->role !== UserRoles::CUSTOMER
-                   || $user->status === Status::INACTIVE) {
+        if (!$user || $user->role !== UserRoles::FAN
+            || $user->status === Status::INACTIVE) {
             return UtilsRepository::handleResponseApi([
                 'message' => trans('api.not_login_message'),
                 'code' => HttpCode::AUTH_ERROR
