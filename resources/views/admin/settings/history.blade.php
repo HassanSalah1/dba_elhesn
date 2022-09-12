@@ -25,13 +25,13 @@
                                 <div class="col-12">
                                     <div class="mb-1">
                                         <label class="form-label" for="exampleFormControlTextarea1">
-                                            {{trans('admin.'.\App\Entities\Key::CLUB_HISTORY_EN)}}
+                                            {{trans('admin.'.\App\Entities\Key::CLUB_HISTORY_AR)}}
                                         </label>
                                         <textarea
-                                            class="form-control" name="{{\App\Entities\Key::CLUB_HISTORY_EN}}"
+                                            class="form-control" name="{{\App\Entities\Key::CLUB_HISTORY_AR}}"
                                             id="exampleFormControlTextarea1"
                                             rows="3"
-                                            placeholder=" {{trans('admin.'.\App\Entities\Key::CLUB_HISTORY_EN)}}"
+                                            placeholder=" {{trans('admin.'.\App\Entities\Key::CLUB_HISTORY_AR)}}"
                                         >@if(isset($history_ar) && $history_ar){{$history_ar->value}}@endif</textarea>
                                     </div>
                                 </div>
