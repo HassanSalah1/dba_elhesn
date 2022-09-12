@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c8a92d6-8389-422f-83cd-75ca4ed11af5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/resources/lang/ar/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/ActionResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/ActionResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/General/UtilsRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/General/UtilsRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ar/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/de/locale.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/fr/locale.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/pt/locale.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +172,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/action" />
+    <property name="last_opened_file_path" value="D:/laravel/mercy" />
     <property name="nodejs_package_manager_path" value="yarn" />
   </component>
   <component name="RecentsManager">
@@ -204,7 +211,7 @@
       <workItem from="1662903480796" duration="622000" />
       <workItem from="1662912154818" duration="12772000" />
       <workItem from="1662974228236" duration="531000" />
-      <workItem from="1663002456476" duration="10269000" />
+      <workItem from="1663002456476" duration="11344000" />
     </task>
     <servers />
   </component>
@@ -216,10 +223,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1663011599246" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1663010342829">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1663014592777">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1663010342829" />
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1663014592777" />
     <state x="479" y="129" width="577" height="566" key="find.popup" timestamp="1663011489116">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

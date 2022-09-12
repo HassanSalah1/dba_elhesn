@@ -49,7 +49,7 @@ class AuthController extends Controller
 
     public function logout(Request $request){
         $data = $request->all();
-        return AuthApiService::logout();
+        return AuthApiService::logout($data);
     }
 
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Repositories\General\UtilsRepository;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ActionResource extends JsonResource
@@ -18,10 +19,8 @@ class ActionResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'description' => $this->description,
-            'video_url' => $this->video_url,
             'image' => $image ? url($image->image) : null,
-            'datetime' => date('Y-m-d H:i' , strtotime($this->created_at))
+            'start_date' => UtilsRepository::translateDate(date('d F', strtotime($this->start_date)))
         ];
     }
 }

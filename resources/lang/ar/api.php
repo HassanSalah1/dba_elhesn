@@ -90,12 +90,18 @@ return [
     'notification_approved_bank_transfer_message' => 'تم تأكيد تحويلك وتم شحن المحفظه الخاصه بك',
     'notification_refused_bank_transfer_title' => 'رفض شحن الرصيد',
     'notification_refused_bank_transfer_message' => 'تم رفض طلب شحن الرصيد',
-    '' => '',
-    '' => '',
-    '' => '',
-    '' => '',
-    '' => '',
-    '' => '',
-    '' => '',
+
+    'January' => 'يناير',
+    'February'=> 'فبراير',
+    'March'=> 'مارس',
+    'April'=> 'أبريل',
+    'May'=> 'مايو',
+    'June'=> 'يونيو',
+    'July'=> 'يوليو',
+    'August'=> 'أغسطس',
+    'September'=> 'سبتمبر',
+    'October'=> 'أكتوبر',
+    'November'=> 'نوفمبر',
+    'December'=> 'ديسمبر'
 ];
 ?>

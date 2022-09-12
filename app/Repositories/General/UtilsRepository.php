@@ -17,6 +17,18 @@ use LaravelFCM\Message\PayloadNotificationBuilder;
 class UtilsRepository
 {
 
+    public static function translateDate($date)
+    {
+        $month = ['January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'
+        ];
+        $monthAR = [trans('api.January'), trans('api.February'), trans('api.March'),
+            trans('api.April'), trans('api.May'), trans('api.June'), trans('api.July'),
+            trans('api.August'), trans('api.September'), trans('api.October'),
+            trans('api.November'), trans('api.December')
+        ];
+        return str_replace($month, $monthAR, strtolower($date));
+    }
 
     public static function translateTime($date)
     {

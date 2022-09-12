@@ -90,5 +90,19 @@ return [
     'notification_accept_damain_order_message' => 'Your request has been accepted. Please confirm and complete the payment',
     'notification_accept_order_title' => 'Request Accept',
     'notification_accept_order_message' => 'Your request has been accepted. Please confirm and complete the payment',
+
+
+    'January' => 'January',
+    'February'=> 'February',
+    'March'=> 'March',
+    'April'=> 'April',
+    'May'=> 'May',
+    'June'=> 'June',
+    'July'=> 'July',
+    'August'=> 'August',
+    'September'=> 'September',
+    'October'=> 'October',
+    'November'=> 'November',
+    'December'=> 'December'
 ];
 ?>
