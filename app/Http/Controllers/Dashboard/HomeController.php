@@ -53,7 +53,6 @@ class HomeController extends Controller
     }
 
 
-
     // show terms page
     public function showTerms()
     {
@@ -133,7 +132,7 @@ class HomeController extends Controller
             'defaultLanguage' => 'ar',
             'direction' => 'rtl'
         ];
-        $data['history_ar'] = Setting::where(['key' => Key::CLUB_HISTORY_EN])->first();
+        $data['history_ar'] = Setting::where(['key' => Key::CLUB_HISTORY_AR])->first();
         $data['history_en'] = Setting::where(['key' => Key::CLUB_HISTORY_EN])->first();
         $data['title'] = trans('admin.history_title');
         return view('admin.settings.history')->with($data);
