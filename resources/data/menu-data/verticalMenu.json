@@ -58,15 +58,8 @@
         {
             "name": "history_title",
             "icon": "users",
-            "slug": "",
-            "submenu": [
-                {
-                    "name": "history_title",
-                    "url": "/admin/history",
-                    "icon": "circle",
-                    "slug": "dashboard-history"
-                }
-            ]
+            "url": "admin/history",
+            "slug": "dashboard-history"
         },
         {
             "name": "contacts_title",

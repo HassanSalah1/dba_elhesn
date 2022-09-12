@@ -71,12 +71,10 @@ class SettingApiRepository
         $setting = Setting::where(['key' => ($lang === 'en') ?
             Key::CLUB_HISTORY_EN : Key::CLUB_HISTORY_AR])->first();
 
-        $images = Image::where(['item_type' => ImageType::HISTORY_DESCRIPTION])->get();
         // return success response
         return [
             'data' => [
-                'history' => $setting ? $setting->value : null,
-                'images' => ImageResource::collection($images)
+                'history' => $setting ? $setting->value : null
             ],
             'message' => 'success',
             'code' => HttpCode::SUCCESS
