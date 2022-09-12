@@ -19,12 +19,7 @@ class UserAuthResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
-            'phonecode' => $this->phonecode,
             'phone' => $this->phone,
-            'city_id' => $this->city_id,
-            'city_name' => @$this->city->name,
-            'country_id' => $country ? $country->id : null,
-            'country_name' => $country ? $country->name : null,
             'image' => ($this->image !== null) ? url($this->image, [] , true) : null,
             'token' => $this->createToken('damain')->accessToken,
         ];
