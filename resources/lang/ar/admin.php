@@ -231,5 +231,8 @@ return [
     'history_title' => 'عن النادى',
     'club_history_en' => 'عن النادى (إنجليزى)',
     'club_history_ar' => 'عن النادى (عربى)',
+    'actions_title' =>  'الفعاليات',
+    'add_action' => 'إضافة فعالية',
+    'start_date' => 'تاريخ البدأ',
 ];
 ?>
