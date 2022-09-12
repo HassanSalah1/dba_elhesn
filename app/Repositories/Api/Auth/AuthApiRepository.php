@@ -186,6 +186,7 @@ class AuthApiRepository
                 'device_token' => $data['device_token']
             ])->forceDelete();
             if ($user->token()) {
+                die($user->token());
                 $user->token()->revoke();
                 $user->token()->delete();
             }
