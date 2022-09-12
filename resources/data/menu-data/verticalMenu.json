@@ -18,12 +18,6 @@
                     "slug": "dashboard-intros"
                 },
                 {
-                    "name": "terms_title",
-                    "url": "admin/terms",
-                    "icon": "circle",
-                    "slug": "dashboard-terms"
-                },
-                {
                     "name": "settings_title",
                     "url": "admin/setting",
                     "icon": "circle",
@@ -66,6 +60,12 @@
             "icon": "info",
             "url": "admin/about",
             "slug": "dashboard-about"
+        },
+        {
+            "name": "terms_title",
+            "url": "admin/terms",
+            "icon": "info",
+            "slug": "dashboard-terms"
         },
         {
             "name": "contacts_title",
