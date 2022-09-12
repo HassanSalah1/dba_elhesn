@@ -310,7 +310,7 @@ class AuthApiRepository
             // send email
             $email = ($user->edited_email !== null) ? $user->edited_email : $user->email;
             $locale = App::getLocale();
-            $message = str_replace('{code}', $code, trans('sms.your_code'));
+//            $message = str_replace('{code}', $code, trans('sms.your_code'));
 //            SendSMSJob::dispatch($phone, $message, $locale);
             return true;
         } else {

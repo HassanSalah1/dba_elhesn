@@ -66,53 +66,26 @@ class HomeRepository
     }
 
 
-    public static function savePrivacy(array $data)
-    {
-        // privacy ar
-        if (isset($data[Key::PRIVACY_AR])) {
-            $terms_ar = Setting::where(['key' => Key::PRIVACY_AR])->first();
-            if ($terms_ar) {
-                $terms_ar->update(['value' => $data[Key::PRIVACY_AR]]);
-            } else {
-                Setting::create(['key' => Key::PRIVACY_AR, 'value' => $data[Key::PRIVACY_AR]]);
-            }
-        }
-
-        // privacy en
-        if (isset($data[Key::PRIVACY_EN])) {
-            $terms_en = Setting::where(['key' => Key::PRIVACY_EN])->first();
-            if ($terms_en) {
-                $terms_en->update(['value' => $data[Key::PRIVACY_EN]]);
-            } else {
-                Setting::create(['key' => Key::PRIVACY_EN, 'value' => $data[Key::PRIVACY_EN]]);
-            }
-        }
-
-        return UtilsRepository::response(true, trans('admin.process_success_message')
-            , '');
-    }
-
-
     public static function saveHistory(array $data)
 
     {
         // HISTORY_AR
-        if (isset($data[Key::HISTORY_AR])) {
-            $terms_ar = Setting::where(['key' => Key::HISTORY_AR])->first();
+        if (isset($data[Key::CLUB_HISTORY_AR])) {
+            $terms_ar = Setting::where(['key' => Key::CLUB_HISTORY_AR])->first();
             if ($terms_ar) {
-                $terms_ar->update(['value' => $data[Key::HISTORY_AR]]);
+                $terms_ar->update(['value' => $data[Key::CLUB_HISTORY_AR]]);
             } else {
-                Setting::create(['key' => Key::HISTORY_AR, 'value' => $data[Key::HISTORY_AR]]);
+                Setting::create(['key' => Key::CLUB_HISTORY_AR, 'value' => $data[Key::CLUB_HISTORY_AR]]);
             }
         }
 
         // HISTORY_EN
-        if (isset($data[Key::HISTORY_EN])) {
-            $terms_en = Setting::where(['key' => Key::HISTORY_EN])->first();
+        if (isset($data[Key::CLUB_HISTORY_EN])) {
+            $terms_en = Setting::where(['key' => Key::CLUB_HISTORY_EN])->first();
             if ($terms_en) {
-                $terms_en->update(['value' => $data[Key::HISTORY_EN]]);
+                $terms_en->update(['value' => $data[Key::CLUB_HISTORY_EN]]);
             } else {
-                Setting::create(['key' => Key::HISTORY_EN, 'value' => $data[Key::HISTORY_EN]]);
+                Setting::create(['key' => Key::CLUB_HISTORY_EN, 'value' => $data[Key::CLUB_HISTORY_EN]]);
             }
         }
 

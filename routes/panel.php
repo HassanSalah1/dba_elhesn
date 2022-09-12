@@ -90,6 +90,10 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/committee/edit', [CommitteeController::class, 'editCommittee']); // edit Committee
         Route::post('/committee/delete', [CommitteeController::class, 'deleteCommittee']); // delete Committee
 
+        //////////////////////////////////
+        Route::get('/history', [HomeController::class, 'showHistory'])->name('dashboard-history'); // history page
+        Route::post('/history/save', [HomeController::class, 'saveHistory']);
+
 
         //////////////////////////////////
         Route::get('/about', [HomeController::class, 'showAbout'])->name('dashboard-about'); // about page

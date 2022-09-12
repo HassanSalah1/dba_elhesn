@@ -56,6 +56,19 @@
             "slug": "dashboard-committees"
         },
         {
+            "name": "history_title",
+            "icon": "users",
+            "slug": "",
+            "submenu": [
+                {
+                    "name": "history_title",
+                    "url": "/admin/history",
+                    "icon": "circle",
+                    "slug": "dashboard-history"
+                }
+            ]
+        },
+        {
             "name": "contacts_title",
             "icon": "inbox",
             "url": "admin/contacts",
