@@ -62,6 +62,12 @@
             "slug": "dashboard-history"
         },
         {
+            "name": "about_title",
+            "icon": "info",
+            "url": "admin/about",
+            "slug": "dashboard-about"
+        },
+        {
             "name": "contacts_title",
             "icon": "message-circle",
             "url": "admin/contacts",
