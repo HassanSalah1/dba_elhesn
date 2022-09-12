@@ -19,8 +19,8 @@ class UtilsRepository
 
     public static function translateDate($date)
     {
-        $month = ['January', 'February', 'March', 'April', 'May', 'June',
-            'July', 'August', 'September', 'October', 'November', 'December'
+        $month = ['january', 'february', 'march', 'april', 'may', 'june',
+            'july', 'august', 'september', 'october', 'november', 'december'
         ];
         $monthAR = [trans('api.January'), trans('api.February'), trans('api.March'),
             trans('api.April'), trans('api.May'), trans('api.June'), trans('api.July'),
