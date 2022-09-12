@@ -112,8 +112,8 @@ class HomeController extends Controller
             'defaultLanguage' => 'ar',
             'direction' => 'rtl'
         ];
-        $data['about_ar'] = Setting::where(['key' => Key::ABOUT_AR])->first();
-        $data['about_en'] = Setting::where(['key' => Key::ABOUT_EN])->first();
+        $data['about_ar'] = Setting::where(['key' => Key::CITY_DESCRIPTION_AR])->first();
+        $data['about_en'] = Setting::where(['key' => Key::CITY_DESCRIPTION_EN])->first();
         $data['title'] = trans('admin.about_title');
         return view('admin.settings.about')->with($data);
     }

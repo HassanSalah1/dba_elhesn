@@ -93,11 +93,11 @@ Route::group(['prefix' => 'admin'], function () {
         //////////////////////////////////
         Route::get('/history', [HomeController::class, 'showHistory'])->name('dashboard-history'); // history page
         Route::post('/history/save', [HomeController::class, 'saveHistory']);
-
-
         //////////////////////////////////
         Route::get('/about', [HomeController::class, 'showAbout'])->name('dashboard-about'); // about page
         Route::post('/about/save', [HomeController::class, 'saveAbout']);
+
+
         ////////////////////////////////
 
         Route::get('/privacy', [HomeController::class, 'showPrivacy'])->name('dashboard-privacy'); // about page

@@ -25,13 +25,13 @@
                                 <div class="col-12">
                                     <div class="mb-1">
                                         <label class="form-label" for="exampleFormControlTextarea1">
-                                            {{trans('admin.'.\App\Entities\Key::ABOUT_AR)}}
+                                            {{trans('admin.'.\App\Entities\Key::CITY_DESCRIPTION_AR)}}
                                         </label>
                                         <textarea
-                                            class="form-control" name="{{\App\Entities\Key::ABOUT_AR}}"
+                                            class="form-control" name="{{\App\Entities\Key::CITY_DESCRIPTION_AR}}"
                                             id="exampleFormControlTextarea1"
                                             rows="3"
-                                            placeholder=" {{trans('admin.'.\App\Entities\Key::ABOUT_AR)}}"
+                                            placeholder=" {{trans('admin.'.\App\Entities\Key::CITY_DESCRIPTION_AR)}}"
                                         >@if(isset($about_ar) && $about_ar){{$about_ar->value}}@endif</textarea>
                                     </div>
                                 </div>
@@ -39,13 +39,13 @@
                                 <div class="col-12">
                                     <div class="mb-1">
                                         <label class="form-label" for="exampleFormControlTextarea1">
-                                            {{trans('admin.'.\App\Entities\Key::ABOUT_EN)}}
+                                            {{trans('admin.'.\App\Entities\Key::CITY_DESCRIPTION_EN)}}
                                         </label>
                                         <textarea
-                                            class="form-control" name="{{\App\Entities\Key::ABOUT_EN}}"
+                                            class="form-control" name="{{\App\Entities\Key::CITY_DESCRIPTION_EN}}"
                                             id="exampleFormControlTextarea1"
                                             rows="3"
-                                            placeholder=" {{trans('admin.'.\App\Entities\Key::ABOUT_EN)}}"
+                                            placeholder=" {{trans('admin.'.\App\Entities\Key::CITY_DESCRIPTION_EN)}}"
                                         >@if(isset($about_en) && $about_en){{$about_en->value}}@endif</textarea>
                                     </div>
                                 </div>

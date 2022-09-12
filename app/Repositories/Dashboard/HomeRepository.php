@@ -14,28 +14,26 @@ class HomeRepository
     public static function saveAbout(array $data)
     {
         // about ar
-        if (isset($data[Key::ABOUT_AR])) {
-            $about_ar = Setting::where(['key' => Key::ABOUT_AR])->first();
+        if (isset($data[Key::CITY_DESCRIPTION_AR])) {
+            $about_ar = Setting::where(['key' => Key::CITY_DESCRIPTION_AR])->first();
             if ($about_ar) {
-                $about_ar->update(['value' => $data[Key::ABOUT_AR]]);
+                $about_ar->update(['value' => $data[Key::CITY_DESCRIPTION_AR]]);
             } else {
-                Setting::create(['key' => Key::ABOUT_AR, 'value' => $data[Key::ABOUT_AR]]);
+                Setting::create(['key' => Key::CITY_DESCRIPTION_AR, 'value' => $data[Key::CITY_DESCRIPTION_AR]]);
             }
         }
 
         // about en
-        if (isset($data[Key::ABOUT_EN])) {
-            $about_en = Setting::where(['key' => Key::ABOUT_EN])->first();
+        if (isset($data[Key::CITY_DESCRIPTION_EN])) {
+            $about_en = Setting::where(['key' => Key::CITY_DESCRIPTION_EN])->first();
             if ($about_en) {
-                $about_en->update(['value' => $data[Key::ABOUT_EN]]);
+                $about_en->update(['value' => $data[Key::CITY_DESCRIPTION_EN]]);
             } else {
-                Setting::create(['key' => Key::ABOUT_EN, 'value' => $data[Key::ABOUT_EN]]);
+                Setting::create(['key' => Key::CITY_DESCRIPTION_EN, 'value' => $data[Key::CITY_DESCRIPTION_EN]]);
             }
         }
 
-        return UtilsRepository::response(true,
-            trans('admin.process_success_message')
-            , '');
+        return UtilsRepository::response(true, trans('admin.process_success_message'), '');
     }
 
 

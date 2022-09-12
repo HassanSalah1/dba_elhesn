@@ -36,12 +36,10 @@ class SettingApiRepository
         $setting = Setting::where(['key' => ($lang === 'en') ?
             Key::CITY_DESCRIPTION_EN : Key::CITY_DESCRIPTION_AR])->first();
 
-        $images = Image::where(['item_type' => ImageType::CITY_DESCRIPTION])->get();
         // return success response
         return [
             'data' => [
                 'city_description' => $setting ? $setting->value : null,
-                'images' => ImageResource::collection($images)
             ],
             'message' => 'success',
             'code' => HttpCode::SUCCESS
