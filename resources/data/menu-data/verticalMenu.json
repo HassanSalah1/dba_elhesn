@@ -39,31 +39,31 @@
         },
         {
             "name": "teams_title",
-            "icon": "users",
+            "icon": "box",
             "url": "admin/teams",
             "slug": "dashboard-teams"
         },
         {
             "name": "gallery_title",
-            "icon": "users",
+            "icon": "image",
             "url": "admin/galleries",
             "slug": "dashboard-galleries"
         },
         {
             "name": "committees_title",
-            "icon": "users",
+            "icon": "circle",
             "url": "admin/committees",
             "slug": "dashboard-committees"
         },
         {
             "name": "history_title",
-            "icon": "users",
+            "icon": "info",
             "url": "admin/history",
             "slug": "dashboard-history"
         },
         {
             "name": "contacts_title",
-            "icon": "inbox",
+            "icon": "message-circle",
             "url": "admin/contacts",
             "slug": "dashboard-contacts"
         }
