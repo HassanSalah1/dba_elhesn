@@ -4,7 +4,6 @@ namespace App\Repositories\General;
 
 use App\Entities\DeviceType;
 use App\Entities\HttpCode;
-use App\Models\Notification;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Mail;
 use Intervention\Image\Exception\ImageException;
