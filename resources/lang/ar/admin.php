@@ -228,5 +228,8 @@ return [
     'committees_title' => 'لجان خاصة',
     'add_committee' => 'إضافة لجان',
     'edit_committee' => 'تعديل لجان',
+    'history_title' => 'عن النادى',
+    'club_history_en' => 'عن النادى (إنجليزى)',
+    'club_history_ar' => 'عن النادى (عربى)',
 ];
 ?>
