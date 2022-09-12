@@ -142,7 +142,6 @@
 
             $('#general-form').submit(function (e) {
                 e.preventDefault();
-                console.log('test');
                 sendAjaxRequest(this, '{{url('/admin/about/save', [] , env('APP_ENV') === 'local' ?  false : true)}}', {
                     error_message: '{{trans('admin.general_error_message')}}',
                     error_title: '',
