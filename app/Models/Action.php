@@ -12,7 +12,10 @@ class Action extends Model
     use HasFactory;
 
     protected $table = 'actions';
-    protected $fillable = ['title_ar', 'title_en', 'description_ar', 'description_en', 'video_url'];
+    protected $fillable = ['title_ar', 'title_en', 'description_ar', 'description_en',
+        'start_date', 'video_url'];
+
+    protected $appends = ['title', 'description'];
 
     public function getTitleAttribute()
     {
@@ -36,6 +39,6 @@ class Action extends Model
     {
         return $this->hasOne(Image::class, 'item_id', 'id')
             ->where(['item_type' => ImageType::ACTION])
-            ->where(['primary' => 0])->first();
+            ->where(['primary' => 1])->first();
     }
 }

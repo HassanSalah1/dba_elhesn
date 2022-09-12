@@ -69,9 +69,15 @@
         },
         {
             "name": "news_title",
-            "icon": "circle",
+            "icon": "file-text",
             "url": "admin/news",
             "slug": "dashboard-news"
+        },
+        {
+            "name": "actions_title",
+            "icon": "file",
+            "url": "admin/actions",
+            "slug": "dashboard-actions"
         },
         {
             "name": "contacts_title",
