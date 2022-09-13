@@ -5,6 +5,7 @@ use App\Http\Controllers\Dashboard\Auth\AuthenticationController;
 use App\Http\Controllers\Dashboard\Contact\ContactController;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\News\CategoryController;
+use App\Http\Controllers\Dashboard\News\NewController;
 use App\Http\Controllers\Dashboard\Notification\NotificationController;
 use App\Http\Controllers\Dashboard\Setting\CommitteeController;
 use App\Http\Controllers\Dashboard\Setting\GalleryController;
