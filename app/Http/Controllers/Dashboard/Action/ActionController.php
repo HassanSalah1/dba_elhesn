@@ -79,4 +79,11 @@ class ActionController extends Controller
         return ActionService::editAction($data);
     }
 
+    public function removeImage(Request $request, $id)
+    {
+        $data = $request->all();
+        $data['id'] = $id;
+        return ActionService::removeImage($data);
+    }
+
 }

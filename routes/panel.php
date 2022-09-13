@@ -107,7 +107,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/action/edit/{id}', [ActionController::class, 'showEditAction']); // show edit action
         Route::post('/action/edit/{id}', [ActionController::class, 'editAction']); // edit action
         Route::post('/action/delete', [ActionController::class, 'deleteAction']); // delete action
-
+        Route::post('/action/remove_image', [ActionController::class, 'removeImage']); // remove Image
 
 
         ////////////////////////////////

@@ -102,6 +102,27 @@
 
                                 <hr>
 
+                                <div class="mb-1">
+                                    <label class="form-label" for="images">{{trans('admin.images')}}</label>
+                                    <input name="image[]" class="form-control dt-full-name" id="images" type="file"
+                                           multiple/>
+                                </div>
+
+                                <div class="mb-1 row" id="images_div">
+                                    @if(isset($action) && $action)
+                                        @foreach($action->images() as $image)
+                                            <div class="col-md-4" id="image_{{$image->id}}">
+                                                <img style="width: 100%;" src="{{url($image->image)}}"
+                                                     class="img-responsive"/>
+                                                <button type="button" onclick="removeImage('{{$image->id}}')">
+                                                    حذف
+                                                </button>
+                                            </div>
+                                        @endforeach
+                                    @endif
+                                </div>
+
+                                <hr>
 
                                 <div class="col-xl-12 col-md-12 col-12">
                                     <div class="mb-1">
@@ -229,6 +250,25 @@
                 },
                 error: {
                     'fileSize': '{{trans('admin.dropify_error')}}',
+                }
+            });
+        }
+
+        function removeImage(id) {
+            var form = new FormData();
+            form.append('id', id);
+            $.ajax({
+                url: '{{url('/admin/action/remove_image', [] , env('APP_ENV') === 'local' ?  false : true)}}',
+                method: 'POST',
+                data: form,
+                processData: false,
+                contentType: false,
+                headers: {'X-CSRF-TOKEN': csrf_token},
+                success: function (response) {
+                    $('#image_' + id).remove();
+                },
+                error: function () {
+                    toastr['error']('{{trans('admin.general_error_message')}}', '{{trans('admin.error_title')}}');
                 }
             });
         }

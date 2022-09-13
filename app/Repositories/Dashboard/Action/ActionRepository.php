@@ -89,6 +89,19 @@ class ActionRepository
         return false;
     }
 
+    public static function removeImage(array $data)
+    {
+        $image = Image::where(['id' => $data['id'] , 'item_type' => ImageType::ACTION])->first();
+        if ($image) {
+            if (file_exists($image->image)) {
+                unlink($image->image);
+            }
+            $image->forceDelete();
+            return true;
+        }
+        return false;
+    }
+
     public static function getActionData(array $data)
     {
         $action = Action::where(['id' => $data['id']])->first();

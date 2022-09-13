@@ -65,6 +65,13 @@ class ActionService
     }
 
 
+    public static function removeImage(array $data)
+    {
+        $response = ActionRepository::removeImage($data);
+        return UtilsRepository::response($response, trans('admin.process_success_message')
+            , trans('admin.success_title'));
+    }
+
 }
 
 ?>
