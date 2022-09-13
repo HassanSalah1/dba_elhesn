@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Dashboard\News;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Services\Dashboard\News\NewService;
-use App\Models\News;use Illuminate\Http\Request;
+use App\Models\News;
+use Illuminate\Http\Request;
 
 class NewController extends Controller
 {
