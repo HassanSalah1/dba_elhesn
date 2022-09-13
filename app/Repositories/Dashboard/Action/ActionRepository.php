@@ -142,6 +142,7 @@ class ActionRepository
             $images = $data['request']->file('images');
             foreach ($images as $image) {
                 $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
+                $image_path = 'uploads/actions/';
                 $image_name = $image;
                 $image = UtilsRepository::uploadImage($data['request'], $image_name, $image_path, $file_id);
                 if ($image !== false) {
