@@ -70,6 +70,7 @@ Route::group(['middleware' => 'lang'], function () {
 
             Route::get('/profile/get', [UserController::class, 'getProfile']); // get profile
             Route::post('/profile/edit', [UserController::class, 'editProfile']); // edit profile
+            Route::post('/delete-account', [AuthController::class, 'deleteAccount']); // delete Account (only deactivate)
 
 
         });

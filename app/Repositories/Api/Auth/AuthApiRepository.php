@@ -4,6 +4,7 @@ namespace App\Repositories\Api\Auth;
 
 
 use App\Entities\HttpCode;
+use App\Entities\IsActive;
 use App\Entities\Status;
 use App\Entities\UserRoles;
 use App\Http\Resources\UserAuthResource;
@@ -327,6 +328,26 @@ class AuthApiRepository
 //            $code = self::createUserVerificationCode($user);
 //        }
         return '0000';  // env('APP_ENV') === 'local' ?  : $code;
+    }
+
+    public static function deleteAccount()
+    {
+        $user = Auth::user();
+        if ($user) {
+            $user = User::find($user->id);
+            Auth::logout();
+            $user->update([
+                'device_token' => null,
+                'device_type' => null,
+                'is_active' => Status::UNVERIFIED
+            ]);
+            $user->token()->revoke();
+            $user->token()->delete();
+        }
+        return [
+            'message' => 'success',
+            'code' => HttpCode::SUCCESS
+        ];
     }
 
 }

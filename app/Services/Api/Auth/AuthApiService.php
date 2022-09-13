@@ -155,6 +155,11 @@ class AuthApiService
         return UtilsRepository::handleResponseApi($response);
     }
 
+    public static function deleteAccount()
+    {
+        $response = AuthApiRepository::deleteAccount();
+        return UtilsRepository::handleResponseApi($response);
+    }
 
 }
 

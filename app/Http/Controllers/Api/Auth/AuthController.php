@@ -52,4 +52,9 @@ class AuthController extends Controller
         return AuthApiService::logout($data);
     }
 
+    public function deleteAccount(Request $request){
+        $data = $request->all();
+        return AuthApiService::deleteAccount();
+    }
+
 }
