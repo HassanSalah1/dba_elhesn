@@ -1,7 +1,7 @@
 <?php
-namespace App\Services\Dashboard\Product;
+namespace App\Services\Dashboard\News;
 
-use App\Repositories\Dashboard\Product\CategoryRepository;
+use App\Repositories\Dashboard\News\CategoryRepository;
 use App\Repositories\General\UtilsRepository;
 use App\Repositories\General\ValidationRepository;
 
@@ -12,11 +12,6 @@ class CategoryService
     public static function getCategoriesData(array $data)
     {
         return CategoryRepository::getCategoriesData($data);
-    }
-
-    public static function getSubCategoriesData(array $data)
-    {
-        return CategoryRepository::getSubCategoriesData($data);
     }
 
     public static function addCategory(array $data)

@@ -1,5 +1,5 @@
 <?php
-namespace App\Repositories\Dashboard\Product;
+namespace App\Repositories\Dashboard\News;
 
 use App\Entities\ProductType;
 use App\Models\Product;

@@ -1,8 +1,8 @@
 <?php
-namespace App\Services\Dashboard\Product;
+namespace App\Services\Dashboard\News;
 
 
-use App\Repositories\Dashboard\Product\ProductRepository;
+use App\Repositories\Dashboard\News\ProductRepository;
 
 class ProductService
 {
