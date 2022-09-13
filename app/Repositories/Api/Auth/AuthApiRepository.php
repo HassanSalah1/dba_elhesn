@@ -335,7 +335,6 @@ class AuthApiRepository
         $user = Auth::user();
         if ($user) {
             $user = User::find($user->id);
-            Auth::logout();
             $user->update([
                 'device_token' => null,
                 'device_type' => null,
