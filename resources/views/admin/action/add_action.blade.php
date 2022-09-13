@@ -111,6 +111,7 @@
                                 <div class="mb-1 row" id="images_div">
                                     @if(isset($action) && $action)
                                         @foreach($action->images() as $image)
+                                            @if($action->image()->id === $image->id) @continue @endif
                                             <div class="col-md-4" id="image_{{$image->id}}">
                                                 <img style="width: 100%;" src="{{url($image->image)}}"
                                                      class="img-responsive"/>
