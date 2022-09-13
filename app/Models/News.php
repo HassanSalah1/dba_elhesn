@@ -12,7 +12,7 @@ class News extends Model
     use HasFactory;
 
     protected $table = 'news';
-    protected $fillable = ['title_ar', 'title_en', 'description_ar', 'description_en', 'video_url'];
+    protected $fillable = ['title_ar', 'title_en', 'description_ar', 'description_en', 'video_url', 'category_id'];
 
     public function getTitleAttribute()
     {
@@ -26,6 +26,11 @@ class News extends Model
         return $lang === 'en' ? $this->description_en : $this->description_ar;
     }
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class)->withTrashed();
+    }
+
     public function images()
     {
         return $this->hasMany(Image::class, 'item_id', 'id')
@@ -36,6 +41,6 @@ class News extends Model
     {
         return $this->hasOne(Image::class, 'item_id', 'id')
             ->where(['item_type' => ImageType::NEWS])
-            ->where(['primary' => 0])->first();
+            ->where(['primary' => 1])->first();
     }
 }
