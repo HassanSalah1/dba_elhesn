@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Repositories\General\UtilsRepository;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class NewDetailsResource extends JsonResource
@@ -22,7 +23,8 @@ class NewDetailsResource extends JsonResource
             'video_url' => $this->video_url,
             'image' => $image ? url($image->image) : null,
             'images' => ImageResource::collection($this->images()),
-            'datetime' => date('Y-m-d H:i' , strtotime($this->created_at))
+            'category' => $this->category->name,
+            'created_date' => UtilsRepository::translateDate(date('d F Y', strtotime($this->created_at))),
         ];
     }
 }

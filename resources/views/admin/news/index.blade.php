@@ -16,6 +16,7 @@
     <link href="{{url('/css/custom/fancybox.css')}}" rel="stylesheet" type="text/css"/>
 @endsection
 
+
 @section('content')
     <!-- Basic table -->
     <section id="basic-datatable">
@@ -24,8 +25,8 @@
                 <div class="card">
                     <div class="card-header border-bottom">
                         <h4 class="card-title">
-                            <a type="button" class="btn btn-primary" href="{{url('/admin/action/add')}}">
-                                {{trans('admin.add_action')}}
+                            <a type="button" class="btn btn-primary" href="{{url('/admin/new/add')}}">
+                                {{trans('admin.add_new')}}
                             </a>
                         </h4>
                     </div>
@@ -61,7 +62,7 @@
     <script>
         $(function () {
 
-            loadDataTables('{{ url("/admin/actions/data") }}',
+            loadDataTables('{{ url("/admin/news/data") }}',
                 ['title', 'image', 'actions'], '',
                 {
                     'show': '{{trans('admin.show')}}',
@@ -75,7 +76,7 @@
 
 
         function deleteAction(item) {
-            ban(item, '{{url('/admin/action/delete')}}', {
+            ban(item, '{{url('/admin/new/delete')}}', {
                 error_message: '{{trans('admin.general_error_message')}}',
                 error_title: '{{trans('admin.error_title')}}',
                 ban_title: "{{trans('admin.delete_action')}}",

@@ -237,5 +237,6 @@ return [
     'edit_action' => 'تعديل فعالية',
     'images' => 'صور إضافية',
     "manage_news_title" => 'إدارة الأخبار',
+    "news_title" => "الأخبار"
 ];
 ?>

@@ -18,10 +18,9 @@ class NewResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'description' => $this->description,
-            'video_url' => $this->video_url,
+            'short_description' => $this->short_description,
             'image' => $image ? url($image->image) : null,
-            'datetime' => date('Y-m-d H:i' , strtotime($this->created_at))
+            'category' => $this->category->name
         ];
     }
 }

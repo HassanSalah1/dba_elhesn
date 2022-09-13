@@ -12,12 +12,19 @@ class News extends Model
     use HasFactory;
 
     protected $table = 'news';
-    protected $fillable = ['title_ar', 'title_en', 'description_ar', 'description_en', 'video_url', 'category_id'];
+    protected $fillable = ['title_ar', 'title_en', 'short_description_ar', 'short_description_en',
+        'description_ar', 'description_en', 'video_url', 'category_id'];
 
     public function getTitleAttribute()
     {
         $lang = App::getLocale();
         return $lang === 'en' ? $this->title_en : $this->title_ar;
+    }
+
+    public function getShortDescriptionAttribute()
+    {
+        $lang = App::getLocale();
+        return $lang === 'en' ? $this->short_description_en : $this->short_description_ar;
     }
 
     public function getDescriptionAttribute()
