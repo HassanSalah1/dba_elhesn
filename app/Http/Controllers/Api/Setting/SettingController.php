@@ -47,6 +47,12 @@ class SettingController extends Controller
         return SettingApiService::addContact($data);
     }
 
+    public function getCategories(Request $request)
+    {
+        $data = $request->all();
+        return SettingApiService::getCategories($data);
+    }
+
     public function getTeams(Request $request)
     {
         $data = $request->all();

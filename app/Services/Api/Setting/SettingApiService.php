@@ -57,6 +57,12 @@ class SettingApiService
         return UtilsRepository::handleResponseApi($response);
     }
 
+    public static function getCategories(array $data)
+    {
+        $response = SettingApiRepository::getCategories($data);
+        return UtilsRepository::handleResponseApi($response);
+    }
+
     public static function getTeams(array $data)
     {
         $response = SettingApiRepository::getTeams($data);

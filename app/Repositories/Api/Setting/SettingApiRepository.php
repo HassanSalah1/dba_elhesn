@@ -7,6 +7,7 @@ use App\Entities\ImageType;
 use App\Entities\Key;
 use App\Http\Resources\ActionDetailsResource;
 use App\Http\Resources\ActionResource;
+use App\Http\Resources\CategoryResource;
 use App\Http\Resources\CommitteeResource;
 use App\Http\Resources\GalleryResource;
 use App\Http\Resources\ImageResource;
@@ -15,6 +16,7 @@ use App\Http\Resources\NewDetailsResource;
 use App\Http\Resources\NewResource;
 use App\Http\Resources\TeamResource;
 use App\Models\Action;
+use App\Models\Category;
 use App\Models\Committee;
 use App\Models\Contact;
 use App\Models\Gallery;
@@ -131,6 +133,17 @@ class SettingApiRepository
         }
     }
 
+
+    public static function getCategories(array $data)
+    {
+        $categories = Category::all();
+        // return success response
+        return [
+            'data' => CategoryResource::collection($categories),
+            'message' => 'success',
+            'code' => HttpCode::SUCCESS
+        ];
+    }
 
     public static function getTeams(array $data)
     {
