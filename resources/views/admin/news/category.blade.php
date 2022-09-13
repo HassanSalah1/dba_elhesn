@@ -1,4 +1,4 @@
-@extends('admin.layouts.contentLayoutMaster')
+@extends('layouts.contentLayoutMaster')
 
 @section('title', $title)
 
