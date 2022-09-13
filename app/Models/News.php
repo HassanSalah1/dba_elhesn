@@ -15,6 +15,8 @@ class News extends Model
     protected $fillable = ['title_ar', 'title_en', 'short_description_ar', 'short_description_en',
         'description_ar', 'description_en', 'video_url', 'category_id'];
 
+    protected $appends = ['title' , 'short_description' , 'description'];
+
     public function getTitleAttribute()
     {
         $lang = App::getLocale();
