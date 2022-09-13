@@ -123,7 +123,9 @@
                                     @endif
                                 </div>
 
+                                <br>
                                 <hr>
+                                <br>
 
                                 <div class="col-xl-12 col-md-12 col-12">
                                     <div class="mb-1">
