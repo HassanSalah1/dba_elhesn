@@ -36,6 +36,8 @@ class UserApiRepository
 
     public static function editProfile(array $data)
     {
+        var_dump($data['email']);
+        die();
         $userData = [
             'name' => (isset($data['name'])) ? $data['name'] : $data['user']->name,
             'edited_email' => (isset($data['email']) && $data['email'] !== $data['user']->email) ?
