@@ -104,7 +104,7 @@
 
                                 <div class="mb-1">
                                     <label class="form-label" for="images">{{trans('admin.images')}}</label>
-                                    <input name="image[]" class="form-control dt-full-name" id="images" type="file"
+                                    <input name="images[]" class="form-control dt-full-name" id="images" type="file"
                                            multiple/>
                                 </div>
 
