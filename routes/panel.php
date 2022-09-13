@@ -4,27 +4,13 @@ use App\Http\Controllers\Dashboard\Action\ActionController;
 use App\Http\Controllers\Dashboard\Auth\AuthenticationController;
 use App\Http\Controllers\Dashboard\Contact\ContactController;
 use App\Http\Controllers\Dashboard\HomeController;
+use App\Http\Controllers\Dashboard\News\CategoryController;
 use App\Http\Controllers\Dashboard\Notification\NotificationController;
-use App\Http\Controllers\Dashboard\Order\BankTransferController;
-use App\Http\Controllers\Dashboard\Order\OrderController;
-use App\Http\Controllers\Dashboard\Order\Setting\BankAccountController;
-use App\Http\Controllers\Dashboard\Order\Setting\PaymentMethodController;
-use App\Http\Controllers\Dashboard\Order\Setting\ShipmentController;
-use App\Http\Controllers\Dashboard\Product\CategoryController;
-use App\Http\Controllers\Dashboard\Product\ProductController;
-use App\Http\Controllers\Dashboard\Setting\CityController;
 use App\Http\Controllers\Dashboard\Setting\CommitteeController;
-use App\Http\Controllers\Dashboard\Setting\ContactTypeController;
-use App\Http\Controllers\Dashboard\Setting\CountryController;
-use App\Http\Controllers\Dashboard\Setting\FaqController;
 use App\Http\Controllers\Dashboard\Setting\GalleryController;
 use App\Http\Controllers\Dashboard\Setting\IntroController;
-use App\Http\Controllers\Dashboard\Setting\NegotiationPercentController;
-use App\Http\Controllers\Dashboard\Setting\NegotiationPeriodController;
 use App\Http\Controllers\Dashboard\Setting\TeamController;
-use App\Http\Controllers\Dashboard\Setting\UserGuideController;
 use App\Http\Controllers\Dashboard\User\UserController;
-use App\Http\Controllers\Dashboard\Withdraw\WithdrawRequestController;
 
 Route::group(['prefix' => 'admin'], function () {
 

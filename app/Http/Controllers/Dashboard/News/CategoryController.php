@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Dashboard\News;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use App\Services\Dashboard\News\CategoryService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 
 class CategoryController extends Controller
 {
