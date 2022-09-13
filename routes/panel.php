@@ -109,10 +109,20 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/action/delete', [ActionController::class, 'deleteAction']); // delete action
         Route::post('/action/remove_image', [ActionController::class, 'removeImage']); // remove Image
 
+        ////////////////////////////////
+        Route::get('/categories', [CategoryController::class, 'showCategories'])->name('dashboard-categories'); // show Index page that control all Categories
+        Route::get('/categories/data', [CategoryController::class, 'getCategoriesData']); // get all Categories data for DataTable
+        Route::post('/category/add', [CategoryController::class, 'addCategory']); // add Category
+        Route::post('/category/data', [CategoryController::class, 'getCategoryData']); // get Category data
+        Route::post('/category/edit', [CategoryController::class, 'editCategory']); // edit Category
+        Route::post('/category/delete', [CategoryController::class, 'deleteCategory']); // delete Category
+        Route::post('/category/restore', [CategoryController::class, 'restoreCategory']); // delete Category
+
 
         ////////////////////////////////
         Route::get('/notification', [NotificationController::class, 'showSendNotification'])->name('dashboard-show_send_notification'); // show send notification page
         Route::post('/notification/send', [NotificationController::class, 'sendNotification']); // send Notification
+
 
     });
 });

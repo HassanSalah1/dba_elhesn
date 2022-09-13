@@ -64,6 +64,7 @@ class UserApiRepository
         }
 
         $data['user']->update($userData);
+        $data['user']->refresh();
         return [
             'data' => UserResource::make($data['user']),
             'message' => trans('api.done_successfully'),
