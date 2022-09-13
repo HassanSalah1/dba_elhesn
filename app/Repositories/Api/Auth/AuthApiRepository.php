@@ -340,8 +340,10 @@ class AuthApiRepository
                 'device_type' => null,
                 'is_active' => Status::UNVERIFIED
             ]);
-            $user->token()->revoke();
-            $user->token()->delete();
+            if ($user->token()) {
+                $user->token()->revoke();
+                $user->token()->delete();
+            }
         }
         return [
             'message' => 'success',
