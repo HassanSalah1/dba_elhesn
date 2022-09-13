@@ -234,5 +234,6 @@ return [
     'actions_title' =>  'الفعاليات',
     'add_action' => 'إضافة فعالية',
     'start_date' => 'تاريخ البدأ',
+    'edit_action' => 'تعديل فعالية',
 ];
 ?>
