@@ -23,7 +23,7 @@ class ActionRepository
             })
             ->addColumn('actions', function ($action) {
                 $ul = '';
-                $ul .= '<a data-toggle="tooltip" title="' . trans('admin.edit') . '" id="' . $action->id . '" href="' . url('/admin/article/edit/' . $action->id) . '" class="on-default edit-row btn btn-info"><i data-feather="edit"></i></a>
+                $ul .= '<a data-toggle="tooltip" title="' . trans('admin.edit') . '" id="' . $action->id . '" href="' . url('/admin/action/edit/' . $action->id) . '" class="on-default edit-row btn btn-info"><i data-feather="edit"></i></a>
                    ';
                 $ul .= '<a data-toggle="tooltip" title="' . trans('admin.delete_action') . '" id="' . $action->id . '" onclick="deleteAction(this);return false;" href="#" class="on-default remove-row btn btn-danger"><i data-feather="delete"></i></a>';
                 return $ul;
@@ -106,26 +106,21 @@ class ActionRepository
             $actionData = [
                 'title_ar' => $data['title_ar'],
                 'title_en' => $data['title_en'],
-                'short_description_ar' => $data['short_description_ar'],
-                'short_description_en' => $data['short_description_en'],
                 'description_ar' => $data['description_ar'],
                 'description_en' => $data['description_en'],
-                'meta_description_ar' => isset($data['meta_description_ar']) ? $data['meta_description_ar'] : null,
-                'meta_description_en' => isset($data['meta_description_en']) ? $data['meta_description_en'] : null,
-                'meta_keywords_ar' => isset($data['meta_keywords_ar']) ? $data['meta_keywords_ar'] : null,
-                'meta_keywords_en' => isset($data['meta_keywords_en']) ? $data['meta_keywords_en'] : null,
+                'start_date' => date('Y-m-d', strtotime($data['start_date']))
             ];
-            $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
-            $image_name = 'image';
-            $image_path = 'uploads/articles/';
-            $actionData['image'] = UtilsRepository::createImage($data['request'], $image_name, $image_path, $file_id, 550, 330);
-            if ($actionData['image'] === false) {
-                unset($actionData['image']);
-            } else {
-                if ($action->image !== null && file_exists($action->image)) {
-                    unlink($action->image);
-                }
-            }
+//            $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
+//            $image_name = 'image';
+//            $image_path = 'uploads/actions/';
+//            $actionData['image'] = UtilsRepository::createImage($data['request'], $image_name, $image_path, $file_id, 550, 330);
+//            if ($actionData['image'] === false) {
+//                unset($actionData['image']);
+//            } else {
+//                if ($action->image !== null && file_exists($action->image)) {
+//                    unlink($action->image);
+//                }
+//            }
             $updated = $action->update($actionData);
             if ($updated) {
                 return true;

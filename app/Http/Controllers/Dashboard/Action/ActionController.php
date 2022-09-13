@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard\Action;
 
 use App\Http\Controllers\Controller;
+use App\Models\Action;
 use App\Services\Dashboard\Action\ActionService;
 use Illuminate\Http\Request;
 
@@ -55,19 +56,19 @@ class ActionController extends Controller
 
     public function showEditAction($id)
     {
-        $article = Action::where(['id' => $id])->first();
-        if (!$article) {
-            return redirect()->to('/admin/articles');
+        $action = Action::where(['id' => $id])->first();
+        if (!$action) {
+            return redirect()->to('/admin/actions');
         }
         $data['pageConfigs'] = [
             'pageHeader' => false,
             'defaultLanguage' => 'ar',
             'direction' => 'rtl'
         ];
-        $article->image = url($article->image);
-        $data['article'] = $article;
-        $data['title'] = trans('admin.edit_article');
-        return view('admin.settings.article.add_article')->with($data);
+        $action->image = url($action->image()->image);
+        $data['action'] = $action;
+        $data['title'] = trans('admin.edit_action');
+        return view('admin.settings.action.add_action')->with($data);
     }
 
     public function editAction(Request $request, $id)

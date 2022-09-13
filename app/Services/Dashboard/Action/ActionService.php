@@ -51,10 +51,9 @@ class ActionService
         $rules = [
             'title_ar' => 'required',
             'title_en' => 'required',
-            'short_description_ar' => 'required',
-            'short_description_en' => 'required',
             'description_ar' => 'required',
             'description_en' => 'required',
+            'start_date' => 'required',
         ];
         $validated = ValidationRepository::validateWebGeneral($data, $rules);
         if ($validated !== true) {
