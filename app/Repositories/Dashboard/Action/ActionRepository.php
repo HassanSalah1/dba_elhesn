@@ -91,7 +91,7 @@ class ActionRepository
 
     public static function removeImage(array $data)
     {
-        $image = Image::where(['id' => $data['id'] , 'item_type' => ImageType::ACTION])->first();
+        $image = Image::where(['id' => $data['id'], 'item_type' => ImageType::ACTION])->first();
         if ($image) {
             if (file_exists($image->image)) {
                 unlink($image->image);
@@ -138,21 +138,20 @@ class ActionRepository
                 }
             }
 
-            if (isset($data['request']->images)) {
-                foreach ($data['request']->images as $image) {
-                    $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
-                    $image_name = $image;
-                    $image = UtilsRepository::uploadImage($data['request'], $image_name, $image_path, $file_id);
-                    if ($image !== false) {
-                        Image::create([
-                            'item_id' => $action->id,
-                            'item_type' => ImageType::ACTION,
-                            'image' => $image,
-                            'primary' => 0
-                        ]);
-                    }
+            foreach ($data['request']->images as $image) {
+                $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
+                $image_name = $image;
+                $image = UtilsRepository::uploadImage($data['request'], $image_name, $image_path, $file_id);
+                if ($image !== false) {
+                    Image::create([
+                        'item_id' => $action->id,
+                        'item_type' => ImageType::ACTION,
+                        'image' => $image,
+                        'primary' => 0
+                    ]);
                 }
             }
+            
             $updated = $action->update($actionData);
             if ($updated) {
                 return true;
