@@ -68,7 +68,7 @@ class ActionController extends Controller
         $action->image = url($action->image()->image);
         $data['action'] = $action;
         $data['title'] = trans('admin.edit_action');
-        return view('admin.settings.action.add_action')->with($data);
+        return view('admin.action.add_action')->with($data);
     }
 
     public function editAction(Request $request, $id)
