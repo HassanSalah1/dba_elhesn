@@ -181,8 +181,6 @@ class AuthApiRepository
     {
         $user = Auth::user();
         if ($user) {
-            $user = User::find($user->id);
-            Auth::logout();
             Devices::where([
                 'user_id' => $user->id,
                 'device_type' => $data['device_type'],
