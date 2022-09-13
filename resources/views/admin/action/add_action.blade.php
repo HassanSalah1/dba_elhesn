@@ -112,7 +112,7 @@
                                     @if(isset($action) && $action)
                                         @foreach($action->images() as $image)
                                             @if($action->image()->id === $image->id) @continue @endif
-                                            <div class="col-md-4" id="image_{{$image->id}}">
+                                            <div style="height: 250px;" class="col-md-4" id="image_{{$image->id}}">
                                                 <img style="width: 100%;" src="{{url($image->image)}}"
                                                      class="img-responsive"/>
                                                 <button type="button" onclick="removeImage('{{$image->id}}')">
