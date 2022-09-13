@@ -236,5 +236,6 @@ return [
     'start_date' => 'تاريخ البدأ',
     'edit_action' => 'تعديل فعالية',
     'images' => 'صور إضافية',
+    "manage_news_title" => 'إدارة الأخبار',
 ];
 ?>
