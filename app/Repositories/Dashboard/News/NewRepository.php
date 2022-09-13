@@ -14,25 +14,25 @@ class NewRepository
     // get News and create datatable data.
     public static function getNewsData(array $data)
     {
-        $actions = News::orderBy('id', 'DESC')->get();
-        return DataTables::of($actions)
-            ->editColumn('image', function ($action) {
-                return '<a href="' . url($action->image()->image) . '" data-popup="lightbox">
-                    <img src="' . url($action->image()->image) . '" class="img-rounded img-preview"
+        $news = News::orderBy('id', 'DESC')->get();
+        return DataTables::of($news)
+            ->editColumn('image', function ($new) {
+                return '<a href="' . url($new->image()->image) . '" data-popup="lightbox">
+                    <img src="' . url($new->image()->image) . '" class="img-rounded img-preview"
                     style="max-height:50px;max-width:50px;"></a>';
             })
-            ->addColumn('actions', function ($action) {
+            ->addColumn('actions', function ($new) {
                 $ul = '';
-                $ul .= '<a data-toggle="tooltip" title="' . trans('admin.edit') . '" id="' . $action->id . '" href="' . url('/admin/action/edit/' . $action->id) . '" class="on-default edit-row btn btn-info"><i data-feather="edit"></i></a>
+                $ul .= '<a data-toggle="tooltip" title="' . trans('admin.edit') . '" id="' . $new->id . '" href="' . url('/admin/new/edit/' . $new->id) . '" class="on-default edit-row btn btn-info"><i data-feather="edit"></i></a>
                    ';
-                $ul .= '<a data-toggle="tooltip" title="' . trans('admin.delete_action') . '" id="' . $action->id . '" onclick="deleteNew(this);return false;" href="#" class="on-default remove-row btn btn-danger"><i data-feather="delete"></i></a>';
+                $ul .= '<a data-toggle="tooltip" title="' . trans('admin.delete_action') . '" id="' . $new->id . '" onclick="deleteNew(this);return false;" href="#" class="on-default remove-row btn btn-danger"><i data-feather="delete"></i></a>';
                 return $ul;
             })->make(true);
     }
 
     public static function addNew(array $data)
     {
-        $actionData = [
+        $newData = [
             'title_ar' => $data['title_ar'],
             'title_en' => $data['title_en'],
             'short_description_ar' => $data['description_ar'],
@@ -42,11 +42,11 @@ class NewRepository
             'category_id' => $data['category_id'],
         ];
 
-        $created = News::create($actionData);
+        $created = News::create($newData);
         if ($created) {
             $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
             $image_name = 'image';
-            $image_path = 'uploads/actions/';
+            $image_path = 'uploads/news/';
             $image = UtilsRepository::createImage($data['request'], $image_name, $image_path, $file_id);
             if ($image !== false) {
                 Image::create([
@@ -81,12 +81,12 @@ class NewRepository
 
     public static function deleteNew(array $data)
     {
-        $action = News::where(['id' => $data['id']])->first();
-        if ($action) {
-            if (file_exists($action->image)) {
-                unlink($action->image);
+        $new = News::where(['id' => $data['id']])->first();
+        if ($new) {
+            if (file_exists($new->image)) {
+                unlink($new->image);
             }
-            $action->forceDelete();
+            $new->forceDelete();
             return true;
         }
         return false;
@@ -107,19 +107,19 @@ class NewRepository
 
     public static function getNewData(array $data)
     {
-        $action = News::where(['id' => $data['id']])->first();
-        if ($action) {
-            $action->image = url($action->image);
-            return $action;
+        $new = News::where(['id' => $data['id']])->first();
+        if ($new) {
+            $new->image = url($new->image);
+            return $new;
         }
         return false;
     }
 
     public static function editNew(array $data)
     {
-        $action = News::where(['id' => $data['id']])->first();
-        if ($action) {
-            $actionData = [
+        $new = News::where(['id' => $data['id']])->first();
+        if ($new) {
+            $newData = [
                 'title_ar' => $data['title_ar'],
                 'title_en' => $data['title_en'],
                 'short_description_ar' => $data['description_ar'],
@@ -131,13 +131,13 @@ class NewRepository
             if ($data['request']->hasFile('image')) {
                 $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
                 $image_name = 'image';
-                $image_path = 'uploads/actions/';
+                $image_path = 'uploads/news/';
                 $image = UtilsRepository::createImage($data['request'], $image_name, $image_path, $file_id, 550, 330);
                 if ($image !== false) {
-                    if ($action->image() && file_exists($action->image()->image)) {
-                        unlink($action->image()->image);
+                    if ($new->image() && file_exists($new->image()->image)) {
+                        unlink($new->image()->image);
                     }
-                    $imageObj = $action->image();
+                    $imageObj = $new->image();
                     $imageObj->image = $image;
                     $imageObj->save();
                 }
@@ -146,12 +146,12 @@ class NewRepository
             $images = $data['request']->file('images');
             foreach ($images as $image) {
                 $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
-                $image_path = 'uploads/actions/';
+                $image_path = 'uploads/news/';
                 $image_name = $image;
                 $image = UtilsRepository::uploadImage($data['request'], $image_name, $image_path, $file_id);
                 if ($image !== false) {
                     Image::create([
-                        'item_id' => $action->id,
+                        'item_id' => $new->id,
                         'item_type' => ImageType::NEWS,
                         'image' => $image,
                         'primary' => 0
@@ -159,7 +159,7 @@ class NewRepository
                 }
             }
 
-            $updated = $action->update($actionData);
+            $updated = $new->update($newData);
             if ($updated) {
                 return true;
             }
