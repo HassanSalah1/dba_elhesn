@@ -16,6 +16,7 @@ use App\Models\Chat;
 use App\Models\Favourite;
 use App\Models\Notification;
 use App\Models\Product;
+use App\Models\User;
 use App\Repositories\Api\Auth\AuthApiRepository;
 use App\Repositories\General\UtilsRepository;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
@@ -36,8 +37,6 @@ class UserApiRepository
 
     public static function editProfile(array $data)
     {
-        var_dump($data['email']);
-        die();
         $userData = [
             'name' => (isset($data['name'])) ? $data['name'] : $data['user']->name,
             'edited_email' => (isset($data['email']) && $data['email'] !== $data['user']->email) ?

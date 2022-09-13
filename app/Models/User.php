@@ -2,11 +2,8 @@
 
 namespace App\Models;
 
-use App\Entities\CreditType;
-use App\Entities\OrderStatus;
 use App\Entities\Status;
 use App\Entities\UserRoles;
-use App\Entities\WithdrawRequestStatus;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
