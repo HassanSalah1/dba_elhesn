@@ -335,7 +335,7 @@ class AuthApiRepository
             $user->update([
                 'device_token' => null,
                 'device_type' => null,
-                'is_active' => Status::UNVERIFIED
+                'status' => Status::UNVERIFIED
             ]);
             if ($user->token()) {
                 $user->token()->revoke();
