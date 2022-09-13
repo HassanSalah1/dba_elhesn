@@ -36,7 +36,7 @@
                                                for="title_ar">{{trans('admin.title_ar')}}</label>
                                         <input type="text" class="form-control" id="title_ar"
                                                name="title_ar"
-                                               @if(isset($action) && $action) value="{{$action->title_ar}}" @endif
+                                               @if(isset($new) && $new) value="{{$new->title_ar}}" @endif
                                                placeholder="{{trans('admin.title_ar')}}"/>
                                     </div>
                                 </div>
@@ -47,7 +47,7 @@
                                                for="title_en">{{trans('admin.title_en')}}</label>
                                         <input type="text" class="form-control" id="title_en"
                                                name="title_en"
-                                               @if(isset($action) && $action) value="{{$action->title_en}}" @endif
+                                               @if(isset($new) && $new) value="{{$new->title_en}}" @endif
                                                placeholder="{{trans('admin.title_en')}}"/>
                                     </div>
                                 </div>
@@ -59,7 +59,7 @@
                                         <select class="form-control" name="category_id" id="category_id">
                                             @foreach($categories as $category)
                                                 <option
-                                                    @if(isset($action) && $action->category_id === $category->id)
+                                                    @if(isset($new) && $new->category_id === $category->id)
                                                     selected
                                                     @endif
                                                     value="{{$category->id}}">{{$category->name}}</option>
@@ -74,7 +74,7 @@
                                                for="short_description_ar">{{trans('admin.short_description_ar')}}</label>
                                         <textarea class="form-control" id="short_description_ar"
                                                   name="short_description_ar"
-                                                  placeholder="{{trans('admin.short_description_ar')}}">@if(isset($action) && $action) {{$action->short_description_ar}} @endif</textarea>
+                                                  placeholder="{{trans('admin.short_description_ar')}}">@if(isset($new) && $new) {{$new->short_description_ar}} @endif</textarea>
                                     </div>
                                 </div>
 
@@ -84,7 +84,7 @@
                                                for="short_description_en">{{trans('admin.short_description_en')}}</label>
                                         <textarea class="form-control" id="short_description_en"
                                                   name="short_description_en"
-                                                  placeholder="{{trans('admin.short_description_en')}}">@if(isset($action) && $action) {{$action->short_description_en}} @endif</textarea>
+                                                  placeholder="{{trans('admin.short_description_en')}}">@if(isset($new) && $new) {{$new->short_description_en}} @endif</textarea>
                                     </div>
                                 </div>
 
@@ -95,7 +95,7 @@
                                                for="description_ar">{{trans('admin.description_ar')}}</label>
                                         <textarea class="form-control textarea-editor" id="description_ar"
                                                   name="description_ar"
-                                                  placeholder="{{trans('admin.description_ar')}}">@if(isset($action) && $action) {{$action->description_ar}} @endif</textarea>
+                                                  placeholder="{{trans('admin.description_ar')}}">@if(isset($new) && $new) {{$new->description_ar}} @endif</textarea>
                                     </div>
                                 </div>
 
@@ -105,7 +105,7 @@
                                                for="description_en">{{trans('admin.description_en')}}</label>
                                         <textarea class="form-control textarea-editor" id="description_en"
                                                   name="description_en"
-                                                  placeholder="{{trans('admin.description_en')}}">@if(isset($action) && $action) {{$action->description_en}} @endif</textarea>
+                                                  placeholder="{{trans('admin.description_en')}}">@if(isset($new) && $new) {{$new->description_en}} @endif</textarea>
                                     </div>
                                 </div>
 
@@ -115,7 +115,7 @@
                                                for="video_url">{{trans('admin.video_url')}}</label>
                                         <input type="url" class="form-control" id="video_url"
                                                name="video_url"
-                                               @if(isset($action) && $action) value="{{$action->video_url}}" @endif
+                                               @if(isset($new) && $new) value="{{$new->video_url}}" @endif
                                                placeholder="{{trans('admin.video_url')}}"/>
                                     </div>
                                 </div>
@@ -135,9 +135,9 @@
                                 </div>
 
                                 <div class="mb-1 row" id="images_div">
-                                    @if(isset($action) && $action)
-                                        @foreach($action->images() as $image)
-                                            @if($action->image()->id === $image->id) @continue @endif
+                                    @if(isset($new) && $new)
+                                        @foreach($new->images() as $image)
+                                            @if($new->image()->id === $image->id) @continue @endif
                                             <div style="height: 150px;" class="col-md-4" id="image_{{$image->id}}">
                                                 <img style="max-width: 100%;max-height: 100%;"
                                                      src="{{url($image->image)}}"
@@ -186,8 +186,8 @@
 
             $('#category_id').select2();
 
-            @if(isset($action) && $action)
-            initDropify('{{$action->image}}');
+            @if(isset($new) && $new)
+            initDropify('{{$new->image}}');
             @else
             initDropify();
             @endif
@@ -260,11 +260,11 @@
 
             $('#general-form').submit(function (e) {
                 e.preventDefault();
-                sendAjaxRequest(this, '{{url( isset($action) && $action ? '/admin/new/edit/'.$action->id : '/admin/new/add')}}', {
+                sendAjaxRequest(this, '{{url( isset($new) && $new ? '/admin/new/edit/'.$new->id : '/admin/new/add')}}', {
                     error_message: '{{trans('admin.general_error_message')}}',
                     error_title: '',
                     loader: true,
-                    load_page: '{{url('/admin/actions')}}'
+                    load_page: '{{url('/admin/news')}}'
                 });
             });
         });
