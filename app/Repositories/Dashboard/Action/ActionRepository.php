@@ -49,22 +49,22 @@ class ActionRepository
             if ($image !== false) {
                 Image::create([
                     'item_id' => $created->id,
-                    'item_type' => ImageType::ACTION ,
-                    'image' => $image ,
+                    'item_type' => ImageType::ACTION,
+                    'image' => $image,
                     'primary' => 1
                 ]);
             }
 
-            if ($data['request']->has('images')){
-                foreach ($data['request']->images as $image){
+            if ($data['request']->has('images')) {
+                foreach ($data['request']->images as $image) {
                     $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
                     $image_name = $image;
                     $image = UtilsRepository::uploadImage($data['request'], $image_name, $image_path, $file_id);
                     if ($image !== false) {
                         Image::create([
                             'item_id' => $created->id,
-                            'item_type' => ImageType::ACTION ,
-                            'image' => $image ,
+                            'item_type' => ImageType::ACTION,
+                            'image' => $image,
                             'primary' => 0
                         ]);
                     }
@@ -110,17 +110,20 @@ class ActionRepository
                 'description_en' => $data['description_en'],
                 'start_date' => date('Y-m-d', strtotime($data['start_date']))
             ];
-//            $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
-//            $image_name = 'image';
-//            $image_path = 'uploads/actions/';
-//            $actionData['image'] = UtilsRepository::createImage($data['request'], $image_name, $image_path, $file_id, 550, 330);
-//            if ($actionData['image'] === false) {
-//                unset($actionData['image']);
-//            } else {
-//                if ($action->image !== null && file_exists($action->image)) {
-//                    unlink($action->image);
-//                }
-//            }
+            if ($data['request']->hasFile('image')) {
+                $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
+                $image_name = 'image';
+                $image_path = 'uploads/actions/';
+                $image = UtilsRepository::createImage($data['request'], $image_name, $image_path, $file_id, 550, 330);
+                if ($image !== false) {
+                    if ($action->image() && file_exists($action->image()->image)) {
+                        unlink($action->image()->image);
+                    }
+                    $imageObj = $action->image();
+                    $imageObj->image = $image;
+                    $imageObj->save();
+                }
+            }
             $updated = $action->update($actionData);
             if ($updated) {
                 return true;
