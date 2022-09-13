@@ -3,6 +3,7 @@
 @section('title', $title)
 
 @section('vendor-style')
+    <link rel="stylesheet" type="text/css" href="{{ asset(mix('vendors/css/forms/select/select2.min.css'))}}">
 @endsection
 
 @section('page-style')
@@ -55,7 +56,7 @@
                                     <div class="mb-1">
                                         <label class="form-label"
                                                for="category_id">{{trans('admin.category')}}</label>
-                                        <select name="category_id" id="category_id">
+                                        <select class="form-control" name="category_id" id="category_id">
                                             @foreach($categories as $category)
                                                 <option
                                                     @if(isset($action) && $action->category_id === $category->id)
@@ -170,6 +171,7 @@
 @endsection
 
 @section('vendor-script')
+    <script src="{{ asset(mix('vendors/js/forms/select/select2.full.min.js'))}}"></script>
 @endsection
 @section('page-script')
     <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
@@ -181,6 +183,9 @@
     <script src="{{url('/js/scripts/custom/utils.js')}}"></script>
     <script>
         $(function () {
+
+            $('#category_id').select2();
+
             @if(isset($action) && $action)
             initDropify('{{$action->image}}');
             @else

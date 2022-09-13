@@ -231,12 +231,17 @@ return [
     'history_title' => 'عن النادى',
     'club_history_en' => 'عن النادى (إنجليزى)',
     'club_history_ar' => 'عن النادى (عربى)',
-    'actions_title' =>  'الفعاليات',
+    'actions_title' => 'الفعاليات',
     'add_action' => 'إضافة فعالية',
     'start_date' => 'تاريخ البدأ',
     'edit_action' => 'تعديل فعالية',
     'images' => 'صور إضافية',
     "manage_news_title" => 'إدارة الأخبار',
-    "news_title" => "الأخبار"
+    "news_title" => "الأخبار",
+    "add_new" => "إضافة خبر",
+    "category" => "القسم",
+    "short_description_ar" => "وصف مختصر (عربى)",
+    "short_description_en" => "وصف مختصر (إنجليزى)",
+    "" => "",
 ];
 ?>
