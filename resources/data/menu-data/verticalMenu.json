@@ -68,10 +68,23 @@
             "slug": "dashboard-terms"
         },
         {
-            "name": "news_title",
+            "name": "manage_news_title",
             "icon": "file-text",
-            "url": "admin/news",
-            "slug": "dashboard-news"
+            "slug": "",
+            "submenu": [
+                {
+                    "name": "categories_title",
+                    "icon": "circle",
+                    "url": "admin/categories",
+                    "slug": "dashboard-categories"
+                },
+                {
+                    "name": "news_title",
+                    "icon": "circle",
+                    "url": "admin/news",
+                    "slug": "dashboard-news"
+                }
+            ]
         },
         {
             "name": "actions_title",
