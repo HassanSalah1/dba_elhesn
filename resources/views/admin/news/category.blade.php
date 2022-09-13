@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="{{ asset(mix('vendors/css/tables/datatable/dataTables.bootstrap5.min.css')) }}">
     <link rel="stylesheet" href="{{ asset(mix('vendors/css/tables/datatable/responsive.bootstrap5.min.css')) }}">
     <link rel="stylesheet" type="text/css" href="{{ asset(mix('vendors/css/extensions/sweetalert2.min.css')) }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset(mix('css/base/plugins/extensions/ext-component-sweet-alerts.css')) }}">
+    <link rel="stylesheet" type="text/css"
+          href="{{ asset(mix('css/base/plugins/extensions/ext-component-sweet-alerts.css')) }}">
 
 @endsection
 
@@ -20,7 +21,7 @@
         <input type="text" name="name_ar"
                class="form-control dt-full-name"
                id="name_ar"
-               placeholder="{{trans('admin.name_ar')}}" />
+               placeholder="{{trans('admin.name_ar')}}"/>
     </div>
 
     <div class="mb-1">
@@ -28,7 +29,7 @@
         <input type="text" name="name_en"
                class="form-control dt-full-name"
                id="name_en"
-               placeholder="{{trans('admin.name_en')}}" />
+               placeholder="{{trans('admin.name_en')}}"/>
     </div>
 
 @stop
@@ -48,10 +49,10 @@
                         </h4>
                     </div>
                     <div class="card-datatable">
-                        @include('admin.panels.table')
+                        @include('panels.table')
                     </div>
                     <!-- Modal to add new record -->
-                    @include('admin.panels.modal')
+                    @include('panels.modal')
                 </div>
             </div>
         </div>
@@ -78,7 +79,7 @@
     </script>
     <script src="{{url('/js/scripts/custom/utils.js')}}"></script>
     <script>
-        $(function() {
+        $(function () {
 
             addModal({
                 title: '{{trans('admin.add_category')}}',
@@ -87,7 +88,7 @@
             onClose();
 
             loadDataTables('{{ url("/admin/categories/data", [] , env('APP_ENV') === 'local' ?  false : true)}}',
-                ['name_ar' , 'name_en' , 'actions'], '',
+                ['name_ar', 'name_en', 'actions'], '',
                 {
                     'show': '{{trans('admin.show')}}',
                     'first': '{{trans('admin.first')}}',
