@@ -55,7 +55,7 @@ class ActionRepository
                 ]);
             }
 
-            if ($data['request']->has('images')) {
+            if (isset($data['request']->images)) {
                 foreach ($data['request']->images as $image) {
                     $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
                     $image_name = $image;
@@ -138,7 +138,7 @@ class ActionRepository
                 }
             }
 
-            if ($data['request']->has('images')) {
+            if (isset($data['request']->images)) {
                 foreach ($data['request']->images as $image) {
                     $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
                     $image_name = $image;
