@@ -242,6 +242,6 @@ return [
     "category" => "القسم",
     "short_description_ar" => "وصف مختصر (عربى)",
     "short_description_en" => "وصف مختصر (إنجليزى)",
-    "" => "",
+    "edit_new" => "تعديل خبر",
 ];
 ?>
