@@ -43,6 +43,8 @@ Route::group(['middleware' => 'lang'], function () {
 
         Route::get('/categories', [SettingController::class, 'getCategories']); // get categories
 
+        Route::get('/home', [SettingController::class, 'getHome']); // get news
+
         Route::get('/news', [SettingController::class, 'getNews']); // get news
         Route::get('/new/details/{id}', [SettingController::class, 'getNewDetails']); // get new details
 

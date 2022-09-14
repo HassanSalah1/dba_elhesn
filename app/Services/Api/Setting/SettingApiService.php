@@ -82,6 +82,12 @@ class SettingApiService
         return UtilsRepository::handleResponseApi($response);
     }
 
+    public static function getHome(array $data)
+    {
+        $response = SettingApiRepository::getHome($data);
+        return UtilsRepository::handleResponseApi($response);
+    }
+
     public static function getNews(array $data)
     {
         $response = SettingApiRepository::getNews($data);

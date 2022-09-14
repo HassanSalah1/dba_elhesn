@@ -189,12 +189,32 @@ class SettingApiRepository
         ];
     }
 
+    public static function getHome(array $data)
+    {
+        $news = News::orderBy('id', 'DESC')
+            ->limit(5)
+            ->get();
+        $news = NewResource::collection($news);
+        // return success response
+        return [
+            'data' => [
+                'news' => $news,
+                'match' => []
+            ],
+            'message' => 'success',
+            'code' => HttpCode::SUCCESS
+        ];
+    }
+
     public static function getNews(array $data)
     {
         $news = News::where(function ($query) use ($data) {
             if (isset($data['keyword'])) {
                 $query->where('title_ar', 'LIKE', '%' . $data['keyword'] . '%');
                 $query->orWhere('title_en', 'LIKE', '%' . $data['keyword'] . '%');
+            }
+            if (isset($data['category_id'])) {
+                $query->where('category_id', $data['category_id']);
             }
         })->orderBy('id', 'DESC')->paginate(10);
         $news->{'news'} = NewResource::collection($news);
@@ -262,5 +282,4 @@ class SettingApiRepository
             'code' => HttpCode::SUCCESS
         ];
     }
-
 }

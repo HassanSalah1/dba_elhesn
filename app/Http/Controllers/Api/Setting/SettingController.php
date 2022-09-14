@@ -72,6 +72,12 @@ class SettingController extends Controller
         return SettingApiService::getCommittees($data);
     }
 
+    public function getHome(Request $request)
+    {
+        $data = $request->all();
+        return SettingApiService::getHome($data);
+    }
+
     public function getNews(Request $request)
     {
         $data = $request->all();
