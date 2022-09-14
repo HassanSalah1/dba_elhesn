@@ -155,9 +155,19 @@ class AuthApiService
         return UtilsRepository::handleResponseApi($response);
     }
 
-    public static function deleteAccount()
+    public static function deleteAccount($data)
     {
-        $response = AuthApiRepository::deleteAccount();
+        $keys = [
+            'password' => 'required',
+        ];
+        $messages = [
+            'required' => trans('api.required_error_message'),
+        ];
+        $validated = ValidationRepository::validateAPIGeneral($data, $keys, $messages);
+        if ($validated !== true) {
+            return $validated;
+        }
+        $response = AuthApiRepository::deleteAccount($data);
         return UtilsRepository::handleResponseApi($response);
     }
 

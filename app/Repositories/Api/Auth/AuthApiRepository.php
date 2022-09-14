@@ -8,6 +8,7 @@ use App\Entities\IsActive;
 use App\Entities\Status;
 use App\Entities\UserRoles;
 use App\Http\Resources\UserAuthResource;
+use App\Models\Contact;
 use App\Models\Devices;
 use App\Models\User;
 use App\Models\VerificationCode;
@@ -328,20 +329,17 @@ class AuthApiRepository
         return '0000';  // env('APP_ENV') === 'local' ?  : $code;
     }
 
-    public static function deleteAccount()
+    public static function deleteAccount($data)
     {
         $user = Auth::user();
-        if ($user) {
-            $user->update([
-                'device_token' => null,
-                'device_type' => null,
-                'status' => Status::UNVERIFIED
-            ]);
-            if ($user->token()) {
-                $user->token()->revoke();
-                $user->token()->delete();
-            }
+        if (!Hash::check($data['password'], $user->password)) {
+            return [
+                'message' => trans('api.old_password_message'),
+                'code' => HttpCode::ERROR
+            ];
         }
+        $user->contacts->forceDelete();
+        $user->forceDelete();
         return [
             'message' => 'success',
             'code' => HttpCode::SUCCESS
