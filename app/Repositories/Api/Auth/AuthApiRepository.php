@@ -338,7 +338,7 @@ class AuthApiRepository
                 'code' => HttpCode::ERROR
             ];
         }
-        $user->contacts->forceDelete();
+        $user->contacts()->forceDelete();
         $user->forceDelete();
         return [
             'message' => 'success',
