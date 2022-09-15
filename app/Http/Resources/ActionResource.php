@@ -20,7 +20,8 @@ class ActionResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'image' => $image ? url($image->image) : null,
-            'start_date' => UtilsRepository::translateDate(date('d F', strtotime($this->start_date)))
+            'start_date' => UtilsRepository::translateDate(date('d F', strtotime($this->start_date))),
+            'created_date' => UtilsRepository::translateDate(date('d F Y', strtotime($this->created_at))),
         ];
     }
 }
