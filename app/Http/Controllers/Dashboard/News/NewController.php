@@ -67,7 +67,7 @@ class NewController extends Controller
             'defaultLanguage' => 'ar',
             'direction' => 'rtl'
         ];
-        $new->image = url($new->image()->image);
+        $new->image = $new->image() ? url($new->image()->image) : null;
         $data['new'] = $new;
         $data['title'] = trans('admin.edit_new');
         $data['categories'] = Category::all();
