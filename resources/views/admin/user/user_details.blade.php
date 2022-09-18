@@ -60,10 +60,6 @@
                                             @endif
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>{{trans('admin.orders_count')}}</td>
-                                        <td><a href="#" class="btn btn-primary">{{$user->orders->count()}}</a></td>
-                                    </tr>
 
                                     </tbody>
                                 </table>
