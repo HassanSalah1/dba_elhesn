@@ -20,7 +20,7 @@ class NewController extends Controller
         ];
         $data['title'] = trans('admin.news_title');
         $data['debatable_names'] = array(trans('admin.title'), trans('admin.image'),
-            trans('admin.news'));
+            trans('admin.actions'));
         return view('admin.news.index')->with($data);
     }
 

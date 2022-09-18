@@ -17,9 +17,11 @@ class NewRepository
         $news = News::orderBy('id', 'DESC')->get();
         return DataTables::of($news)
             ->editColumn('image', function ($new) {
-                return '<a href="' . url($new->image()->image) . '" data-popup="lightbox">
+                if ($new->image()) {
+                    return '<a href="' . url($new->image()->image) . '" data-popup="lightbox">
                     <img src="' . url($new->image()->image) . '" class="img-rounded img-preview"
                     style="max-height:50px;max-width:50px;"></a>';
+                }
             })
             ->addColumn('actions', function ($new) {
                 $ul = '';
@@ -59,17 +61,19 @@ class NewRepository
 
 
             $images = $data['request']->file('images');
-            foreach ($images as $image) {
-                $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
-                $image_name = $image;
-                $image = UtilsRepository::uploadImage($data['request'], $image_name, $image_path, $file_id);
-                if ($image !== false) {
-                    Image::create([
-                        'item_id' => $created->id,
-                        'item_type' => ImageType::NEWS,
-                        'image' => $image,
-                        'primary' => 0
-                    ]);
+            if($images){
+                foreach ($images as $image) {
+                    $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
+                    $image_name = $image;
+                    $image = UtilsRepository::uploadImage($data['request'], $image_name, $image_path, $file_id);
+                    if ($image !== false) {
+                        Image::create([
+                            'item_id' => $created->id,
+                            'item_type' => ImageType::NEWS,
+                            'image' => $image,
+                            'primary' => 0
+                        ]);
+                    }
                 }
             }
 
