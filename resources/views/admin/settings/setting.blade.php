@@ -93,7 +93,7 @@
 
                                 <input type="hidden" name="latitude"
                                        @if(isset($latitude) && $latitude) value="{{$latitude->value}}" @endif>
-                                <input type="hidden" name="latitude"
+                                <input type="hidden" name="longitude"
                                        @if(isset($longitude) && $longitude) value="{{$longitude->value}}" @endif>
                                 <div class="col-xl-12 col-md-12 col-12">
                                     <div class="mb-1">
@@ -151,6 +151,9 @@
         });
 
         function initMap(latitude, longitude) {
+            $('input[name=latitude]').val(latitude);
+            $('input[name=longitude]').val(longitude);
+
             let latlng = new google.maps.LatLng(latitude, longitude);
             map = new google.maps.Map(document.getElementById('map'), {
                 center: latlng,
