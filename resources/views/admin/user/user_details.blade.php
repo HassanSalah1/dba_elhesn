@@ -41,7 +41,7 @@
                                     </tr>
                                     <tr>
                                         <td>{{trans('admin.phone')}}</td>
-                                        <td>{{$user->full_phone}}</td>
+                                        <td>{{$user->phone}}</td>
                                     </tr>
                                     <tr>
                                         <td>{{trans('admin.registration_date')}}</td>
