@@ -141,7 +141,10 @@ class NewRepository
                     if ($new->image() && file_exists($new->image()->image)) {
                         unlink($new->image()->image);
                     }
-                    $imageObj = $new->image();
+                    $imageObj = $new->image() ?: new Image();
+                    $imageObj->item_id = $new->id;
+                    $imageObj->item_type = ImageType::NEWS;
+                    $imageObj->primary = 1;
                     $imageObj->image = $image;
                     $imageObj->save();
                 }
