@@ -87,8 +87,8 @@ class NewRepository
     {
         $new = News::where(['id' => $data['id']])->first();
         if ($new) {
-            if (file_exists($new->image)) {
-                unlink($new->image);
+            if ($new->image() && file_exists($new->image()->image)) {
+                unlink($new->image()->image);
             }
             $new->forceDelete();
             return true;
