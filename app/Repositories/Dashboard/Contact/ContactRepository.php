@@ -22,7 +22,6 @@ class ContactRepository
                 } else {
                     $html .= '<li>' . $contact->name . '</li>';
                     $html .= '<li>' . $contact->phone . '</li>';
-                    $html .= '<li>' . $contact->email . '</li>';
                 }
                 $html .= '</ul>';
                 return $html;
