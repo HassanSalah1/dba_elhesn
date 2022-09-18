@@ -129,11 +129,11 @@
     </script>
     <script>
         let uLatitude = 24.6962019;
-        @if(isset($latitude) && $latitude)
+        @if(isset($latitude) && $latitude && $latitude->value !== null)
             uLatitude = parseFloat('{{$latitude->value}}');
             @endif
         let uLongitude = 46.7662033;
-        @if(isset($longitude) && $longitude)
+        @if(isset($longitude) && $longitude && $longitude->value !== null)
             uLongitude = parseFloat('{{$longitude->value}}');
             @endif
         let address = null;
