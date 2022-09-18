@@ -44,14 +44,6 @@
                                         <td>{{$user->full_phone}}</td>
                                     </tr>
                                     <tr>
-                                        <td>{{trans('admin.city_name')}}</td>
-                                        <td>{{$user->city->name}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{trans('admin.address')}}</td>
-                                        <td>{{$user->address}}</td>
-                                    </tr>
-                                    <tr>
                                         <td>{{trans('admin.registration_date')}}</td>
                                         <td>{{$user->created_at->format('Y-m-d h:i a')}}</td>
                                     </tr>
