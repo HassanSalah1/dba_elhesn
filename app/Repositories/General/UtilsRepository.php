@@ -194,7 +194,7 @@ class UtilsRepository
         try {
             // finally we save the image as a new file
             $img = Image::make($image);
-//                $img->resize(400, 400);
+            $img->resize(500, 600);
             $img->save($image_path . $file_name);
             return $image_path . $file_name;
         } catch (ImageException $ex) {
