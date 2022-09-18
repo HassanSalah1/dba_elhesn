@@ -81,8 +81,8 @@ class ActionRepository
     {
         $action = Action::where(['id' => $data['id']])->first();
         if ($action) {
-            if (file_exists($action->image)) {
-                unlink($action->image);
+            if ($action->image() &&file_exists($action->image()->image)) {
+                unlink($action->image()->image);
             }
             $action->forceDelete();
             return true;
