@@ -23,11 +23,7 @@
             <!-- Left Text-->
             <div class="d-none d-lg-flex col-lg-8 align-items-center p-5">
                 <div class="w-100 d-lg-flex align-items-center justify-content-center px-5">
-                    @if($configData['theme'] === 'dark')
-                        <img class="img-fluid" src="{{asset('images/logo/dh_logo.png')}}" alt="Login V2"/>
-                    @else
-                        <img class="img-fluid" src="{{asset('images/logo/dh_logo.png')}}" alt="Login V2"/>
-                    @endif
+                    <img style="height: 600px !important;" class="img-fluid" src="{{asset('images/logo/dh_logo.png')}}" alt="Login V2"/>
                 </div>
             </div>
             <!-- /Left Text-->
