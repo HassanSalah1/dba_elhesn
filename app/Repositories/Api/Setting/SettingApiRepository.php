@@ -296,10 +296,25 @@ class SettingApiRepository
         $server_output = curl_exec($ch);
         curl_close($ch);
 
-        return [
-            'data' => json_decode($server_output, true),
-            'message' => 'success',
-            'code' => HttpCode::SUCCESS
-        ];
+        $news = json_decode($server_output, true);
+        if ($news && is_array($news)) {
+            foreach ($news as $new) {
+                $newObject = News::where(['new_id' => $new->id])->first();
+                if (!$newObject) {
+                    $newData = [
+                        'title_ar' => $new->title->rendered,
+                        'title_en' => $new->title->rendered,
+                        'short_description_ar' => $new->title->rendered,
+                        'short_description_en' => $new->title->rendered,
+                        'description_ar' => $new->content->rendered,
+                        'description_en' => $new->content->rendered,
+                        'video_url' => null,
+                        'category_id' => $new->categories[0],
+                        'new_id' => $new->id
+                    ];
+                    News::create($newData);
+                }
+            }
+        }
     }
 }
