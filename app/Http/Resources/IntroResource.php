@@ -17,6 +17,7 @@ class IntroResource extends JsonResource
         return [
             'title' => $this->title,
             'description' => $this->description,
+            'image' => $this->image ? url($this->image) : null,
         ];
     }
 }
