@@ -329,7 +329,7 @@ class SettingApiRepository
                         foreach ($images as $key => $image) {
                             $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
                             $image_path = 'uploads/news/';
-                            $image = UtilsRepository::uploadImage($data['request'], $image->guid->rendered,
+                            $image = UtilsRepository::uploadImage(null, $image->guid->rendered,
                                 $image_path, $file_id);
                             if ($image) {
                                 Image::create([
