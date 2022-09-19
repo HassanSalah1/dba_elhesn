@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Repositories\Api\Setting\SettingApiRepository;
 use Illuminate\Console\Command;
 
 class GetNews extends Command
@@ -37,9 +38,7 @@ class GetNews extends Command
      */
     public function handle()
     {
-
-
-
+        SettingApiRepository::getSiteNews([]);
         $this->info('Successfully');
         return Command::SUCCESS;
     }

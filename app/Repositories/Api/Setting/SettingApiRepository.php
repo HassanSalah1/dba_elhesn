@@ -293,7 +293,6 @@ class SettingApiRepository
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_POST, 0);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-//        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
         $server_output = curl_exec($ch);
         curl_close($ch);
 
@@ -346,7 +345,6 @@ class SettingApiRepository
         }
 
         return [
-//            'data' => IntroResource::collection($intros),
             'message' => 'success',
             'code' => HttpCode::SUCCESS
         ];
