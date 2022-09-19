@@ -125,7 +125,7 @@ return [
     'inactive_action' => 'حظر',
     'ban_title' => 'حظر',
     'ban_message' => 'هل أنت متأكد من حظر تلك البيانات ؟',
-    'success_title' => 'رسالة نجاح',
+    'success_title' => 'تم بنجاح',
     'city_name' => 'المدينة',
     'address' => 'الموقع الجغرافى',
     'orders_count' => 'عدد الطلبات',
