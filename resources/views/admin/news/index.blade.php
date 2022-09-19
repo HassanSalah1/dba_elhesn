@@ -75,7 +75,7 @@
         });
 
 
-        function deleteAction(item) {
+        function deleteNew(item) {
             ban(item, '{{url('/admin/new/delete')}}', {
                 error_message: '{{trans('admin.general_error_message')}}',
                 error_title: '{{trans('admin.error_title')}}',
