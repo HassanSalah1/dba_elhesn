@@ -44,7 +44,7 @@ class GalleryRepository
             $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
             $image_name = 'image';
             $image_path = 'uploads/galleries/';
-            $image = UtilsRepository::uploadImage($data['request'], $image_name, $image_path, $file_id , 500 , 600);
+            $image = UtilsRepository::createImage($data['request'], $image_name, $image_path, $file_id , 500 , 600);
             if ($image !== false) {
                 $galleryData['image'] = $image;
             }
@@ -115,7 +115,7 @@ class GalleryRepository
                 $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
                 $image_name = 'image';
                 $image_path = 'uploads/galleries/';
-                $image = UtilsRepository::uploadImage($data['request'], $image_name, $image_path, $file_id , 500 , 600);
+                $image = UtilsRepository::createImage($data['request'], $image_name, $image_path, $file_id , 500 , 600);
                 if ($image !== false) {
                     $galleryData['image'] = $image;
                     if ($gallery->image && file_exists($gallery->image)) {

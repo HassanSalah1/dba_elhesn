@@ -162,7 +162,7 @@ class UtilsRepository
     }
 
     // upload image
-    public static function createImage($request, $image_name, $image_path, $image_id)
+    public static function createImage($request, $image_name, $image_path, $image_id , $width = 0, $height = 0)
     {
         if ($request->hasFile($image_name)) {
             $image = $request[$image_name];
@@ -174,7 +174,9 @@ class UtilsRepository
             try {
                 // finally we save the image as a new file
                 $img = Image::make($image);
-//                $img->resize(400, 400);
+                if ($width != 0 && $height != 0) {
+                    $img->resize($width, $height);
+                }
                 $img->save($image_path . $file_name);
                 return $image_path . $file_name;
             } catch (ImageException $ex) {

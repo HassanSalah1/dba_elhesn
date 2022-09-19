@@ -25,6 +25,7 @@ use App\Models\Intro;
 use App\Models\News;
 use App\Models\Setting;
 use App\Models\Team;
+use App\Repositories\General\UtilsRepository;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 
@@ -313,7 +314,33 @@ class SettingApiRepository
                         'category_id' => $category ? $category->id : null,
                         'new_id' => $new->id
                     ];
-                    News::create($newData);
+                    $newObject = News::create($newData);
+
+                    $media_url = 'https://dhclub.ae/wp-json/wp/v2/media?parent=' . $new->id;
+
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_URL, $media_url);
+                    curl_setopt($ch, CURLOPT_POST, 0);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    $output = curl_exec($ch);
+                    curl_close($ch);
+                    $images = $output ? json_decode($output) : [];
+                    if ($images && is_array($images)) {
+                        foreach ($images as $key => $image) {
+                            $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
+                            $image_path = 'uploads/news/';
+                            $image = UtilsRepository::uploadImage($data['request'], $image->guid->rendered,
+                                $image_path, $file_id);
+                            if ($image) {
+                                Image::create([
+                                    'item_id' => $newObject->id,
+                                    'item_type' => ImageType::NEWS,
+                                    'image' => $image,
+                                    'primary' => $key === 0 ? 1 : 0
+                                ]);
+                            }
+                        }
+                    }
                 }
             }
         }

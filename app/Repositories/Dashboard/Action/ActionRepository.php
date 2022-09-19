@@ -47,7 +47,7 @@ class ActionRepository
             $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
             $image_name = 'image';
             $image_path = 'uploads/actions/';
-            $image = UtilsRepository::uploadImage($data['request'], $image_name, $image_path, $file_id, 500, 600);
+            $image = UtilsRepository::createImage($data['request'], $image_name, $image_path, $file_id, 500, 600);
             if ($image !== false) {
                 Image::create([
                     'item_id' => $created->id,
@@ -132,7 +132,7 @@ class ActionRepository
                 $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
                 $image_name = 'image';
                 $image_path = 'uploads/actions/';
-                $image = UtilsRepository::uploadImage($data['request'], $image_name, $image_path, $file_id, 500, 600);
+                $image = UtilsRepository::createImage($data['request'], $image_name, $image_path, $file_id, 500, 600);
                 if ($image !== false) {
                     if ($action->image() && file_exists($action->image()->image)) {
                         unlink($action->image()->image);
