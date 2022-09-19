@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 class SettingController extends Controller
 {
 
+    public function getSiteNews(Request $request)
+    {
+        $data = $request->all();
+        return SettingApiService::getSiteNews($data);
+    }
+
     public function getIntros(Request $request)
     {
         $data = $request->all();

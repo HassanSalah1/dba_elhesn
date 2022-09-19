@@ -26,6 +26,7 @@ use App\Models\News;
 use App\Models\Setting;
 use App\Models\Team;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\DB;
 
 class SettingApiRepository
 {
@@ -278,6 +279,17 @@ class SettingApiRepository
         $intros = Intro::orderBy('id', 'DESC')->get();
         return [
             'data' => IntroResource::collection($intros),
+            'message' => 'success',
+            'code' => HttpCode::SUCCESS
+        ];
+    }
+
+    public static function getSiteNews(array $data)
+    {
+        $news = DB::connection('mysql2')->table('wp_posts')->limit(300);
+
+        return [
+            'data' => $news,
             'message' => 'success',
             'code' => HttpCode::SUCCESS
         ];

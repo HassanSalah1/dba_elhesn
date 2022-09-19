@@ -112,6 +112,12 @@ class SettingApiService
         return UtilsRepository::handleResponseApi($response);
     }
 
+    public static function getSiteNews(array $data)
+    {
+        $response = SettingApiRepository::getSiteNews($data);
+        return UtilsRepository::handleResponseApi($response);
+    }
+
 }
 
 ?>
