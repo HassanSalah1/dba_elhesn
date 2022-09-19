@@ -286,7 +286,9 @@ class SettingApiRepository
 
     public static function getSiteNews(array $data)
     {
-        $news = DB::connection('mysql2')->table('wp_posts')->limit(50)->get();
+        $news = DB::connection('mysql2')->table('wp_posts')
+            ->select('id')
+            ->limit(10)->get();
 
         return [
             'data' => $news,
