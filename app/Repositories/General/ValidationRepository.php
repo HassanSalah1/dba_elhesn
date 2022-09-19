@@ -55,7 +55,7 @@ class ValidationRepository
             } else {
                 $validation_errors = $validator->errors()->toArray();
                 foreach ($validation_errors as $key => $error) {
-                    $errors[] =  $error[0];
+                    $errors[] =  $error[0]; // trans('attributes.' . $key) . ': ' .
                 }
             }
             return Response()->json([
