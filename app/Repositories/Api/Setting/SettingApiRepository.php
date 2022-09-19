@@ -297,7 +297,7 @@ class SettingApiRepository
         curl_close($ch);
 
         return [
-            'data' => $server_output,
+            'data' => json_decode($server_output, true),
             'message' => 'success',
             'code' => HttpCode::SUCCESS
         ];
