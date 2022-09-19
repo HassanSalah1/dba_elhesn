@@ -316,5 +316,11 @@ class SettingApiRepository
                 }
             }
         }
+
+        return [
+//            'data' => IntroResource::collection($intros),
+            'message' => 'success',
+            'code' => HttpCode::SUCCESS
+        ];
     }
 }
