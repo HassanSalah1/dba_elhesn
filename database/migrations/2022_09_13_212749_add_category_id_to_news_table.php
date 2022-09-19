@@ -15,7 +15,7 @@ class AddCategoryIdToNewsTable extends Migration
     {
         Schema::table('news', function (Blueprint $table) {
             //
-            $table->bigInteger('category_id');
+            $table->bigInteger('category_id')->nullable();
         });
     }
 
