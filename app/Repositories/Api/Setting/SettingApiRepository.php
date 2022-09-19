@@ -286,9 +286,13 @@ class SettingApiRepository
 
     public static function getSiteNews(array $data)
     {
-        $news = DB::connection('mysql2')->table('wp_posts')
-            ->select('id')
-            ->limit(10)->get();
+        try {
+            $news = DB::connection('mysql2')->table('wp_posts')
+                ->select('id')
+                ->limit(10)->get();
+        } catch (\Exception $exception) {
+            echo $exception->getMessage();
+        }
 
         return [
             'data' => $news,
