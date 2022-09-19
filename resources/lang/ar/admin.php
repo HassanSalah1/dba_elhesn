@@ -243,5 +243,7 @@ return [
     "short_description_ar" => "وصف مختصر (عربى)",
     "short_description_en" => "وصف مختصر (إنجليزى)",
     "edit_new" => "تعديل خبر",
+    'city_description_ar' => 'عن التطبيق (عربى)',
+    'city_description_en' => 'عن التطبيق (إنجليزى)',
 ];
 ?>
