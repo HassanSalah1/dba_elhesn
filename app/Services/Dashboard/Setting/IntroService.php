@@ -21,6 +21,7 @@ class IntroService
             'title_en' => 'required',
             'description_ar' => 'required',
             'description_en' => 'required',
+            'image' => 'required'
         ];
         $validated = ValidationRepository::validateWebGeneral($data, $rules);
         if ($validated !== true) {
@@ -61,4 +62,5 @@ class IntroService
             , '');
     }
 }
+
 ?>

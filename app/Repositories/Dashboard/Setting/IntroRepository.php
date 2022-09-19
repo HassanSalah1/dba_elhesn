@@ -3,6 +3,7 @@ namespace App\Repositories\Dashboard\Setting;
 
 
 use App\Models\Intro;
+use App\Repositories\General\UtilsRepository;
 use Yajra\DataTables\Facades\DataTables;
 
 class IntroRepository
@@ -11,7 +12,7 @@ class IntroRepository
     // get Intros and create datatable data.
     public static function getIntrosData(array $data)
     {
-        $intros = Intro::orderBy('id' , 'DESC')->get();
+        $intros = Intro::orderBy('id', 'DESC')->get();
         return DataTables::of($intros)
             ->addColumn('actions', function ($intro) {
                 $ul = '<a data-toggle="tooltip" title="' . trans('admin.edit') . '" id="' . $intro->id . '" onclick="editIntro(this);return false;" href="#" class="on-default edit-row btn btn-info"><i data-feather="edit"></i></a>
@@ -23,18 +24,23 @@ class IntroRepository
 
     public static function addIntro(array $data)
     {
-        $intros = Intro::orderBy('id' , 'DESC')->count();
-        if($intros < 3){
+        $intros = Intro::orderBy('id', 'DESC')->count();
+        if ($intros < 3) {
             $introData = [
                 'title_ar' => $data['title_ar'],
                 'title_en' => $data['title_en'],
                 'description_ar' => $data['description_ar'],
                 'description_en' => $data['description_en'],
             ];
-
-            $created = Intro::create($introData);
-            if ($created) {
-                return true;
+            $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
+            $image_name = 'image';
+            $image_path = 'uploads/intros/';
+            $introData['image'] = UtilsRepository::createImage($data['request'], $image_name, $image_path, $file_id);
+            if ($introData['image'] !== false) {
+                $created = Intro::create($introData);
+                if ($created) {
+                    return true;
+                }
             }
         }
         return false;
@@ -69,6 +75,18 @@ class IntroRepository
                 'description_ar' => $data['description_ar'],
                 'description_en' => $data['description_en'],
             ];
+
+            $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
+            $image_name = 'image';
+            $image_path = 'uploads/intros/';
+            $introData['image'] = UtilsRepository::createImage($data['request'], $image_name, $image_path, $file_id);
+            if ($introData['image'] == false) {
+                unset($introData['image']);
+            } else {
+                if ($intro->image && file_exists($intro->image)) {
+                    unlink($intro->image);
+                }
+            }
             $updated = $intro->update($introData);
             if ($updated) {
                 return true;

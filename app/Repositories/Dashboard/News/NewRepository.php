@@ -49,7 +49,7 @@ class NewRepository
             $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
             $image_name = 'image';
             $image_path = 'uploads/news/';
-            $image = UtilsRepository::createImage($data['request'], $image_name, $image_path, $file_id);
+            $image = UtilsRepository::uploadImage($data['request'], $image_name, $image_path, $file_id , 500 , 600);
             if ($image !== false) {
                 Image::create([
                     'item_id' => $created->id,
@@ -65,7 +65,7 @@ class NewRepository
                 foreach ($images as $image) {
                     $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
                     $image_name = $image;
-                    $image = UtilsRepository::uploadImage($data['request'], $image_name, $image_path, $file_id);
+                    $image = UtilsRepository::uploadImage($data['request'], $image_name, $image_path, $file_id , 500 , 600);
                     if ($image !== false) {
                         Image::create([
                             'item_id' => $created->id,
@@ -136,7 +136,7 @@ class NewRepository
                 $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
                 $image_name = 'image';
                 $image_path = 'uploads/news/';
-                $image = UtilsRepository::createImage($data['request'], $image_name, $image_path, $file_id, 550, 330);
+                $image = UtilsRepository::uploadImage($data['request'], $image_name, $image_path, $file_id, 500, 600);
                 if ($image !== false) {
                     if ($new->image() && file_exists($new->image()->image)) {
                         unlink($new->image()->image);
@@ -156,7 +156,7 @@ class NewRepository
                     $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
                     $image_path = 'uploads/news/';
                     $image_name = $image;
-                    $image = UtilsRepository::uploadImage($data['request'], $image_name, $image_path, $file_id);
+                    $image = UtilsRepository::uploadImage($data['request'], $image_name, $image_path, $file_id , 500 , 600);
                     if ($image !== false) {
                         Image::create([
                             'item_id' => $new->id,

@@ -12,6 +12,14 @@
 
 @section('page-style')
     <link href="{{url('/css/jquery.loader.css')}}" rel="stylesheet"/>
+    <link href="{{url('/css/dropify.min.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{url('/css/custom/fancybox.css')}}" rel="stylesheet" type="text/css"/>
+    <style>
+        .dropify-message p {
+            line-height: 3.5rem !important;
+            font-size: 22px !important;
+        }
+    </style>
 @endsection
 
 @section('form_input')
@@ -45,6 +53,9 @@
                   class="form-control dt-post"
                   placeholder="{{trans('admin.description_en')}}"
         ></textarea>
+    </div>
+
+    <div class="mb-1" id="dropify_image">
     </div>
 @stop
 
@@ -85,6 +96,8 @@
 @endsection
 @section('page-script')
     <script src="{{url('/js/scripts/custom/jquery.loader.js')}}"></script>
+    <script src="{{url('/js/scripts/custom/dropify.min.js')}}"></script>
+    <script src="{{url('/js/scripts/custom/fancybox.min.js')}}"></script>
     <script>
         let add = false;
         let edit = false;
@@ -97,6 +110,7 @@
 
             addModal({
                 title: '{{trans('admin.add_intro')}}',
+                dropify: true
             });
 
             onClose();
@@ -123,6 +137,25 @@
 
         });
 
+        function initDropify(image = null) {
+            let html = '<label class="control-label" for="image">' +
+                '{{trans('admin.image')}}</label>' +
+                '<input name="image" type="file" class="dropify" data-default-file="' + (image ? image : '') + '" ' +
+                'data-max-file-size="3M" data-allowed-file-extensions="png jpg jpeg"/>';
+            $('#dropify_image').html(html);
+            $('.dropify').dropify({
+                messages: {
+                    'default': '{{trans('admin.dropify_default')}}',
+                    'replace': '{{trans('admin.dropify_replace')}}',
+                    'remove': '{{trans('admin.dropify_remove')}}',
+                    'error': '{{trans('admin.dropify_error')}}'
+                },
+                error: {
+                    'fileSize': '{{trans('admin.dropify_error')}}',
+                }
+            });
+        }
+
         function editIntro(item) {
             var id = $(item).attr('id');
             var form = new FormData();
@@ -141,7 +174,7 @@
                     $('#general-form input[name=title_en]').val(response.data.title_en);
                     $('#general-form textarea[name=description_ar]').val(response.data.description_ar);
                     $('#general-form textarea[name=description_en]').val(response.data.description_en);
-
+                    initDropify(response.data.image ? response.data.image : null);
                     $('.general_modal').modal('toggle');
                     edit = true;
                     add = false;
