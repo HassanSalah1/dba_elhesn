@@ -17,9 +17,11 @@ class ActionRepository
         $actions = Action::orderBy('id', 'DESC')->get();
         return DataTables::of($actions)
             ->editColumn('image', function ($action) {
-                return '<a href="' . url($action->image()->image) . '" data-popup="lightbox">
+                if ($action->image()) {
+                    return '<a href="' . url($action->image()->image) . '" data-popup="lightbox">
                     <img src="' . url($action->image()->image) . '" class="img-rounded img-preview"
                     style="max-height:50px;max-width:50px;"></a>';
+                }
             })
             ->addColumn('actions', function ($action) {
                 $ul = '';
