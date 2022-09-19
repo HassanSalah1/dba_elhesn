@@ -296,7 +296,7 @@ class SettingApiRepository
         $server_output = curl_exec($ch);
         curl_close($ch);
 
-        $news = json_decode($server_output, true);
+        $news = $server_output ? json_decode($server_output, true) : [];
         if ($news && is_array($news)) {
             foreach ($news as $new) {
                 $newObject = News::where(['new_id' => $new->id])->first();
