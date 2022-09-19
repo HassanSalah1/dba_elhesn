@@ -55,12 +55,13 @@ class ValidationRepository
             } else {
                 $validation_errors = $validator->errors()->toArray();
                 foreach ($validation_errors as $key => $error) {
-                    $errors[] =  $error[0]; // trans('attributes.' . $key) . ': ' .
+                    $validation_errors =  $error[0]; // trans('attributes.' . $key) . ': ' .
+                    break;
                 }
             }
             return Response()->json([
-                'errors' => $errors,
-                'message' => 'error'
+//                'errors' => $errors,
+                'message' => $validation_errors
             ], HttpCode::ERROR);
         }
         return true;
