@@ -286,16 +286,18 @@ class SettingApiRepository
 
     public static function getSiteNews(array $data)
     {
-        try {
-            $news = DB::connection('mysql2')->table('wp_posts')
-                ->select('id')
-                ->limit(10)->get();
-        } catch (\Exception $exception) {
-            echo $exception->getMessage();
-        }
+        $url = 'https://dhclub.ae/wp-json/wp/v2/posts';
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+//        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+        $server_output = curl_exec($ch);
+        curl_close($ch);
 
         return [
-            'data' => $news,
+            'data' => $server_output,
             'message' => 'success',
             'code' => HttpCode::SUCCESS
         ];
