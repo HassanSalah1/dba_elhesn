@@ -64,7 +64,7 @@ return [
         ],
         'mysql2' => array(
             'driver' => 'mysql',
-            'host' => 'dhclub.ae',
+            'host' => '141.95.2.97',
             'port' => '3306',
             'database' => 'dhclub_wp',
             'username' => 'dhclub_wp',
