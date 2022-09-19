@@ -301,6 +301,7 @@ class SettingApiRepository
             foreach ($news as $new) {
                 $newObject = News::where(['new_id' => $new->id])->first();
                 if (!$newObject) {
+                    $category = Category::find($new->categories[0]);
                     $newData = [
                         'title_ar' => $new->title->rendered,
                         'title_en' => $new->title->rendered,
@@ -309,7 +310,7 @@ class SettingApiRepository
                         'description_ar' => $new->content->rendered,
                         'description_en' => $new->content->rendered,
                         'video_url' => null,
-                        'category_id' => $new->categories[0],
+                        'category_id' => $category ? $category->id : null,
                         'new_id' => $new->id
                     ];
                     News::create($newData);
