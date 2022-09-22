@@ -21,7 +21,7 @@ class NewResource extends JsonResource
             'title' => $this->title,
             'short_description' => $this->short_description,
             'image' => $image ? url($image->image) : null,
-            'category' => $this->category->name,
+            'category' => $this->category ? $this->category->name : '',
             'created_date' => UtilsRepository::translateDate(date('d F Y', strtotime($this->created_at))),
         ];
     }
