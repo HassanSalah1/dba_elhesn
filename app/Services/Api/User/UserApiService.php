@@ -26,7 +26,7 @@ class UserApiService
             $keys['email'] = 'unique:users';
         }
         if (isset($data['phone']) && $data['user']->phone !== $data['phone']) {
-            $keys['phone'] = 'unique:users|phone:EA,mobile';
+            $keys['phone'] = 'unique:users|phone:AE,mobile';
         }
         if (isset($data['password']) || isset($data['old_password'])) {
             $keys = [
