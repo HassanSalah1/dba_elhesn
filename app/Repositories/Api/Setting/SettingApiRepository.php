@@ -250,7 +250,7 @@ class SettingApiRepository
                 $query->where('title_ar', 'LIKE', '%' . $data['keyword'] . '%');
                 $query->orWhere('title_en', 'LIKE', '%' . $data['keyword'] . '%');
             }
-        })->orderBy('start_date', 'DESC')->paginate(10);
+        })->orderBy('start_date', 'ASC')->paginate(10);
         $actions->{'actions'} = ActionResource::collection($actions);
         // return success response
         return [
