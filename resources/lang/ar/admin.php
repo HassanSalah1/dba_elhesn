@@ -245,5 +245,6 @@ return [
     "edit_new" => "تعديل خبر",
     'city_description_ar' => 'عن التطبيق (عربى)',
     'city_description_en' => 'عن التطبيق (إنجليزى)',
+    'order' => 'الترتيب',
 ];
 ?>

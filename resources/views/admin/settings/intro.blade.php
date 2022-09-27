@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="{{ asset(mix('vendors/css/tables/datatable/dataTables.bootstrap5.min.css')) }}">
     <link rel="stylesheet" href="{{ asset(mix('vendors/css/tables/datatable/responsive.bootstrap5.min.css')) }}">
     <link rel="stylesheet" type="text/css" href="{{ asset(mix('vendors/css/extensions/sweetalert2.min.css')) }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset(mix('css/base/plugins/extensions/ext-component-sweet-alerts.css')) }}">
+    <link rel="stylesheet" type="text/css"
+          href="{{ asset(mix('css/base/plugins/extensions/ext-component-sweet-alerts.css')) }}">
 
 @endsection
 
@@ -26,9 +27,9 @@
     <div class="mb-1">
         <label class="form-label" for="title_ar">{{trans('admin.title_ar')}}</label>
         <input type="text" name="title_ar"
-            class="form-control dt-full-name"
-            id="title_ar"
-            placeholder="{{trans('admin.title_ar')}}" />
+               class="form-control dt-full-name"
+               id="title_ar"
+               placeholder="{{trans('admin.title_ar')}}"/>
     </div>
 
     <div class="mb-1">
@@ -36,14 +37,21 @@
         <input type="text" name="title_en"
                class="form-control dt-full-name"
                id="title_en"
-               placeholder="{{trans('admin.title_en')}}" />
+               placeholder="{{trans('admin.title_en')}}"/>
+    </div>
+
+    <div class="mb-1">
+        <label class="form-label" for="order">{{trans('admin.order')}}</label>
+        <input type="number" name="order"
+               class="form-control dt-full-name"
+               id="order" placeholder="{{trans('admin.order')}}"/>
     </div>
 
     <div class="mb-1">
         <label class="form-label" for="description_ar">{{trans('admin.description_ar')}}</label>
         <textarea id="description_ar" name="description_ar"
-            class="form-control dt-post"
-            placeholder="{{trans('admin.description_ar')}}"
+                  class="form-control dt-post"
+                  placeholder="{{trans('admin.description_ar')}}"
         ></textarea>
     </div>
 
@@ -106,7 +114,7 @@
     </script>
     <script src="{{url('/js/scripts/custom/utils.js')}}"></script>
     <script>
-        $(function() {
+        $(function () {
 
             addModal({
                 title: '{{trans('admin.add_intro')}}',
@@ -116,7 +124,7 @@
             onClose();
 
             loadDataTables('{{ url("/admin/intros/data", [] , env('APP_ENV') === 'local' ?  false : true)}}',
-                ['title' , 'description', 'actions'], '',
+                ['title', 'description', 'actions'], '',
                 {
                     'show': '{{trans('admin.show')}}',
                     'first': '{{trans('admin.first')}}',

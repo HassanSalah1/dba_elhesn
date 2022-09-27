@@ -277,7 +277,7 @@ class SettingApiRepository
 
     public static function getIntros(array $data)
     {
-        $intros = Intro::orderBy('id', 'DESC')->get();
+        $intros = Intro::orderBy('order', 'ASC')->get();
         return [
             'data' => IntroResource::collection($intros),
             'message' => 'success',

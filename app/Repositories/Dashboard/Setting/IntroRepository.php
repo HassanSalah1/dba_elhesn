@@ -12,7 +12,7 @@ class IntroRepository
     // get Intros and create datatable data.
     public static function getIntrosData(array $data)
     {
-        $intros = Intro::orderBy('id', 'DESC')->get();
+        $intros = Intro::orderBy('order', 'ASC')->get();
         return DataTables::of($intros)
             ->addColumn('actions', function ($intro) {
                 $ul = '<a data-toggle="tooltip" title="' . trans('admin.edit') . '" id="' . $intro->id . '" onclick="editIntro(this);return false;" href="#" class="on-default edit-row btn btn-info"><i data-feather="edit"></i></a>
@@ -26,11 +26,13 @@ class IntroRepository
     {
         $intros = Intro::orderBy('id', 'DESC')->count();
         if ($intros < 3) {
+            Intro::where('order', '>=', $data['order'])->increment('order');
             $introData = [
                 'title_ar' => $data['title_ar'],
                 'title_en' => $data['title_en'],
                 'description_ar' => $data['description_ar'],
                 'description_en' => $data['description_en'],
+                'order' => $data['order'],
             ];
             $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
             $image_name = 'image';
@@ -69,11 +71,15 @@ class IntroRepository
     {
         $intro = Intro::where(['id' => $data['id']])->first();
         if ($intro) {
+            if ($data['order'] != $intro->order) {
+                Intro::where('order', '>=', $data['order'])->increment('order');
+            }
             $introData = [
                 'title_ar' => $data['title_ar'],
                 'title_en' => $data['title_en'],
                 'description_ar' => $data['description_ar'],
                 'description_en' => $data['description_en'],
+                'order' => $data['order'],
             ];
 
             $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
