@@ -62,7 +62,7 @@
         $(function () {
 
             loadDataTables('{{ url("/admin/actions/data") }}',
-                ['title', 'image', 'actions'], '',
+                ['title', 'image' , 'start_date', 'actions'], '',
                 {
                     'show': '{{trans('admin.show')}}',
                     'first': '{{trans('admin.first')}}',
