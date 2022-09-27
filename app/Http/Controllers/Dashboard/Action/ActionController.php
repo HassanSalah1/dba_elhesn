@@ -18,8 +18,8 @@ class ActionController extends Controller
             'direction' => 'rtl'
         ];
         $data['title'] = trans('admin.actions_title');
-        $data['debatable_names'] = array(trans('admin.title'), trans('admin.start_date') ,  trans('admin.image'),
-            trans('admin.actions'));
+        $data['debatable_names'] = array(trans('admin.title'),  trans('admin.image'),
+            trans('admin.start_date') , trans('admin.actions'));
         return view('admin.action.index')->with($data);
     }
 
