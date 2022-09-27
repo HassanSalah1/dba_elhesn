@@ -109,16 +109,16 @@
                                     </div>
                                 </div>
 
-                                <div class="col-xl-6 col-md-6 col-12">
-                                    <div class="mb-1">
-                                        <label class="form-label"
-                                               for="video_url">{{trans('admin.video_url')}}</label>
-                                        <input type="url" class="form-control" id="video_url"
-                                               name="video_url"
-                                               @if(isset($new) && $new) value="{{$new->video_url}}" @endif
-                                               placeholder="{{trans('admin.video_url')}}"/>
-                                    </div>
-                                </div>
+{{--                                <div class="col-xl-6 col-md-6 col-12">--}}
+{{--                                    <div class="mb-1">--}}
+{{--                                        <label class="form-label"--}}
+{{--                                               for="video_url">{{trans('admin.video_url')}}</label>--}}
+{{--                                        <input type="url" class="form-control" id="video_url"--}}
+{{--                                               name="video_url"--}}
+{{--                                               @if(isset($new) && $new) value="{{$new->video_url}}" @endif--}}
+{{--                                               placeholder="{{trans('admin.video_url')}}"/>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
 
 
                                 <div class="col-xl-12 col-md-12 col-12">
@@ -128,27 +128,27 @@
 
                                 <hr>
 
-                                <div class="mb-1">
-                                    <label class="form-label" for="images">{{trans('admin.images')}}</label>
-                                    <input name="images[]" class="form-control dt-full-name" id="images" type="file"
-                                           multiple/>
-                                </div>
+{{--                                <div class="mb-1">--}}
+{{--                                    <label class="form-label" for="images">{{trans('admin.images')}}</label>--}}
+{{--                                    <input name="images[]" class="form-control dt-full-name" id="images" type="file"--}}
+{{--                                           multiple/>--}}
+{{--                                </div>--}}
 
-                                <div class="mb-1 row" id="images_div">
-                                    @if(isset($new) && $new)
-                                        @foreach($new->images() as $image)
-                                            @if($new->image()->id === $image->id) @continue @endif
-                                            <div style="height: 150px;" class="col-md-4" id="image_{{$image->id}}">
-                                                <img style="max-width: 100%;max-height: 100%;"
-                                                     src="{{url($image->image)}}"
-                                                     class="img-responsive"/>
-                                                <button type="button" onclick="removeImage('{{$image->id}}')">
-                                                    حذف
-                                                </button>
-                                            </div>
-                                        @endforeach
-                                    @endif
-                                </div>
+{{--                                <div class="mb-1 row" id="images_div">--}}
+{{--                                    @if(isset($new) && $new)--}}
+{{--                                        @foreach($new->images() as $image)--}}
+{{--                                            @if($new->image()->id === $image->id) @continue @endif--}}
+{{--                                            <div style="height: 150px;" class="col-md-4" id="image_{{$image->id}}">--}}
+{{--                                                <img style="max-width: 100%;max-height: 100%;"--}}
+{{--                                                     src="{{url($image->image)}}"--}}
+{{--                                                     class="img-responsive"/>--}}
+{{--                                                <button type="button" onclick="removeImage('{{$image->id}}')">--}}
+{{--                                                    حذف--}}
+{{--                                                </button>--}}
+{{--                                            </div>--}}
+{{--                                        @endforeach--}}
+{{--                                    @endif--}}
+{{--                                </div>--}}
 
                                 <br>
                                 <hr>
