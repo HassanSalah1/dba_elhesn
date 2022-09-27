@@ -62,6 +62,7 @@ class IntroRepository
     {
         $intro = Intro::where(['id' => $data['id']])->first();
         if ($intro) {
+            $intro->image = url($intro->image);
             return $intro;
         }
         return false;

@@ -180,6 +180,7 @@
                 success: function (response) {
                     $('#general-form input[name=title_ar]').val(response.data.title_ar);
                     $('#general-form input[name=title_en]').val(response.data.title_en);
+                    $('#general-form input[name=order]').val(response.data.order);
                     $('#general-form textarea[name=description_ar]').val(response.data.description_ar);
                     $('#general-form textarea[name=description_en]').val(response.data.description_en);
                     initDropify(response.data.image ? response.data.image : null);
