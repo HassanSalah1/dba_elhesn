@@ -50,6 +50,13 @@
                placeholder="{{trans('admin.position')}}"/>
     </div>
 
+    <div class="mb-1">
+        <label class="form-label" for="order">{{trans('admin.order')}}</label>
+        <input type="number" name="order" min="1"
+               class="form-control dt-full-name"
+               id="order" placeholder="{{trans('admin.order')}}"/>
+    </div>
+
     <div class="mb-1" id="dropify_image">
     </div>
 
@@ -171,6 +178,7 @@
                     $('#general-form input[name=name]').val(response.data.name);
                     $('#general-form input[name=position]').val(response.data.position);
                     $('#general-form input[name=title]').val(response.data.title);
+                    $('#general-form input[name=order]').val(response.data.order);
                     initDropify(response.data.image ? response.data.image : null);
                     $('.general_modal').modal('toggle');
                     edit = true;

@@ -42,7 +42,7 @@
 
     <div class="mb-1">
         <label class="form-label" for="order">{{trans('admin.order')}}</label>
-        <input type="number" name="order"
+        <input type="number" name="order" min="1"
                class="form-control dt-full-name"
                id="order" placeholder="{{trans('admin.order')}}"/>
     </div>

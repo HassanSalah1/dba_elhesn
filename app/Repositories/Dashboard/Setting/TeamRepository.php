@@ -2,6 +2,7 @@
 namespace App\Repositories\Dashboard\Setting;
 
 
+use App\Models\Intro;
 use App\Models\Team;
 use App\Repositories\General\UtilsRepository;
 use Yajra\DataTables\Facades\DataTables;
@@ -12,7 +13,7 @@ class TeamRepository
     // get Teams and create datatable data.
     public static function getTeamsData(array $data)
     {
-        $teams = Team::orderBy('id', 'DESC');
+        $teams = Team::orderBy('order', 'ASC');
         return DataTables::of($teams)
             ->addColumn('actions', function ($team) {
                 $ul = '';
@@ -25,10 +26,12 @@ class TeamRepository
 
     public static function addTeam(array $data)
     {
+        Team::where('order', '>=', $data['order'])->increment('order');
         $teamData = [
             'title' => $data['title'],
             'name' => $data['name'],
             'position' => $data['position'],
+            'order' => $data['order'],
         ];
         $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
         $image_name = 'image';
@@ -78,10 +81,14 @@ class TeamRepository
     {
         $team = Team::where(['id' => $data['id']])->first();
         if ($team) {
+            if ($data['order'] != $team->order) {
+                Team::where('order', '>=', $data['order'])->increment('order');
+            }
             $teamData = [
                 'title' => $data['title'],
                 'name' => $data['name'],
                 'position' => $data['position'],
+                'order' => $data['order'],
             ];
             $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
             $image_name = 'image';

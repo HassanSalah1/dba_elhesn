@@ -10,7 +10,7 @@ class Team extends Model
     use HasFactory;
 
     protected $table = 'teams';
-    protected $fillable = ['title', 'name', 'position', 'image'];
+    protected $fillable = ['title', 'name', 'position', 'image' , 'order'];
 
     public function getImageUrlAttribute()
     {

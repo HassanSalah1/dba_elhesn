@@ -149,7 +149,7 @@ class SettingApiRepository
 
     public static function getTeams(array $data)
     {
-        $teams = Team::all();
+        $teams = Team::orderBy('order', 'ASC')->get();
         // return success response
         return [
             'data' => [
