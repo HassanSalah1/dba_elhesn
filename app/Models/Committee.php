@@ -17,8 +17,8 @@ class Committee extends Model
 
     public function getImageUrlAttribute()
     {
-        $image = $this->image ?: null;
-        return url($image);
+        $image = $this->image;
+        return $image ? url($image) : null;
     }
 
     public function getNameAttribute()
