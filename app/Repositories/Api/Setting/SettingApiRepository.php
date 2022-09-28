@@ -181,7 +181,7 @@ class SettingApiRepository
 
     public static function getCommittees(array $data)
     {
-        $committees = Committee::orderBy('id', 'DESC')->paginate(10);
+        $committees = Committee::orderBy('order', 'ASC')->paginate(10);
         $committees->{'committees'} = CommitteeResource::collection($committees);
         // return success response
         return [

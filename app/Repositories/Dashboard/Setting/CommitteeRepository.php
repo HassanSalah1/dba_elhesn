@@ -3,6 +3,7 @@ namespace App\Repositories\Dashboard\Setting;
 
 
 use App\Models\Committee;
+use App\Models\Intro;
 use App\Repositories\General\UtilsRepository;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -12,7 +13,7 @@ class CommitteeRepository
     // get Committees and create datatable data.
     public static function getCommitteesData(array $data)
     {
-        $teams = Committee::orderBy('id', 'DESC');
+        $teams = Committee::orderBy('order', 'ASC');
         return DataTables::of($teams)
             ->addColumn('actions', function ($team) {
                 $ul = '';
@@ -25,11 +26,13 @@ class CommitteeRepository
 
     public static function addCommittee(array $data)
     {
+        Intro::where('order', '>=', $data['order'])->increment('order');
         $teamData = [
             'name_ar' => $data['name_ar'],
             'name_en' => $data['name_en'],
             'description_ar' => $data['description_ar'],
             'description_en' => $data['description_en'],
+            'order' => $data['order'],
         ];
         $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
         $image_name = 'image';
@@ -79,11 +82,15 @@ class CommitteeRepository
     {
         $team = Committee::where(['id' => $data['id']])->first();
         if ($team) {
+            if ($data['order'] != $team->order) {
+                Intro::where('order', '>=', $data['order'])->increment('order');
+            }
             $teamData = [
                 'name_ar' => $data['name_ar'],
                 'name_en' => $data['name_en'],
                 'description_ar' => $data['description_ar'],
                 'description_en' => $data['description_en'],
+                'order' => $data['order'],
             ];
             $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
             $image_name = 'image';
