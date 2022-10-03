@@ -71,6 +71,18 @@ class SettingController extends Controller
         return SettingApiService::getGallery($data);
     }
 
+    public function getSportGames(Request $request)
+    {
+        $data = $request->all();
+        return SettingApiService::getSportGames($data);
+    }
+
+    public function getSportGamesGallery(Request $request, $id)
+    {
+        $data = $request->all();
+        $data['id'] = $id;
+        return SettingApiService::getSportGamesGallery($data);
+    }
 
     public function getCommittees(Request $request)
     {
@@ -90,7 +102,7 @@ class SettingController extends Controller
         return SettingApiService::getNews($data);
     }
 
-    public function getNewDetails(Request $request , $id)
+    public function getNewDetails(Request $request, $id)
     {
         $data = $request->all();
         $data['id'] = $id;
@@ -103,7 +115,7 @@ class SettingController extends Controller
         return SettingApiService::getActions($data);
     }
 
-    public function getActionDetails(Request $request , $id)
+    public function getActionDetails(Request $request, $id)
     {
         $data = $request->all();
         $data['id'] = $id;

@@ -76,6 +76,18 @@ class SettingApiService
         return UtilsRepository::handleResponseApi($response);
     }
 
+    public static function getSportGames(array $data)
+    {
+        $response = SettingApiRepository::getSportGames($data);
+        return UtilsRepository::handleResponseApi($response);
+    }
+
+    public static function getSportGamesGallery(array $data)
+    {
+        $response = SettingApiRepository::getSportGamesGallery($data);
+        return UtilsRepository::handleResponseApi($response);
+    }
+
     public static function getCommittees(array $data)
     {
         $response = SettingApiRepository::getCommittees($data);

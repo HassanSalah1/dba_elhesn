@@ -14,6 +14,7 @@ use App\Http\Resources\ImageResource;
 use App\Http\Resources\IntroResource;
 use App\Http\Resources\NewDetailsResource;
 use App\Http\Resources\NewResource;
+use App\Http\Resources\SportGameResource;
 use App\Http\Resources\TeamResource;
 use App\Models\Action;
 use App\Models\Category;
@@ -24,6 +25,7 @@ use App\Models\Image;
 use App\Models\Intro;
 use App\Models\News;
 use App\Models\Setting;
+use App\Models\SportGame;
 use App\Models\Team;
 use App\Repositories\General\UtilsRepository;
 use Illuminate\Support\Facades\App;
@@ -169,7 +171,43 @@ class SettingApiRepository
             } else if (isset($data['type']) && $data['type'] === 'image') {
                 $query->where('image', '!=', null);
             }
-        })->orderBy('id', 'DESC')->paginate(10);
+        })->where(['sport_game_id' => null])
+            ->orderBy('id', 'DESC')
+            ->paginate(10);
+        $galleries->{'galleries'} = GalleryResource::collection($galleries);
+        // return success response
+        return [
+            'data' => $galleries,
+            'message' => 'success',
+            'code' => HttpCode::SUCCESS
+        ];
+    }
+
+
+    public static function getSportGames(array $data)
+    {
+        $games = SportGame::orderBy('order', 'ASC')->paginate(10);
+        $games->{'games'} = SportGameResource::collection($games);
+        // return success response
+        return [
+            'data' => $games,
+            'message' => 'success',
+            'code' => HttpCode::SUCCESS
+        ];
+    }
+
+
+    public static function getSportGamesGallery(array $data)
+    {
+        $galleries = Gallery::where(function ($query) use ($data) {
+            if (isset($data['type']) && $data['type'] === 'video') {
+                $query->where('video_url', '!=', null);
+            } else if (isset($data['type']) && $data['type'] === 'image') {
+                $query->where('image', '!=', null);
+            }
+        })->where(['sport_game_id' => $data['id']])
+            ->orderBy('id', 'DESC')
+            ->paginate(10);
         $galleries->{'galleries'} = GalleryResource::collection($galleries);
         // return success response
         return [
