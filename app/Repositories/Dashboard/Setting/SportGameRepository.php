@@ -2,31 +2,31 @@
 namespace App\Repositories\Dashboard\Setting;
 
 
-use App\Models\Committee;
+use App\Models\SportGame;
 use App\Models\Intro;
 use App\Repositories\General\UtilsRepository;
 use Yajra\DataTables\Facades\DataTables;
 
-class CommitteeRepository
+class SportGameRepository
 {
 
-    // get Committees and create datatable data.
-    public static function getCommitteesData(array $data)
+    // get SportGames and create datatable data.
+    public static function getSportGamesData(array $data)
     {
-        $teams = Committee::orderBy('order', 'ASC');
+        $teams = SportGame::orderBy('order', 'ASC');
         return DataTables::of($teams)
             ->addColumn('actions', function ($team) {
                 $ul = '';
-                $ul .= '<a data-toggle="tooltip" title="' . trans('admin.edit') . '" id="' . $team->id . '" onclick="editCommittee(this);return false;" href="#" class="on-default edit-row btn btn-info"><i data-feather="edit"></i></a>
+                $ul .= '<a data-toggle="tooltip" title="' . trans('admin.edit') . '" id="' . $team->id . '" onclick="editSportGame(this);return false;" href="#" class="on-default edit-row btn btn-info"><i data-feather="edit"></i></a>
                    ';
-                $ul .= '<a data-toggle="tooltip" title="' . trans('admin.delete_action') . '" id="' . $team->id . '" onclick="deleteCommittee(this);return false;" href="#" class="on-default remove-row btn btn-danger"><i data-feather="delete"></i></a>';
+                $ul .= '<a data-toggle="tooltip" title="' . trans('admin.delete_action') . '" id="' . $team->id . '" onclick="deleteSportGame(this);return false;" href="#" class="on-default remove-row btn btn-danger"><i data-feather="delete"></i></a>';
                 return $ul;
             })->make(true);
     }
 
-    public static function addCommittee(array $data)
+    public static function addSportGame(array $data)
     {
-        Committee::where('order', '>=', $data['order'])->increment('order');
+        SportGame::where('order', '>=', $data['order'])->increment('order');
         $teamData = [
             'name_ar' => $data['name_ar'],
             'name_en' => $data['name_en'],
@@ -36,21 +36,21 @@ class CommitteeRepository
         ];
         $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
         $image_name = 'image';
-        $image_path = 'uploads/committees/';
-        $image = UtilsRepository::createImage($data['request'], $image_name, $image_path, $file_id, 295 , 180);
+        $image_path = 'uploads/sportGames/';
+        $image = UtilsRepository::createImage($data['request'], $image_name, $image_path, $file_id, 125 , 125);
         if ($image !== false) {
             $teamData['image'] = $image;
         }
-        $created = Committee::create($teamData);
+        $created = SportGame::create($teamData);
         if ($created) {
             return true;
         }
         return false;
     }
 
-    public static function deleteCommittee(array $data)
+    public static function deleteSportGame(array $data)
     {
-        $team = Committee::where(['id' => $data['id']])->first();
+        $team = SportGame::where(['id' => $data['id']])->first();
         if ($team) {
             $team->delete();
             return true;
@@ -58,9 +58,9 @@ class CommitteeRepository
         return false;
     }
 
-    public static function restoreCommittee(array $data)
+    public static function restoreSportGame(array $data)
     {
-        $bank = Committee::where(['id' => $data['id']])->first();
+        $bank = SportGame::where(['id' => $data['id']])->first();
         if ($bank) {
             $bank->restore();
             return true;
@@ -68,9 +68,9 @@ class CommitteeRepository
         return false;
     }
 
-    public static function getCommitteeData(array $data)
+    public static function getSportGameData(array $data)
     {
-        $team = Committee::where(['id' => $data['id']])->first();
+        $team = SportGame::where(['id' => $data['id']])->first();
         if ($team) {
             $team->image = $team->image ? url($team->image) : null;
             return $team;
@@ -78,12 +78,12 @@ class CommitteeRepository
         return false;
     }
 
-    public static function editCommittee(array $data)
+    public static function editSportGame(array $data)
     {
-        $team = Committee::where(['id' => $data['id']])->first();
+        $team = SportGame::where(['id' => $data['id']])->first();
         if ($team) {
             if ($data['order'] != $team->order) {
-                Committee::where('order', '>=', $data['order'])->increment('order');
+                SportGame::where('order', '>=', $data['order'])->increment('order');
             }
             $teamData = [
                 'name_ar' => $data['name_ar'],
@@ -94,8 +94,8 @@ class CommitteeRepository
             ];
             $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
             $image_name = 'image';
-            $image_path = 'uploads/committees/';
-            $image = UtilsRepository::createImage($data['request'], $image_name, $image_path, $file_id, 295 , 180);
+            $image_path = 'uploads/sportGames/';
+            $image = UtilsRepository::createImage($data['request'], $image_name, $image_path, $file_id, 125 , 125);
             if ($image !== false) {
                 $teamData['image'] = $image;
                 if ($team->image && file_exists($team->image)) {

@@ -246,5 +246,8 @@ return [
     'city_description_ar' => 'عن التطبيق (عربى)',
     'city_description_en' => 'عن التطبيق (إنجليزى)',
     'order' => 'الترتيب',
+    "sport_games_title" => "إدارة الألعاب الرياضية",
+    "add_sportGame" => "إضافة",
+    "edit_sportGame" => "تعديل"
 ];
 ?>

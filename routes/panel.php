@@ -10,6 +10,7 @@ use App\Http\Controllers\Dashboard\Notification\NotificationController;
 use App\Http\Controllers\Dashboard\Setting\CommitteeController;
 use App\Http\Controllers\Dashboard\Setting\GalleryController;
 use App\Http\Controllers\Dashboard\Setting\IntroController;
+use App\Http\Controllers\Dashboard\Setting\SportGameController;
 use App\Http\Controllers\Dashboard\Setting\TeamController;
 use App\Http\Controllers\Dashboard\User\UserController;
 
@@ -77,6 +78,14 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/committee/data', [CommitteeController::class, 'getCommitteeData']); // get Committee data
         Route::post('/committee/edit', [CommitteeController::class, 'editCommittee']); // edit Committee
         Route::post('/committee/delete', [CommitteeController::class, 'deleteCommittee']); // delete Committee
+
+        ////////////////////////////////
+        Route::get('/sportGames', [SportGameController::class, 'showSportGames'])->name('dashboard-sportGames'); // show Index page that control all SportGamess
+        Route::get('/sportGames/data', [SportGameController::class, 'getSportGamesData']); // get all SportGamess data for DataTable
+        Route::post('/sportGame/add', [SportGameController::class, 'addSportGame']); // add SportGames
+        Route::post('/sportGame/data', [SportGameController::class, 'getSportGameData']); // get SportGames data
+        Route::post('/sportGame/edit', [SportGameController::class, 'editSportGame']); // edit SportGames
+        Route::post('/sportGame/delete', [SportGameController::class, 'deleteSportGame']); // delete SportGames
 
         //////////////////////////////////
         Route::get('/history', [HomeController::class, 'showHistory'])->name('dashboard-history'); // history page

@@ -97,6 +97,12 @@
             "icon": "message-circle",
             "url": "admin/contacts",
             "slug": "dashboard-contacts"
+        },
+        {
+            "name": "sport_games_title",
+            "icon": "box",
+            "url": "admin/sportGames",
+            "slug": "dashboard-sportGames"
         }
     ]
 }
