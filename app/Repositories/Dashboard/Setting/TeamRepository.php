@@ -36,7 +36,7 @@ class TeamRepository
         $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
         $image_name = 'image';
         $image_path = 'uploads/teams/';
-        $image = UtilsRepository::createImage($data['request'], $image_name, $image_path, $file_id , 400 , 400);
+        $image = UtilsRepository::createImage($data['request'], $image_name, $image_path, $file_id , 125 , 125);
         if ($image !== false) {
             $teamData['image'] = $image;
         }
@@ -93,7 +93,7 @@ class TeamRepository
             $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
             $image_name = 'image';
             $image_path = 'uploads/teams/';
-            $image = UtilsRepository::createImage($data['request'], $image_name, $image_path, $file_id , 400 , 400);
+            $image = UtilsRepository::createImage($data['request'], $image_name, $image_path, $file_id , 125 , 125);
             if ($image !== false) {
                 $teamData['image'] = $image;
                 if ($team->image && file_exists($team->image)) {
