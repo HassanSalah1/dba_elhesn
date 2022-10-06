@@ -125,7 +125,7 @@
             onClose();
 
             loadDataTables('{{ url("/admin/sportGames/data") }}',
-                ['name', 'description', 'actions'], '',
+                ['title', 'description', 'actions'], '',
                 {
                     'show': '{{trans('admin.show')}}',
                     'first': '{{trans('admin.first')}}',
