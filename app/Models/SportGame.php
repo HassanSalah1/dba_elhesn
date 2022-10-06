@@ -11,6 +11,7 @@ class SportGame extends Model
     use HasFactory;
     protected $table = 'sport_games';
     protected $fillable = ['title_ar' , 'title_en'  , 'description_ar' , 'description_en' , 'image' , 'order'];
+    protected $appends = ['title' , 'description'];
 
     public function getImageUrlAttribute()
     {
