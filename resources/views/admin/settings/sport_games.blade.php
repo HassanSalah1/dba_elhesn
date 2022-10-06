@@ -26,19 +26,19 @@
 @section('form_input')
 
     <div class="mb-1">
-        <label class="form-label" for="name_ar">{{trans('admin.name_ar')}}</label>
-        <input type="text" name="name_ar"
+        <label class="form-label" for="title_ar">{{trans('admin.name_ar')}}</label>
+        <input type="text" name="title_ar"
                class="form-control dt-full-name"
-               id="name_ar"
+               id="title_ar"
                placeholder="{{trans('admin.name_ar')}}"/>
     </div>
 
 
     <div class="mb-1">
-        <label class="form-label" for="name_en">{{trans('admin.name_en')}}</label>
-        <input type="text" name="name_en"
+        <label class="form-label" for="title_en">{{trans('admin.name_en')}}</label>
+        <input type="text" name="title_en"
                class="form-control dt-full-name"
-               id="name_en"
+               id="title_en"
                placeholder="{{trans('admin.name_en')}}"/>
     </div>
 
@@ -181,8 +181,8 @@
                 contentType: false,
                 headers: {'X-CSRF-TOKEN': csrf_token},
                 success: function (response) {
-                    $('#general-form input[name=name_ar]').val(response.data.name_ar);
-                    $('#general-form input[name=name_en]').val(response.data.name_en);
+                    $('#general-form input[name=title_ar]').val(response.data.title_ar);
+                    $('#general-form input[name=title_en]').val(response.data.title_en);
                     $('#general-form input[name=order]').val(response.data.order);
                     $('#general-form textarea[name=description_ar]').val(response.data.description_ar);
                     $('#general-form textarea[name=description_en]').val(response.data.description_en);

@@ -28,8 +28,8 @@ class SportGameRepository
     {
         SportGame::where('order', '>=', $data['order'])->increment('order');
         $teamData = [
-            'name_ar' => $data['name_ar'],
-            'name_en' => $data['name_en'],
+            'title_ar' => $data['title_ar'],
+            'title_en' => $data['title_en'],
             'description_ar' => $data['description_ar'],
             'description_en' => $data['description_en'],
             'order' => $data['order'],
@@ -86,8 +86,8 @@ class SportGameRepository
                 SportGame::where('order', '>=', $data['order'])->increment('order');
             }
             $teamData = [
-                'name_ar' => $data['name_ar'],
-                'name_en' => $data['name_en'],
+                'title_ar' => $data['title_ar'],
+                'title_en' => $data['title_en'],
                 'description_ar' => $data['description_ar'],
                 'description_en' => $data['description_en'],
                 'order' => $data['order'],

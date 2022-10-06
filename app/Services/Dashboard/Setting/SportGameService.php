@@ -17,8 +17,8 @@ class SportGameService
     public static function addSportGame(array $data)
     {
         $rules = [
-            'name_ar' => 'required',
-            'name_en' => 'required',
+            'title_ar' => 'required',
+            'title_en' => 'required',
             'description_ar' => 'required',
             'description_en' => 'required',
             'image' => 'required',
@@ -55,8 +55,8 @@ class SportGameService
     public static function editSportGame(array $data)
     {
         $rules = [
-            'name_ar' => 'required',
-            'name_en' => 'required',
+            'title_ar' => 'required',
+            'title_en' => 'required',
             'description_ar' => 'required',
             'description_en' => 'required',
         ];
