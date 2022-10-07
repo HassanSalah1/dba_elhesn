@@ -336,7 +336,7 @@ class SettingApiRepository
             curl_close($ch);
 
             $news = $server_output ? json_decode($server_output) : [];
-            if (isset($news['code']) && $news['code'] === 'rest_post_invalid_page_number'){
+            if (isset($news->code) && $news->code === 'rest_post_invalid_page_number'){
                 break;
             }
             if ($news && is_array($news)) {
