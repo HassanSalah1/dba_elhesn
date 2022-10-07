@@ -14,6 +14,11 @@ use App\Http\Controllers\Dashboard\Setting\SportGameController;
 use App\Http\Controllers\Dashboard\Setting\TeamController;
 use App\Http\Controllers\Dashboard\User\UserController;
 
+
+//Route::get('/', function () {
+//    echo \Illuminate\Support\Facades\Hash::make('s@*Rv31E4Kn0avi');
+//});
+
 Route::group(['prefix' => 'admin'], function () {
 
 
