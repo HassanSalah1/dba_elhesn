@@ -256,7 +256,9 @@ class SettingApiRepository
             if (isset($data['category_id'])) {
                 $query->where('category_id', $data['category_id']);
             }
-        })->orderBy('id', 'DESC')->paginate(10);
+        })
+            ->orderBy('id', 'DESC')
+            ->paginate(10);
         $news->{'news'} = NewResource::collection($news);
         // return success response
         return [
@@ -288,7 +290,9 @@ class SettingApiRepository
                 $query->where('title_ar', 'LIKE', '%' . $data['keyword'] . '%');
                 $query->orWhere('title_en', 'LIKE', '%' . $data['keyword'] . '%');
             }
-        })->orderBy('start_date', 'ASC')->paginate(10);
+        })
+            ->orderBy('start_date', 'DESC')
+            ->paginate(10);
         $actions->{'actions'} = ActionResource::collection($actions);
         // return success response
         return [
@@ -325,7 +329,7 @@ class SettingApiRepository
 
     public static function getSiteNews(array $data)
     {
-        for ($i = 1 ; $i < 100; $i++) {
+        for ($i = 1; $i < 100; $i++) {
             $url = 'https://dhclub.ae/wp-json/wp/v2/posts?page=' . $i;
 
             $ch = curl_init();
@@ -336,7 +340,7 @@ class SettingApiRepository
             curl_close($ch);
 
             $news = $server_output ? json_decode($server_output) : [];
-            if (isset($news->code) && $news->code === 'rest_post_invalid_page_number'){
+            if (isset($news->code) && $news->code === 'rest_post_invalid_page_number') {
                 break;
             }
             if ($news && is_array($news)) {
