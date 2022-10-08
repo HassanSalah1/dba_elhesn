@@ -329,9 +329,8 @@ class SettingApiRepository
 
     public static function getSiteNews(array $data)
     {
-        for ($i = 1; $i < 100; $i++) {
+        for ($i = 40; $i > 0; $i--) {
             $url = 'https://dhclub.ae/wp-json/wp/v2/posts?page=' . $i;
-
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
             curl_setopt($ch, CURLOPT_POST, 0);
@@ -340,49 +339,48 @@ class SettingApiRepository
             curl_close($ch);
 
             $news = $server_output ? json_decode($server_output) : [];
-            if (isset($news->code) && $news->code === 'rest_post_invalid_page_number') {
-                break;
-            }
-            if ($news && is_array($news)) {
-                foreach ($news as $new) {
-                    $newObject = News::where(['new_id' => $new->id])->first();
-                    if (!$newObject) {
-                        $category = Category::find($new->categories[0]);
-                        $newData = [
-                            'title_ar' => $new->title->rendered,
-                            'title_en' => $new->title->rendered,
-                            'short_description_ar' => $new->title->rendered,
-                            'short_description_en' => $new->title->rendered,
-                            'description_ar' => $new->content->rendered,
-                            'description_en' => $new->content->rendered,
-                            'video_url' => null,
-                            'category_id' => $category ? $category->id : null,
-                            'new_id' => $new->id
-                        ];
-                        $newObject = News::create($newData);
+            if (!isset($news->code)) {
+                if ($news && is_array($news)) {
+                    foreach ($news as $new) {
+                        $newObject = News::where(['new_id' => $new->id])->first();
+                        if (!$newObject) {
+                            $category = Category::find($new->categories[0]);
+                            $newData = [
+                                'title_ar' => $new->title->rendered,
+                                'title_en' => $new->title->rendered,
+                                'short_description_ar' => $new->title->rendered,
+                                'short_description_en' => $new->title->rendered,
+                                'description_ar' => $new->content->rendered,
+                                'description_en' => $new->content->rendered,
+                                'video_url' => null,
+                                'category_id' => $category ? $category->id : null,
+                                'new_id' => $new->id
+                            ];
+                            $newObject = News::create($newData);
 
-                        $media_url = 'https://dhclub.ae/wp-json/wp/v2/media?parent=' . $new->id;
+                            $media_url = 'https://dhclub.ae/wp-json/wp/v2/media?parent=' . $new->id;
 
-                        $ch = curl_init();
-                        curl_setopt($ch, CURLOPT_URL, $media_url);
-                        curl_setopt($ch, CURLOPT_POST, 0);
-                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                        $output = curl_exec($ch);
-                        curl_close($ch);
-                        $images = $output ? json_decode($output) : [];
-                        if ($images && is_array($images)) {
-                            foreach ($images as $key => $image) {
-                                $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
-                                $image_path = 'uploads/news/';
-                                $image = UtilsRepository::uploadImage(null, $image->guid->rendered,
-                                    $image_path, $file_id);
-                                if ($image) {
-                                    Image::create([
-                                        'item_id' => $newObject->id,
-                                        'item_type' => ImageType::NEWS,
-                                        'image' => $image,
-                                        'primary' => $key === 0 ? 1 : 0
-                                    ]);
+                            $ch = curl_init();
+                            curl_setopt($ch, CURLOPT_URL, $media_url);
+                            curl_setopt($ch, CURLOPT_POST, 0);
+                            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                            $output = curl_exec($ch);
+                            curl_close($ch);
+                            $images = $output ? json_decode($output) : [];
+                            if ($images && is_array($images)) {
+                                foreach ($images as $key => $image) {
+                                    $file_id = 'IMG_' . mt_rand(00000, 99999) . (time() + mt_rand(00000, 99999));
+                                    $image_path = 'uploads/news/';
+                                    $image = UtilsRepository::uploadImage(null, $image->guid->rendered,
+                                        $image_path, $file_id);
+                                    if ($image) {
+                                        Image::create([
+                                            'item_id' => $newObject->id,
+                                            'item_type' => ImageType::NEWS,
+                                            'image' => $image,
+                                            'primary' => $key === 0 ? 1 : 0
+                                        ]);
+                                    }
                                 }
                             }
                         }

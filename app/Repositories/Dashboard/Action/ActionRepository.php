@@ -14,7 +14,7 @@ class ActionRepository
     // get Actions and create datatable data.
     public static function getActionsData(array $data)
     {
-        $actions = Action::orderBy('start_date', 'ASC')->get();
+        $actions = Action::orderBy('start_date', 'DESC')->get();
         return DataTables::of($actions)
             ->editColumn('image', function ($action) {
                 if ($action->image()) {
