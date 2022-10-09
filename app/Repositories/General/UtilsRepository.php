@@ -118,7 +118,7 @@ class UtilsRepository
     public static function sendEmail($data)
     {
         try {
-            $email = 'app@elmohamdy.com';
+            $email = 'info@dhclub.ae';
             $data['from'] = $email;
             $data['lang'] = App::getLocale();
             Mail::send($data['template'], ['data' => $data,], function ($message) use ($data, $email) {

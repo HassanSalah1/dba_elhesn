@@ -311,6 +311,14 @@ class AuthApiRepository
             // send email
             $email = ($user->edited_email !== null) ? $user->edited_email : $user->email;
             $locale = App::getLocale();
+
+            UtilsRepository::sendEmail([
+                'code' => $code,
+                'user' => $user,
+                'email' => $email,
+                'template' => 'general.email.verify',
+                'subject' => trans('api.account_verification_subject')
+            ]);
 //            $message = str_replace('{code}', $code, trans('sms.your_code'));
 //            SendSMSJob::dispatch($phone, $message, $locale);
             return true;

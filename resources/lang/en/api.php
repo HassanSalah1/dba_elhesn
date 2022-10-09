@@ -93,16 +93,19 @@ return [
 
 
     'January' => 'January',
-    'February'=> 'February',
-    'March'=> 'March',
-    'April'=> 'April',
-    'May'=> 'May',
-    'June'=> 'June',
-    'July'=> 'July',
-    'August'=> 'August',
-    'September'=> 'September',
-    'October'=> 'October',
-    'November'=> 'November',
-    'December'=> 'December'
+    'February' => 'February',
+    'March' => 'March',
+    'April' => 'April',
+    'May' => 'May',
+    'June' => 'June',
+    'July' => 'July',
+    'August' => 'August',
+    'September' => 'September',
+    'October' => 'October',
+    'November' => 'November',
+    'December' => 'December',
+    'account_verification_message' => 'activate account',
+    'hello_user' => 'hello',
+    'account_verification_subject' => 'Enter the following verification code to activate your account : {code}',
 ];
 ?>
