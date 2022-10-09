@@ -11,7 +11,7 @@ return [
     'verify_success_message' => 'account verified successfully',
     'verify_code_success_message' => 'your verification code is right',
     'verify_error_message' => 'check your sent verification code again',
-    'resend_success_message' => 'The code has been sent to your phone.',
+    'resend_success_message' => 'The code has been sent to your email.',
     'credentials_error_message' => 'phone or password not correct.',
     'login_success_message' => 'login done successfully',
     'not_verified_error_message' => 'You must activate your account first.',
