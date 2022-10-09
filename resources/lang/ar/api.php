@@ -16,7 +16,7 @@ return [
     'login_success_message' => 'تم تسجيل الدخول بنجاح',
     'not_verified_error_message' => 'يجب تفعيل حسابك أولا.',
     'block_status_error_message' => 'لقد تم حظر حسابك الرجاء التواصل مع الإدارة',
-    'forget_password_success_message' => 'تم إرسال الرمز إلى رقم الجوال.',
+    'forget_password_success_message' => 'تم إرسال الرمز إلى بريدك الإلكترونى.',
     'change_password_success_message' => 'تم تغيير كلمة المرور بنجاح.',
     'not_found_error_message' => 'لا يوجد أى حساب مرتبط برقم الجوال.',
     'done_successfully' => 'تم بنجاح',

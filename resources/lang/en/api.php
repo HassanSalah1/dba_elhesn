@@ -16,7 +16,7 @@ return [
     'login_success_message' => 'login done successfully',
     'not_verified_error_message' => 'You must activate your account first.',
     'block_status_error_message' => 'Your account has been banned, please contact the administration',
-    'forget_password_success_message' => 'The code has been sent to the mobile number.',
+    'forget_password_success_message' => 'The code has been sent to the Email.',
     'change_password_success_message' => 'password changed successfully',
     'not_found_error_message' => 'there is no account related to this phone',
     'done_successfully' => 'done successfully',
