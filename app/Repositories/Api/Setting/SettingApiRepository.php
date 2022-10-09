@@ -341,6 +341,7 @@ class SettingApiRepository
             $news = $server_output ? json_decode($server_output) : [];
             if (!isset($news->code)) {
                 if ($news && is_array($news)) {
+                    $news = array_reverse($news);
                     foreach ($news as $new) {
                         $newObject = News::where(['new_id' => $new->id])->first();
                         if (!$newObject) {
@@ -354,7 +355,8 @@ class SettingApiRepository
                                 'description_en' => $new->content->rendered,
                                 'video_url' => null,
                                 'category_id' => $category ? $category->id : null,
-                                'new_id' => $new->id
+                                'new_id' => $new->id,
+                                'created_at' => date('Y-m-d H:i:s', strtotime($new->date))
                             ];
                             $newObject = News::create($newData);
 
