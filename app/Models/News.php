@@ -13,7 +13,7 @@ class News extends Model
 
     protected $table = 'news';
     protected $fillable = ['title_ar', 'title_en', 'short_description_ar', 'short_description_en',
-        'description_ar', 'description_en', 'video_url', 'category_id', 'new_id'];
+        'description_ar', 'description_en', 'video_url', 'category_id', 'new_id' , 'created_at'];
 
     protected $appends = ['title', 'short_description', 'description'];
 
