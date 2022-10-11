@@ -103,8 +103,8 @@ return [
     'November' => 'نوفمبر',
     'December' => 'ديسمبر',
 
-    'account_verification_message' => 'تفعيل الحساب',
+    'account_verification_subject' => 'تفعيل الحساب',
     'hello_user' => 'مرحبا',
-    'account_verification_subject' => 'أدخل رمز التحقق التالى لتفعيل حسابك : {code}',
+    'account_verification_message' => 'أدخل رمز التحقق التالى لتفعيل حسابك : {code}',
 ];
 ?>
