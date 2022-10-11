@@ -104,8 +104,8 @@ return [
     'October' => 'October',
     'November' => 'November',
     'December' => 'December',
-    'account_verification_message' => 'activate account',
+    'account_verification_subject' => 'activate account',
     'hello_user' => 'hello',
-    'account_verification_subject' => 'Enter the following verification code to activate your account : {code}',
+    'account_verification_message' => 'Enter the following verification code to activate your account : {code}',
 ];
 ?>
