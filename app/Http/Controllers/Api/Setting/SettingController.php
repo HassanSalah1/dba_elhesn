@@ -16,7 +16,7 @@ class SettingController extends Controller
     {
 //        echo phpinfo();
 //        die();
-        $serverName = env('DB_SQL_HOST');
+        $serverName = env('DB_SQL_HOST').'\\sqlexpress';
         $uid = env('DB_SQL_USERNAME');
         $pwd = env('DB_SQL_PASSWORD');
         $databaseName = env('DB_SQL_DATABASE');
