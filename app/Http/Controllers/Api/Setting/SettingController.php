@@ -6,18 +6,30 @@ use App\Http\Controllers\Controller;
 use App\Services\Api\Setting\SettingApiService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PDO;
+use PDOException;
 
 class SettingController extends Controller
 {
 
     public function testConnection(Request $request)
     {
-//        echo phpinfo();
-//        die();
         $serverName = env('DB_SQL_HOST');
         $uid = env('DB_SQL_USERNAME');
         $pwd = env('DB_SQL_PASSWORD');
         $databaseName = env('DB_SQL_DATABASE');
+        try {
+            $conn = new PDO("sqlsrv:Server=$serverName;Database=$databaseName;ConnectionPooling=0", $uid, $pwd);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        } catch (PDOException $e) {
+            $e->getMessage();
+        }
+        die();
+
+//        echo phpinfo();
+//        die();
+
         $connectionInfo = [
             "UID" => $uid,
             "PWD" => $pwd,
