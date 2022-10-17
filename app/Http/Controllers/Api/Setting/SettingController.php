@@ -5,9 +5,33 @@ namespace App\Http\Controllers\Api\Setting;
 use App\Http\Controllers\Controller;
 use App\Services\Api\Setting\SettingApiService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SettingController extends Controller
 {
+
+    public function testConnection(Request $request)
+    {
+        $serverName = env('DB_SQL_HOST');
+        $uid = env('DB_SQL_USERNAME');
+        $pwd = env('DB_SQL_PASSWORD');
+        $databaseName = env('DB_SQL_DATABASE');
+        $connectionInfo = [
+            "UID" => $uid,
+            "PWD" => $pwd,
+            "Database" => $databaseName
+        ];
+        /* Connect using SQL Server Authentication. */
+        $conn = \sqlsrv_connect($serverName, $connectionInfo);
+
+        $tsql = "SELECT id, RowID FROM dbo.MobMobileApp_Sports";
+        /* Execute the query. */
+        $stmt = \sqlsrv_query($conn, $tsql);
+
+//        $users = DB::connection('sqlsrv')->table('MobileApp_Sports')->select('*')->get();
+
+        return response()->json([$stmt]);
+    }
 
     public function getSiteNews(Request $request)
     {

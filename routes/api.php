@@ -28,6 +28,8 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'lang'], function () {
     Route::group(['prefix' => 'v1'], function () {
 
+        Route::get('/handle/sql', [SettingController::class, 'testConnection']); // get intros
+
         Route::get('/handle/site', [SettingController::class, 'getSiteNews']); // get intros
 
         Route::get('/intros', [SettingController::class, 'getIntros']); // get intros

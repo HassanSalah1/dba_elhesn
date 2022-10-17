@@ -8,7 +8,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset(mix('vendors/css/extensions/sweetalert2.min.css')) }}">
     <link rel="stylesheet" type="text/css"
           href="{{ asset(mix('css/base/plugins/extensions/ext-component-sweet-alerts.css')) }}">
-
 @endsection
 
 @section('page-style')
