@@ -28,7 +28,7 @@ class SettingController extends Controller
 //            return  response()->json([$result]);
 
         } catch (\Exception $e) {
-            echo  $e->getTraceAsString();
+            echo  $e->getMessage();
         }
         die();
 
