@@ -14,15 +14,15 @@ class SettingController extends Controller
 
     public function testConnection(Request $request)
     {
-        echo phpinfo();
-        die();
+//        echo phpinfo();
+//        die();
         $serverName = env('DB_SQL_HOST');
         $uid = env('DB_SQL_USERNAME');
         $pwd = env('DB_SQL_PASSWORD');
         $databaseName = env('DB_SQL_DATABASE');
 //        try {
-            $conn = new PDO("sqlsrv:Server=$serverName;Database=$databaseName;ConnectionPooling=0", $uid, $pwd);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//            $conn = new PDO("sqlsrv:Server=$serverName;Database=$databaseName;ConnectionPooling=0", $uid, $pwd);
+//            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 //            $stmt = $conn->prepare("SELECT id, RowID FROM MobMobileApp_Sports");
 //            $stmt->execute();
 //            $result = $stmt->fetchall();
@@ -32,7 +32,7 @@ class SettingController extends Controller
 //        } catch (\Exception $e) {
 //            echo  $e->getMessage();
 //        }
-        die();
+//        die();
 
 //
 
