@@ -25,6 +25,9 @@ class SettingController extends Controller
             $stmt = $conn->prepare("SELECT id, RowID FROM dbo.MobMobileApp_Sports");
             $stmt->execute();
             $result = $stmt->fetchall();
+
+            return  response()->json([$result]);
+
         } catch (PDOException $e) {
             $e->getMessage();
         }
