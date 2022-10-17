@@ -21,7 +21,8 @@
     "mcamara/laravel-localization": "^1.7",
     "propaganistas/laravel-phone": "^4.3",
     "yajra/laravel-datatables-oracle": "~9.0",
-    "ext-sqlsrv": "*"
+    "ext-sqlsrv": "*",
+      "ext-pdo": "*"
   },
   "require-dev": {
     "facade/ignition": "^2.5",
