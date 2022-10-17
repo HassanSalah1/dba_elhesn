@@ -18,7 +18,7 @@ class SettingController extends Controller
         $uid = env('DB_SQL_USERNAME');
         $pwd = env('DB_SQL_PASSWORD');
         $databaseName = env('DB_SQL_DATABASE');
-        try {
+//        try {
             $conn = new PDO("sqlsrv:Server=$serverName;Database=$databaseName;ConnectionPooling=0", $uid, $pwd);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 //            $stmt = $conn->prepare("SELECT id, RowID FROM MobMobileApp_Sports");
@@ -27,9 +27,9 @@ class SettingController extends Controller
 
 //            return  response()->json([$result]);
 
-        } catch (\Exception $e) {
-            echo  $e->getMessage();
-        }
+//        } catch (\Exception $e) {
+//            echo  $e->getMessage();
+//        }
         die();
 
 //        echo phpinfo();
