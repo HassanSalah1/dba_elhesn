@@ -27,8 +27,8 @@ class SettingController extends Controller
 
 //            return  response()->json([$result]);
 
-        } catch (PDOException $e) {
-            print_r($e->getTrace());
+        } catch (\Exception $e) {
+            echo  $e->getTraceAsString();
         }
         die();
 
