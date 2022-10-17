@@ -14,7 +14,7 @@ class SettingController extends Controller
 
     public function testConnection(Request $request)
     {
-        $serverName = 'dhsckarem.ddns.net, 1443';
+        $serverName = 'dhsckarem.ddns.net';
         $uid = 'dhclubapp';
         $pwd = 'bNHW^3&q1mH5';
         $databaseName = 'FBall';
