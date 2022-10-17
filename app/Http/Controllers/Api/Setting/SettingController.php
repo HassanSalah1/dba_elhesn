@@ -21,7 +21,7 @@ class SettingController extends Controller
         try {
             $conn = new PDO("sqlsrv:Server=$serverName;Database=$databaseName;ConnectionPooling=0", $uid, $pwd);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $stmt = $conn->prepare("SELECT id, RowID FROM dbo.MobMobileApp_Sports");
+            $stmt = $conn->prepare("SELECT id, RowID FROM MobMobileApp_Sports");
             $stmt->execute();
             $result = $stmt->fetchall();
 
