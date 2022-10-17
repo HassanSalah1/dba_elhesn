@@ -25,6 +25,8 @@ class SettingController extends Controller
         ];
         /* Connect using SQL Server Authentication. */
         $conn = \sqlsrv_connect($serverName, $connectionInfo);
+        var_dump($conn);
+        die();
 
         $tsql = "SELECT id, RowID FROM dbo.MobMobileApp_Sports";
         /* Execute the query. */
