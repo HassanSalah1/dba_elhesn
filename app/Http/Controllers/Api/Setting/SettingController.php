@@ -21,7 +21,6 @@ class SettingController extends Controller
         try {
             $conn = new PDO("sqlsrv:Server=$serverName;Database=$databaseName;ConnectionPooling=0", $uid, $pwd);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
             $stmt = $conn->prepare("SELECT id, RowID FROM dbo.MobMobileApp_Sports");
             $stmt->execute();
             $result = $stmt->fetchall();
@@ -29,7 +28,7 @@ class SettingController extends Controller
             return  response()->json([$result]);
 
         } catch (PDOException $e) {
-            $e->getMessage();
+            echo $e->getMessage();
         }
         die();
 
