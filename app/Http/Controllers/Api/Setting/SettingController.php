@@ -12,6 +12,8 @@ class SettingController extends Controller
 
     public function testConnection(Request $request)
     {
+        echo phpinfo();
+        die();
         $serverName = env('DB_SQL_HOST');
         $uid = env('DB_SQL_USERNAME');
         $pwd = env('DB_SQL_PASSWORD');
