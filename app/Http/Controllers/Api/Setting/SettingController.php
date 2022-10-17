@@ -26,6 +26,7 @@ class SettingController extends Controller
         ];
         /* Connect using SQL Server Authentication. */
         $conn = \sqlsrv_connect($serverName, $connectionInfo);
+        var_dump(sqlsrv_errors());
         var_dump($conn);
         die();
 
