@@ -14,12 +14,10 @@ class SettingController extends Controller
 
     public function testConnection(Request $request)
     {
-//        echo phpinfo();
-//        die();
         $serverName = 'dhsckarem.ddns.net, 1443';
-        $uid = env('DB_SQL_USERNAME');
-        $pwd = env('DB_SQL_PASSWORD');
-        $databaseName = env('DB_SQL_DATABASE');
+        $uid = 'dhclubapp';
+        $pwd = 'bNHW^3&q1mH5';
+        $databaseName = 'FBall';
 
         $connectionInfo = [
             "UID" => $uid,
