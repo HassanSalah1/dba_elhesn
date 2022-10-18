@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Services\Api\Setting\SettingApiService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Mockery\Exception;
 use PDO;
 use PDOException;
 
@@ -22,21 +23,22 @@ class SettingController extends Controller
         $connectionInfo = [
             "UID" => $uid,
             "PWD" => $pwd,
-            "Database" => $databaseName
+            "Database" => $databaseName,
+            "ColumnEncryption"=>"Enabled",
+            "TrustServerCertificate" => true
         ];
         /* Connect using SQL Server Authentication. */
         $conn = \sqlsrv_connect($serverName, $connectionInfo);
-        var_dump(sqlsrv_errors());
-        var_dump($conn);
-        die();
 
-        $tsql = "SELECT id, RowID FROM dbo.MobMobileApp_Sports";
-        /* Execute the query. */
-        $stmt = \sqlsrv_query($conn, $tsql);
-
-//        $users = DB::connection('sqlsrv')->table('MobileApp_Sports')->select('*')->get();
-
-        return response()->json([$stmt]);
+        if( $conn ) {
+            $sql = "SELECT RowID FROM dbo.MobileApp_Sports";
+            if(($result = \sqlsrv_query($conn, $sql)) !== false){
+                while( $object = sqlsrv_fetch_object( $result )) {
+                    echo $object->RowID.'<br />';
+                }
+            }
+        }else{
+        }
     }
 
     public function getSiteNews(Request $request)
