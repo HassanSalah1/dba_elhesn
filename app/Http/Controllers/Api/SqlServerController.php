@@ -18,6 +18,11 @@ class SqlServerController extends Controller
     {
         return SqlServerApiRepository::getSports();
     }
+
+    public function getTeams(Request $request)
+    {
+        return SqlServerApiRepository::getTeamImages();
+    }
 }
 
 ?>

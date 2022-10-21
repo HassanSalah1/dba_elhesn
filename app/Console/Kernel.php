@@ -25,7 +25,14 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('news:daily')->daily();
-        // $schedule->command('inspire')->hourly();
+
+        $schedule->command('sport_teams:daily')->daily();
+
+        $schedule->command('teams_players:daily')->daily();
+
+        $schedule->command('player_photos:daily')->daily();
+
+        $schedule->command('team_photos:daily')->daily();
     }
 
     /**

@@ -162,7 +162,7 @@ class UtilsRepository
     }
 
     // upload image
-    public static function createImage($request, $image_name, $image_path, $image_id , $width = 0, $height = 0)
+    public static function createImage($request, $image_name, $image_path, $image_id, $width = 0, $height = 0)
     {
         if ($request->hasFile($image_name)) {
             $image = $request[$image_name];
@@ -183,6 +183,27 @@ class UtilsRepository
             }
         }
         return false;
+    }
+
+
+    // upload image
+    public static function createImageBase64($base64, $image_path, $image_id, $width = 0, $height = 0)
+    {
+        $file_name = $image_id . '.png';
+        if (!file_exists(public_path($image_path))) {
+            mkdir(public_path($image_path), 0755, true);
+        }
+        try {
+            // finally we save the image as a new file
+            $img = Image::make($base64);
+            if ($width != 0 && $height != 0) {
+                $img->resize($width, $height);
+            }
+            $img->save($image_path . $file_name);
+            return $image_path . $file_name;
+        } catch (ImageException $ex) {
+        }
+        return null;
     }
 
     // upload image

@@ -21,6 +21,7 @@ Route::group(['middleware' => 'lang'], function () {
     Route::group(['prefix' => 'v1'], function () {
 
         Route::get('/handle/sports', [SqlServerController::class, 'getSports']);
+        Route::get('/handle/teams', [SqlServerController::class, 'getTeams']);
 
         ////////////////////////////////////////
         ///
