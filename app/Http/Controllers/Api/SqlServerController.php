@@ -16,7 +16,9 @@ class SqlServerController extends Controller
 
     public function getSports(Request $request)
     {
-        return SqlServerApiRepository::getSports();
+        echo phpinfo();
+        die();
+//        return SqlServerApiRepository::getSports();
     }
 
     public function getTeams(Request $request)
